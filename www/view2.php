@@ -1,6 +1,28 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+    var myOptions = {
+      zoom: 4,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title:"Hello World!"
+    });
+  }
+initialize();
+</script>
+
 <div id="userbody">
+
 	<div id="map" style="margin: 0px auto; border:1px solid black; width: 600px; height: 200px;">
-		
+  <div id="map_canvas" style='width:200px;height:200px;'></div>
+	
 		</div>
 <div style="color: #6F6F65;"><font size="2"><table width="100%" height="100%" border="0" align="center" cellpadding="10" cellspacing="0"> <tbody><tr> <td colspan="2" align="center" valign="top" background="http://www.postlets.com/css/styles/sonoma/bg_body.gif"> <table width="740" border="0" cellspacing="0" cellpadding="0" align="center"> <tbody><tr> <td></td> <td height="20" align="right"> <div style="background-color: #4B532A; color: #FDF8D8; padding-left: 5px; padding-right: 5px; padding-top: 2px; padding-bottom: 2px;"><font size="2"><strong>Peyman Moshref</strong><a href="http://www.postlets.com/email_interest.php?pid=4673050&amp;v=rt" rel="nofollow"></a> | <span id="gc-number-0" class="gc-cs-link" title="Call with Google Voice">(925) 878-9151</span></font></div> </td> </tr> </tbody></table> <table width="740" border="0" cellspacing="0" cellpadding="0" align="center" style="border-left: 1px solid #e7e6d7; border-right: 1px solid #e7e6d7;"> <tbody><tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> <tbody><tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="7"> <tbody><tr> <td colspan="2" style="background-color: #e7e6d7;"><table width="100%" cellspacing="0" cellpadding="1"> <tbody><tr valign="top"> <td height="30" align="left" valign="top"><div style="color: #8E0700;"><font size="5">555 Pierce St., Albany, CA</font></div></td> </tr> <tr> <td width="560" align="left" valign="top"> <div style="color: #5E5E56;">Spacious and Well Lighted, Security Condo with Panoramic Golden Gate Bridge and Bay Views!</div></td> </tr> </tbody></table></td> </tr> <tr> <td colspan="2" valign="top" style="background-color: #e7e6d7;"> <table width="724" border="0" cellpadding="4" cellspacing="0" style="border-left: 1px solid #BDBCAB; border-right: 1px solid #BDBCAB; border-top: 1px solid #BDBCAB; border-bottom: 1px solid #BDBCAB; background-color: #FFFEFD;"> <tbody><tr> <td align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0"> <tbody><tr> <td width="350" height="35" valign="top"> <div style="color: #4B532A;"><font size="4">2BR/2BA Condo</font></div></td> <td valign="top"><span style="padding-right: 5px;"></span></td> <td align="right" valign="top"><div style="color: #4B532A;"><font size="4">$1,750/month</font></div></td> </tr> <tr> <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-top: 1px solid #BDBCAB; background-color: #FFFEFD;">  <tbody><tr> <td>Bedrooms</td> <td>2</td> </tr> <tr> <td>Bathrooms</td> <td>2 full, 0 partial </td> </tr>  <tr> <td>Sq Footage</td> <td>1,113 </td> </tr>  <tr> <td>Parking</td> <td> 1 dedicated</td> </tr>  <tr> <td>Pet Policy</td> <td>No pets</td> </tr> <tr> <td>Deposit</td> <td>$2,500</td> </tr>  </tbody></table>  <br> <div style="color: #4B532A;"><span style="font-weight: bold;"> DESCRIPTION</span></div> <hr size="1" noshade="" style="border-top: 1px solid #BDBCAB;"> <table width="100%" border="0" cellspacing="0" cellpadding="3"> <tbody><tr> <td>• Panoramic Golden Gate Bridge and Bay Views <br>
 • 24 hr-security condo complex with gym, pool, sauna, spa, and clubhouse <br>
