@@ -13,7 +13,8 @@
 	}
 	while ($row = mysql_fetch_assoc($result)) {
 		echo 'posting_id:';
-		echo $row[posting_id];
+		echo $row[id].' '. $row[info].' '.$row[address];
+		echo '<br>';
 	}
 	mysql_close();
 ?>
