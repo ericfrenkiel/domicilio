@@ -6,6 +6,7 @@ class PostingEditor {
     $action;
 
   public function render() {
+    include_css("editor.css");
     $out = "";
     $out .= "<form id=\"posting_form\" method=\"post\" "
       . "action=\"" . $this->action . "\">";

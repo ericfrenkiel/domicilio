@@ -1,30 +1,3 @@
- <style type="text/css">
-
-   .left_edit {
-     vertical-align: middle;
-      display: inline-block;
-     width: 200px;
-    }
-
-   .edit {
-      margin: 5px 0px;
-      width: 600px;
-    }
-
-   .right_edit {
-      vertical-align: middle;
-      display: inline-block;
-      width: 400px;
-    }
-    .right_edit input, .right_edit textarea {
-      width: 390px;
-    }
-
-    .center_edit {
-      text-align: center;
-    }
- </style>
-
 <?php
 
 require_once('../lib/header.php');
@@ -41,16 +14,15 @@ if (isset($_GET['test'])) {
   echo "</pre>";
 } else if (isset($_POST['posting_submitted'])) {
   $posting = Posting::fromPOST();
-  echo "Received info <hr />";
-  require_once('../lib/PostingRenderer.php');
-  $renderer = new PostingRenderer($posting);
-  echo $renderer->render();
+  $posting->setOwnerId(123);
+  $posting->addToDB();
+  header("Location: view.php?id=" . $posting->getId());
+  return;
 } else {
   require_once('../lib/PostingEditor.php');
   $page_editor = new PostingEditor();
   $page_editor->setAction('create_posting.php')
               ->setPosting(id(new Posting())
-                             ->setId('test_1')
                              ->setCost('1000')
                              ->setTitle('10$ Super awesome place to live')
                              ->setAddress('1601 S California Ave')

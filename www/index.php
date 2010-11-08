@@ -1,9 +1,4 @@
-<html>
-<head>
-	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
-	<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
-</head>
+<?php require_once('../lib/header.php');?>
 
 <form action="index.php">
 <input name="search" type="text"/>
@@ -11,6 +6,7 @@
 		<input type="button" value="Get Value" onclick="lookupLocal();" />
 		<input name="submit" type="submit"/>
 </form>
+
 <?php
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
@@ -31,7 +27,6 @@
 	}
 	mysql_close();
 ?>
-
 
 <script type="text/javascript">
 
@@ -72,25 +67,8 @@ function lookupLocal(){
 
 	return false;
 }
-
-$(document).ready(function() {
-	$("#CityAjax").autocomplete(
-		"autocomplete_ajax.cfm",
-		{
-			delay:10,
-			minChars:2,
-			matchSubset:1,
-			matchContains:1,
-			cacheLength:10,
-			onItemSelect:selectItem,
-			onFindValue:findValue,
-			formatItem:formatItem,
-			autoFill:true
-		}
-	);
-}
-);
-
 </script>
 
 </html>
+
+<?php require_once('../lib/footer.php');?>
