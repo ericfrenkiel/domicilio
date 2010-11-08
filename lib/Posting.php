@@ -43,6 +43,22 @@ class Posting {
     }
   }
 
+  public function addToDB() {
+    $res = db_query("insert into postings (title, cost, address, city, state,"
+      . " info, owner_id) values ("
+      . "'" . db_escape($this->title) . "', "
+      . "'" . db_escape($this->cost) . "', "
+      . "'" . db_escape($this->address) . "', "
+      . "'" . db_escape($this->city) . "', "
+      . "'" . db_escape($this->state) . "', "
+      . "'" . db_escape($this->info) . "', "
+      . "'" . db_escape($this->ownerId) . "'"
+      . ");"
+    );
+    $this->id = mysql_insert_id();
+    return $this;
+  }
+
   public function getFullAddress() {
     return $this->getAddress() . ", " . $this->getCity() . ", "
       . $this->getState();

@@ -1,4 +1,6 @@
 <?php
+require_once('../lib/core.php');
+
 function db_connect( )
 {
 	global $link;
@@ -45,6 +47,7 @@ function db_query( $query )
   {
   	$s = mysql_error( );
   	echo "<hr />Mysql error: " . htmlspecialchars($s) . "<hr />";
+  	elog($s);
   }
   return $result;
 }
