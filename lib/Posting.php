@@ -1,4 +1,6 @@
 <?php
+require_once("../lib/core.php");
+require_once("../lib/db.php");
 
 class Posting {
   protected
@@ -9,7 +11,7 @@ class Posting {
     $city,
     $info,
     $cost,
-    $owner_id,
+    $ownerId,
     $photos;
 
   public static function fromPOST() {
@@ -21,6 +23,24 @@ class Posting {
              ->setState(edx($_POST, 'posting_state', 'No data'))
              ->setAddress(edx($_POST, 'posting_address', 'No data'))
              ->setCost(edx($_POST, 'posting_cost', 'No data'));
+  }
+
+  public static function fromDB($id) {
+    $res = db_query("select id, title, cost, address, city, state,"
+      . " info, owner_id from postings where id='" . db_escape($id) . "'");
+    if ($arr = db_fetch($res)) {
+      return id(new Posting())
+               ->setId(edx($arr, 0, 'No data'))
+               ->setTitle(edx($arr, 1, 'No data'))
+               ->setCost(edx($arr, 2, 'No data'))
+               ->setAddress(edx($arr, 3, 'No data'))
+               ->setCity(edx($arr, 4, 'No data'))
+               ->setState(edx($arr, 5, 'No data'))
+               ->setInfo(edx($arr, 6, 'No data'))
+               ->setOwnerId(edx($arr, 7, 'No data'));
+    } else {
+      return false;
+    }
   }
 
   public function getFullAddress() {
@@ -103,6 +123,15 @@ class Posting {
 
   public function getState() {
     return $this->state;
+  }
+
+  public function setOwnerId($new_owner_id) {
+    $this->ownerId = $new_owner_id;
+    return $this;
+  }
+
+  public function getOwnerId() {
+    return $this->ownerId;
   }
 }
 ?>
