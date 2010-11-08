@@ -1,3 +1,8 @@
+
+<form action="index.php">
+<input name="search" type="text"/>
+<input name="submit" type="submit"/>
+</form>
 <?php
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
