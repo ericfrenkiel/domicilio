@@ -19,8 +19,8 @@ class PostingRenderer {
     $static_map_url = $this->posting->getStaticMapUrl();
     if ($static_map_url) {
       $alt = htmlspecialchars($this->posting->getFullAddress());
-      $out .= "<img class=\"posting_map\" alt=\"" . $alt . "\" title=\""
-        . $alt . "\" src=\"" . $static_map_url . "\"/>";
+      $out .= "<a href=\"#map\" rel=\"facebox\"> <img class=\"posting_map\" alt=\"" . $alt . "\" title=\""
+        . $alt . "\" src=\"" . $static_map_url . "\"/></a>";
     }
 
     $out .= "<div class=\"right_info\">";

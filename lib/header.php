@@ -12,17 +12,15 @@ require_once("../lib/db.php");
 <meta name="description" content="Domicilio is a social layer for real estate." />  
                 <title>Domicilio: Social Real Estate</title> 
                 <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
-        <script type="text/javascript" 
-src="/sfJqueryReloadedPlugin/js/jquery.min.js"></script> 
+                <script type="text/javascript" src="/js/jquery.js"></script> 
                 <script type="text/javascript" src="/js/jquery.maskedinput.js"></script> 
-                <script type="text/javascript" 
-src="/js/jquery-ui-1.7.2.custom.min.js"></script> 
+                <script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"></script> 
+                <script type="text/javascript" src="/js/jquery.fbox.js"></script> 
                 <script type="text/javascript" src="/js/jquery.labelify.js"></script> 
-                <script type="text/javascript" 
-src="/js/jquery.infinitecarousel2.min.js"></script> 
+                <script type="text/javascript" src="/js/jquery.infinitecarousel2.min.js"></script> 
                 <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /> 
-                <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" 
-/>
+                <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
+                <link rel="stylesheet" type="text/css" media="screen" href="/css/facebox.css" />
 </head>
         <body>
                 <div id="topBar">
@@ -31,11 +29,10 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
                   <div id="header">
                         <div id="navigation">
                           <ol>
-                                <li><a href="/#">Home</a></li>
-                                <li><a href="/#">Blog</a></li>
-                                <li><a href="/#">About</a></li>
+                                <li><a href="/#">Postings</a></li>
+                                <li><a href="/#">My Postings</a></li>
+                                <li><a href="/#">Create an Ad</a></li>
                                 <li><a href="/#">Help</a></li>
-                                <li><a href="/#"><b>Sign Up</b></a></li>
                           </ol>
                         </div>
                         <a href="/"><img src="/images/logo.png" alt="Domicilio" border="0" 
