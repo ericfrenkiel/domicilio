@@ -33,8 +33,6 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
 ?>
 </head>
         <body>
-                <div id="topBar">
-                </div>
                 <div id="container">
                   <div id="header">
                         <div id="navigation">
