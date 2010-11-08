@@ -121,7 +121,7 @@ body {
 	font-size: 0.8em;
 	line-height: 1.6em;
 	margin: 0 auto;
-	width: 940px;
+	width: 760px;
 	height: auto;
 }
 #header {
@@ -195,7 +195,7 @@ body {
 	
 #main {
 	background: #EEEEEE url(../images/main-bkg.gif) no-repeat left top;
-	width: 940px;
+	width: 760px;
 	min-height: 500px;
 }
 #splash {
