@@ -83,12 +83,14 @@ class PostingEditor {
        . " value=\"1\" />";
 
     $out .= "</form>";
-    $out .= "<div id=\"preview\"></div>";
+    $out .= "<div id=\"preview\" style=\"display:none;width:720px;\"></div>";
     $out .= "<script>"
       . "function preview() {"
+      . " jQuery.facebox.loading();"
       . "  $.post(\"preview.php\", $(\"#posting_form\").serialize(),"
-      . " function(data){ $(\"#preview\").html(data);}"
-      . ");"
+      . " function(data){ $(\"#preview\").html(data);"
+      . " jQuery.facebox({ div: '#preview' });"
+      . "});"
       . "}";
     $out .= "</script>";
     return $out;
