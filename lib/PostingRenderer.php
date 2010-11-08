@@ -9,6 +9,9 @@ class PostingRenderer {
   }
 
   public function render() {
+    if (!$this->posting) {
+      return "No posting";
+    }
     require_once( '../lib/head_control.php');
     include_css("renderer.css");
     $out = "";
