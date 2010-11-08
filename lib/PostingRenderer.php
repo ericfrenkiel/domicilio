@@ -9,6 +9,8 @@ class PostingRenderer {
   }
 
   public function render() {
+    require_once( '../lib/head_control.php');
+    include_css("renderer.css");
     $out = "";
 
     $out .= "<div class=\"posting_page\">";

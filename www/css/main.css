@@ -427,8 +427,6 @@ label {
 }
 
 input {
-	height: 1.5em;
-	font-size: 1.25em;
 	margin-bottom: 10px;
 	background: #FFFFFF url(../images/form_back.gif) repeat-x scroll 0 top;
 	border:1px solid #CCCCCC;
@@ -445,8 +443,6 @@ input {
 }
 
 select {
-	height: 2em;
-	font-size: 1.25em;
 	margin-bottom: 10px;
 	background: #FFFFFF url(../images/form_back.gif) repeat-x scroll 0 top;
 	border:1px solid #CCCCCC;
