@@ -4,6 +4,7 @@ require_once("../lib/core.php");
 require_once("../lib/db.php");
 echo "<html>";
 echo "<head>";
+echo "<script type=\"text/javascript\" src=\"js/jquery.js\"></script>";
 echo "<style type=\"text/css\">";
 echo ""
 

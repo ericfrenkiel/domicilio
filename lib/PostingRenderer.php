@@ -18,8 +18,7 @@ class PostingRenderer {
 
     $static_map_url = $this->posting->getStaticMapUrl();
     if ($static_map_url) {
-      $alt = "Show on map " .
-        htmlspecialchars($this->posting->getFullAddress());
+      $alt = htmlspecialchars($this->posting->getFullAddress());
       $out .= "<img class=\"posting_map\" alt=\"" . $alt . "\" title=\""
         . $alt . "\" src=\"" . $static_map_url . "\"/>";
     }
