@@ -1,3 +1,5 @@
+<?php require_once('../lib/header.php');?>
+
 <?php
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
@@ -18,3 +20,4 @@
 	}
 	mysql_close();
 ?>
+<?php require_once('../lib/footer.php');?>
