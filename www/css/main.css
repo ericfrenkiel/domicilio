@@ -108,12 +108,12 @@ h3 a {
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 100%;
-	background: #DCDCDC url(../images/body-bkg.jpg) no-repeat center top;
+	background: #fff url(../images/body-bkg.jpg) no-repeat center top;
 	margin: 0 0 100px 0;
 	color: #606060;
 }
 #topBar {
-	background: #000000;
+	background: #FA6600;
 	border-bottom: 1px solid #FFFFFF;
 	height: 15px;
 }
@@ -125,7 +125,7 @@ body {
 	height: auto;
 }
 #header {
-	padding: 50px 20px 17px;
+	padding: 10px 10px 10px;
 }
 
 	/* Navigation Sub-Styles */
@@ -194,7 +194,7 @@ body {
 	/* End Navigation Sub Styles */
 	
 #main {
-	background: #EEEEEE url(../images/main-bkg.gif) no-repeat left top;
+	background: #EFF2F7 url(../images/main-bkg.gif) no-repeat left top;
 	width: 760px;
 	min-height: 500px;
 }
