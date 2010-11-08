@@ -29,6 +29,22 @@ class PostingEditor {
     $out .= "</div>";
 
     $out .= "<div class=\"edit\">";
+    $out .= "<div class=\"left_edit\">City:</div>";
+    $out .= "<div class=\"right_edit\">"
+      . "<input type=\"text\" name=\"posting_city\""
+      . " value=\"" . htmlspecialchars($this->posting->getCity()) . "\" />"
+      . "</div>";
+    $out .= "</div>";
+
+    $out .= "<div class=\"edit\">";
+    $out .= "<div class=\"left_edit\">State:</div>";
+    $out .= "<div class=\"right_edit\">"
+      . "<input type=\"text\" name=\"posting_state\""
+      . " value=\"" . htmlspecialchars($this->posting->getState()) . "\" />"
+      . "</div>";
+    $out .= "</div>";
+
+    $out .= "<div class=\"edit\">";
     $out .= "<div class=\"left_edit\">Cost ($/per month):</div>";
     $out .= "<div class=\"right_edit\">"
       . "<input type=\"text\" name=\"posting_cost\""

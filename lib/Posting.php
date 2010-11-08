@@ -5,6 +5,8 @@ class Posting {
     $id,
     $title,
     $address,
+    $state,
+    $city,
     $info,
     $cost,
     $photos;
@@ -14,8 +16,24 @@ class Posting {
              ->setId(edx($_POST, 'posting_id', 'No data'))
              ->setTitle(edx($_POST, 'posting_title', 'No data'))
              ->setInfo(edx($_POST, 'posting_info', 'No data'))
+             ->setCity(edx($_POST, 'posting_city', 'No data'))
+             ->setState(edx($_POST, 'posting_state', 'No data'))
              ->setAddress(edx($_POST, 'posting_address', 'No data'))
              ->setCost(edx($_POST, 'posting_cost', 'No data'));
+  }
+
+  public function getFullAddress() {
+    return $this->getAddress() . ", " . $this->getCity() . ", "
+      . $this->getState();
+  }
+
+  public function getStaticMapUrl() {
+    $location = urlencode($this->getAddress()) . ","
+      . urlencode($this->getCity()) . ","
+      . urlencode($this->getState());
+    return "http://maps.google.com/maps/api/staticmap?center=" . $location
+      . "&zoom=14&size=256x256&markers=color:blue|label:H|"
+      . $location . "&sensor=false";
   }
 
   public function setId($new_id) {
@@ -61,6 +79,24 @@ class Posting {
 
   public function getCost() {
     return $this->cost;
+  }
+
+  public function setCity($new_city) {
+    $this->city = $new_city;
+    return $this;
+  }
+
+  public function getCity() {
+    return $this->city;
+  }
+
+  public function setState($new_state) {
+    $this->state = $new_state;
+    return $this;
+  }
+
+  public function getState() {
+    return $this->state;
   }
 }
 ?>

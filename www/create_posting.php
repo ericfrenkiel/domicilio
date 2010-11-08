@@ -2,7 +2,6 @@
 
 require_once('../lib/header.php');
 require_once('../lib/Posting.php');
-require_once('../lib/PostingEditor.php');
 if (isset($_GET['test'])) {
   $res = db_query('desc postings');
   echo "<pre>";
@@ -16,13 +15,21 @@ if (isset($_GET['test'])) {
 } else if (isset($_POST['posting_submitted'])) {
   $posting = Posting::fromPOST();
   echo "Received info <hr />";
-  echo "Posting: " . htmlspecialchars($posting->getTitle()) . "<br />";
+  require_once('../lib/PostingRenderer.php');
+  $renderer = new PostingRenderer($posting);
+  echo $renderer->render();
 } else {
+  require_once('../lib/PostingEditor.php');
   $page_editor = new PostingEditor();
   $page_editor->setAction('create_posting.php')
               ->setPosting(id(new Posting())
                              ->setId('test_1')
-                             ->setTitle('10$ Super awesome place to live'));
+                             ->setCost('1000')
+                             ->setTitle('10$ Super awesome place to live')
+                             ->setAddress('1601 S California Ave')
+                             ->setCity('Palo Alto')
+                             ->setState('CA')
+                             ->setInfo('Wassup, just take it'));
 
   echo $page_editor->render();
 }
