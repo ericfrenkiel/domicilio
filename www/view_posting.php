@@ -6,6 +6,9 @@
 	});
 </script>
 
+<h1>Beauitful 1 bd/1ba in SOMA</h1>
+	<div id="price">$2300</div>
+<br /> <br />
 <div id="tabs">
 <ul>
 	<li><a href="#tabs-1">Basic Info</a></li>
@@ -13,8 +16,7 @@
 	<li><a href="#tabs-3">Maps</a></li>
 	<li><a href="#tabs-4">Streetview</a></li>
 </ul>
-<div id="tabs-1">
-<p>basic info</p>
+<div id="tabs-1" style="margin-bottom: 20px;">
 </div>
 <div id="tabs-2">
 <p>photos</p>
