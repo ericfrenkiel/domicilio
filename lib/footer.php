@@ -25,7 +25,6 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
                <link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
 <script src="/js/jquery.fbox.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="/js/jquery.js"></script>
 <script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
 
