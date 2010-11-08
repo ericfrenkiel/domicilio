@@ -9,6 +9,7 @@ class Posting {
     $city,
     $info,
     $cost,
+    $owner_id,
     $photos;
 
   public static function fromPOST() {
@@ -91,6 +92,11 @@ class Posting {
   }
 
   public function setState($new_state) {
+    require_once('../lib/constants/states.php');
+    global $state_list;
+    if (!isset($state_list[$new_state])) {
+      $new_state = null;
+    }
     $this->state = $new_state;
     return $this;
   }

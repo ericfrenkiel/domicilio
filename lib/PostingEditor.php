@@ -7,10 +7,11 @@ class PostingEditor {
 
   public function render() {
     $out = "";
-    $out .= "<form method=\"post\" action=\"" . $this->action . "\">";
+    $out .= "<form id=\"posting_form\" method=\"post\" "
+      . "action=\"" . $this->action . "\">";
 
     $out .= "<input type=\"hidden\" name=\"posting_id\" value=\""
-       . htmlspecialchars($this->posting->getId()) . "\" />";
+      . htmlspecialchars($this->posting->getId()) . "\" />";
 
     $out .= "<div class=\"edit\">";
     $out .= "<div class=\"left_edit\">Title:</div>";
@@ -39,9 +40,18 @@ class PostingEditor {
     $out .= "<div class=\"edit\">";
     $out .= "<div class=\"left_edit\">State:</div>";
     $out .= "<div class=\"right_edit\">"
-      . "<input type=\"text\" name=\"posting_state\""
-      . " value=\"" . htmlspecialchars($this->posting->getState()) . "\" />"
-      . "</div>";
+      . "<select name=\"posting_state\" size=\"1\">";
+    require_once('../lib/constants/states.php');
+    global $state_list;
+    $cur_state = $this->posting->getState();
+    foreach ($state_list as $short => $long) {
+      $out .= "<option value=\"" . $short . "\"";
+      if ($short === $cur_state) {
+        $out .= " selected=\"selected\"";
+      }
+      $out .= ">" . $long . "</option>";
+    }
+    $out .= "</select></div>";
     $out .= "</div>";
 
     $out .= "<div class=\"edit\">";
@@ -61,16 +71,26 @@ class PostingEditor {
     $out .= "</div>";
 
     $out .= "<div class=\"edit\">";
-    $out .= "<div class=\"center_edit\">"
-      . "<input type=\"submit\" name=\"Create\""
-      . " value=\"Create new posting\" />"
-      . "</div>";
+    $out .= "<div class=\"center_edit\">";
+    $out .= "<input type=\"submit\" name=\"Create\""
+      . " value=\"Create new posting\" />";
+    $out .= "<input type=\"submit\" name=\"Create\""
+      . " value=\"Preview\" onclick=\"preview();return false;\" />";
+    $out .= "</div>";
     $out .= "</div>";
 
     $out .= "<input type=\"hidden\" name=\"posting_submitted\""
        . " value=\"1\" />";
 
     $out .= "</form>";
+    $out .= "<div id=\"preview\"></div>";
+    $out .= "<script>"
+      . "function preview() {"
+      . "  $.post(\"preview.php\", $(\"#posting_form\").serialize(),"
+      . " function(data){ $(\"#preview\").html(data);}"
+      . ");"
+      . "}";
+    $out .= "</script>";
     return $out;
   }
 

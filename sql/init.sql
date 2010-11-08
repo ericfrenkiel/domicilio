@@ -1,11 +1,15 @@
 DROP TABLE IF EXISTS postings;
 
 CREATE TABLE postings (
-`posting_id` BIGINT NOT NULL ,
-`facebook_id` BIGINT NOT NULL,
-`posting_address` VARCHAR( 4000 ) NULL ,
-`posting_tags` VARCHAR( 4000 ) NULL ,
-`page_id` VARCHAR( 4000 ) NULL ,
-PRIMARY KEY ( `posting_id` )
+id BIGINT not null AUTO_INCREMENT,
+owner_id BIGINT not null,
+title varchar(1000),
+cost varchar(64),
+address varchar(1000),
+city varchar(64),
+state varchar(32),
+info varchar(20000),
+fb_album_id BIGINT,
+PRIMARY KEY (id)
 ) ENGINE = MYISAM
 	
