@@ -24,6 +24,11 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
                 <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
                <link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
 <script src="/js/jquery.fbox.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
+
 <?php
   global $head_included;
   $head_included = array_unique($head_included);
