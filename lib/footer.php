@@ -11,22 +11,20 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta name="title" content="Domicilio" />
 <meta name="description" content="Domicilio is a social layer for real estate." />
-                <title>Domicilio: Social Real Estate</title>
-                <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <script type="text/javascript" src="/js/jquery.js"></script>
-                <script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
-                <script type="text/javascript"
-src="/js/jquery-ui-1.7.2.custom.min.js"></script>
-                <script type="text/javascript" src="/js/jquery.labelify.js"></script>
-                <script type="text/javascript"
-src="/js/jquery.infinitecarousel2.min.js"></script>
-                <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-                <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
-               <link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
-<script src="/js/jquery.fbox.js" type="text/javascript"></script>
+	<title>Domicilio: Social Real Estate</title>
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.labelify.js"></script>
+	<script type="text/javascript" src="/js/jquery.infinitecarousel2.min.js"></script>
+	<script src="/js/jquery.fbox.js" type="text/javascript"></script>
+	<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
 
-<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
-<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
+	<link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
 
 <?php
   global $head_included;
