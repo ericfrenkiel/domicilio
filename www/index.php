@@ -1,10 +1,8 @@
 <?php require_once('../lib/header.php');?>
 
 <form action="index.php">
-<input name="search" type="text"/>
-		<input type="text" id="CityLocal" value="" />
-		<input type="button" value="Get Value" onclick="lookupLocal();" />
-		<input name="submit" type="submit"/>
+	<input type="text" id="l" value="" />
+	<input name="submit" type="submit"/>
 </form>
 
 <?php
@@ -30,7 +28,30 @@
 
 <script type="text/javascript">
 
-var ac = $("#CityLocal").autocomplete("/location_typeahead.php");
+var ac = $("#l").autocomplete("/location_typeahead.php", {
+    width: 500,
+    dataType: "json",
+    highlight: false,
+    scroll: true,
+    scrollHeight: 300,
+    parse: function(data) {
+    	var jt = JSON.stringify(data);
+        
+    		var parsed = [];
+            for(var i=0;i<data.length;i++)
+            {
+            	parsed[parsed.length] = {
+    					data: data[i],
+    					value: data[i][0],
+    					result: data[i][0]
+    			};    
+        	}
+            return parsed;
+    },
+
+    
+
+});
 
 function findValue(li) {
 	if( li == null ) return alert("No match!");
@@ -53,7 +74,7 @@ function formatItem(row) {
 }
 
 function lookupAjax(){
-	var oSuggest = $("#CityAjax")[0].autocompleter;
+	var oSuggest = $("#l")[0].autocompleter;
 
 	oSuggest.findValue();
 
@@ -61,7 +82,7 @@ function lookupAjax(){
 }
 
 function lookupLocal(){
-	var oSuggest = $("#CityLocal")[0].autocompleter;
+	var oSuggest = $("#l")[0].autocompleter;
 
 	oSuggest.findValue();
 
