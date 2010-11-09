@@ -5,7 +5,9 @@
 		$("#tabs2").tabs();
 	});
 </script>
-
+<script type="text/javascript"
+    src="http://maps.google.com/maps/api/js?sensor=false">
+</script>
 <h1>Beauitful 1 bd/1ba in SOMA</h1>
 	<div id="price">$2300</div>
 <br /> <br />
@@ -21,11 +23,56 @@
 <div id="tabs-2">
 <p>photos</p>
 </div>
-<div id="tabs-3">
-<p>maps</p>
+<div id="tabs-3" style="min-height: 400px; min-width:500px;" >
+<script>
+function initialize() {
+    var myLatlng = new google.maps.LatLng(42.345573,-71.098326);
+    var myOptions = {
+      zoom: 8,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("tabs-3"), myOptions);
+  }
+initialize();
+</script>
 </div>
-<div id="tabs-4">
-<p>street view</p>
+<div id="tabs-4" style="min-height: 400px; min-width:500px;">
+<script>
+	var fenway = new google.maps.LatLng(42.345573,-71.098326);
+
+	// Note: constructed panorama objects have visible: true
+	// set by default.
+	var panoOptions = {
+	  position: fenway,
+	  addressControlOptions: {
+	    position: google.maps.ControlPosition.BOTTOM,
+	    style: {
+	      "fontWeight" : "bold",
+	      "backgroundColor" : "#191970",
+	      "color" :"#A9203E"
+	    }
+	  },
+	  linksControl: false,
+	  navigationControlOptions: {
+	    style: google.maps.NavigationControlStyle.SMALL
+	  },
+	  enableCloseButton: false,
+	  visible:true
+	};
+
+	var panorama = new google.maps.StreetViewPanorama(
+	    document.getElementById("tabs-4"), panoOptions);
+</script>
+<script>
+$('#tabs').bind('tabsshow', function(event, ui) {
+  if (ui.panel.id == "tabs-4") {
+	google.maps.event.trigger(panorama, 'resize');
+	panorama.setZoom( panorama.getZoom() );
+    }
+});
+
+</script>
 </div>
 </div>
 <div id="tabs2">

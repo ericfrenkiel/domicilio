@@ -41,11 +41,7 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
                   <div id="header">
                         <div id="navigation">
                           <ol>
-                                <li><a href="/#">Home</a></li>
-                                <li><a href="/#">Blog</a></li>
-                                <li><a href="/#">About</a></li>
-                                <li><a href="/#">Help</a></li>
-                                <li><a href="/#"><b>Sign Up</b></a></li>
+                                <li><a href="/create_posting.php"><img src="/images/craigslist.png"><span style="float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>
                         <a href="/"><img src="/images/logo.png" alt="Domicilio" border="0"
