@@ -16,13 +16,13 @@ class Posting {
 
   public static function fromPOST() {
     return id(new Posting())
-             ->setId(edx($_POST, 'posting_id', 'No data'))
-             ->setTitle(edx($_POST, 'posting_title', 'No data'))
-             ->setInfo(edx($_POST, 'posting_info', 'No data'))
-             ->setCity(edx($_POST, 'posting_city', 'No data'))
-             ->setState(edx($_POST, 'posting_state', 'No data'))
-             ->setAddress(edx($_POST, 'posting_address', 'No data'))
-             ->setCost(edx($_POST, 'posting_cost', 'No data'));
+             ->setId(edx($_POST, 'posting_id', false))
+             ->setTitle(edx($_POST, 'posting_title', 'New posting'))
+             ->setInfo(edx($_POST, 'posting_info', 'No info'))
+             ->setCity(edx($_POST, 'posting_city', ''))
+             ->setState(edx($_POST, 'posting_state'))
+             ->setAddress(edx($_POST, 'posting_address', ''))
+             ->setCost(edx($_POST, 'posting_cost', 0));
   }
 
   public static function fromDB($id) {
@@ -30,14 +30,14 @@ class Posting {
       . " info, owner_id from postings where id='" . db_escape($id) . "'");
     if ($arr = db_fetch($res)) {
       return id(new Posting())
-               ->setId(edx($arr, 0, 'No data'))
-               ->setTitle(edx($arr, 1, 'No data'))
-               ->setCost(edx($arr, 2, 'No data'))
-               ->setAddress(edx($arr, 3, 'No data'))
-               ->setCity(edx($arr, 4, 'No data'))
-               ->setState(edx($arr, 5, 'No data'))
-               ->setInfo(edx($arr, 6, 'No data'))
-               ->setOwnerId(edx($arr, 7, 'No data'));
+               ->setId(edx($arr, 0, false))
+               ->setTitle(edx($arr, 1, 'New posting'))
+               ->setCost(edx($arr, 2, 0))
+               ->setAddress(edx($arr, 3, ''))
+               ->setCity(edx($arr, 4, ''))
+               ->setState(edx($arr, 5))
+               ->setInfo(edx($arr, 6, 'No info'))
+               ->setOwnerId(edx($arr, 7, 0));
     } else {
       return false;
     }
@@ -56,6 +56,22 @@ class Posting {
       . ");"
     );
     $this->id = mysql_insert_id();
+    return $this;
+  }
+
+  public function updateToDB() {
+    if ($this->id) {
+      $res = db_query("update postings set"
+        . "title='" . db_escape($this->title) . "', "
+        . "cost='" . db_escape($this->cost) . "', "
+        . "address='" . db_escape($this->address) . "', "
+        . "city='" . db_escape($this->city) . "', "
+        . "state='" . db_escape($this->state) . "', "
+        . "info='" . db_escape($this->info) . "', "
+        . "owner_id='" . db_escape($this->ownerId) . "' "
+        . "where id='" . db_escape($this->id) . "';"
+      );
+    }
     return $this;
   }
 

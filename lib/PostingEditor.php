@@ -5,7 +5,7 @@ class PostingEditor {
     $posting,
     $action;
 
-  public function render() {
+  public function render($is_edit = false) {
     include_css("editor.css");
     $out = "";
     $out .= "<form id=\"posting_form\" method=\"post\" "
@@ -73,9 +73,14 @@ class PostingEditor {
 
     $out .= "<div class=\"edit\">";
     $out .= "<div class=\"center_edit\">";
-    $out .= "<input type=\"submit\" name=\"Create\""
-      . " value=\"Create new posting\" />";
-    $out .= "<input type=\"submit\" name=\"Create\""
+    if ($is_edit) {
+      $out .= "<input type=\"submit\" name=\"button_edit\""
+        . " value=\"Save changes\" />";
+    } else {
+      $out .= "<input type=\"submit\" name=\"button_create\""
+        . " value=\"Create new posting\" />";
+    }
+    $out .= "<input type=\"submit\" name=\"button_preview\""
       . " value=\"Preview\" onclick=\"preview();return false;\" />";
     $out .= "</div>";
     $out .= "</div>";
