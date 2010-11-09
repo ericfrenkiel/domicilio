@@ -22,10 +22,11 @@ a {
 /* =Headings
 -----------------------------------------------------------------------*/
 h1 {
-	font-size: 36px;
-	font-weight: bold;
-	color: #000000;
-	text-transform: uppercase;
+color:#333333;
+float:left;
+font-size:30px;
+font-weight:bold;
+padding:0 0 0 21px;
 }
 h1.Features {
 	font-size: 24px;
@@ -924,4 +925,12 @@ div.comment .commentDate {
 	background: url('../images/horizontal-rule.gif') no-repeat 0 0;
 	padding: 20px 0 10px;
 
+}
+#price {
+color:#33332F;
+float:left;
+font-size:40px;
+font-weight:bold;
+width:140px;
+float: right;
 }
