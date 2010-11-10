@@ -2,6 +2,7 @@
 $require_signed = true;
 require_once('../lib/header.php');
 require_once('../lib/Posting.php');
+require_once('../lib/constants/states.php');
 if (isset($_GET['photo_test'])) {
   $photo = '/home/evgeny/trunk/www/images/atata.jpg';
   if (is_readable($photo)) {
@@ -73,77 +74,82 @@ if (isset($_GET['photo_test'])) {
   });
   </script>
 <h1>Create Your Posting</h1>
-<br/><br />
+<br />
+<br />
 <div id="accordion">
-	<h2><a href="#">Property Details</a></h2>
-
+<h2><a href="#">Property Details</a></h2>
+<div>
 <!--BEGIN NEW CODE -->
-<form id="posting_form" method="post" action="<?php echo $page_editor->getAction() ?>">
+<form id="posting_form" method="post"
+	action="<?php echo $page_editor->getAction() ?>"><input
+	type="hidden" name="posting_id"
+	value="<?php echo htmlspecialchars($page_editor->getId()) ?>">
 
-  <input type="hidden" name="posting_id" value="<?php echo htmlspecialchars($page_editor->getId()) ?>">
+<div class="edit">
+<div class="left_edit">Title:</div>
+<div class="right_edit"><input type="text" name="posting_title"
+	value="<?php echo htmlspecialchars($page_editor->getTitle()) ?> " />
+</div>
+</div>
 
-  <div class="edit">
-  <div class="left_edit">Title:</div>
-  <div class="right_edit">
-    <input type="text" name="posting_title" value="<?php echo htmlspecialchars($page_editor->getTitle()) ?> " />
-    </div>
-  </div>
+<div class="edit">
+<div class="left_edit">Cost ($/per month):</div>
+<div class="right_edit"><input type="text" name="posting_cost"
+	value="<?php echo  htmlspecialchars($page_editor->getCost()) ?>" />
+</div>
+</div>
 
-  <div class="edit">
-  <div class="left_edit">Address:</div>
-  <div class="right_edit">
-    <input type="text" name="posting_address" value="<?php echo  htmlspecialchars($page_editor->getAddress())?>" />
-    </div>
-  </div>
+<div class="edit">
+<div class="left_edit">Info:</div>
+<div class="right_edit"><textarea type="text" name="posting_info"
+	rows="10"> <?php echo  htmlspecialchars($page_editor->getInfo()) ?> </textarea>
+</div>
+</div>
 
-  <div class="edit">
-  <div class="left_edit">City:</div>
-  <div class="right_edit">
-    <input type="text" name="posting_city"
-     value="<?php echo  htmlspecialchars($page_editor->getCity()) ?>" />
-    </div>
-  </div>
+ <!-- END NEW CODE -->
+ </div>
+<h2><a href="#">Address</a></h2>
+<div><div class="edit">
+<div class="left_edit">Address:</div>
+<div class="right_edit"><input type="text" name="posting_address"
+  value="<?php echo  htmlspecialchars($page_editor->getAddress())?>" />
+</div>
+</div>
 
-  <div class="edit">
-  <div class="left_edit">State:</div>
-  <div class="right_edit">
-    <select name="posting_state" size="1">
-<?php  require_once('../lib/constants/states.php');
+<div class="edit">
+<div class="left_edit">City:</div>
+<div class="right_edit"><input type="text" name="posting_city"
+  value="<?php echo  htmlspecialchars($page_editor->getCity()) ?>" />
+</div>
+</div>
+
+<div class="edit">
+<div class="left_edit">State:</div>
+<div class="right_edit"><select name="posting_state" size="1">
+<?php 
   global $state_list;
   $cur_state = $page_editor->getState();
   foreach ($state_list as $short => $long): ?>
-    <option value="<?php echo  $short ?>" <?php if ($short === $cur_state) echo "selected='selected'"; ?> > <?php echo $long ?> </option>
+  <option value="<?php echo  $short ?>"
+    <?php if ($short === $cur_state) echo "selected='selected'"; ?>>
+  <?php echo $long ?></option>
   <?php endforeach; ?>
-  </select></div>
-  </div>
-
-  <div class="edit">
-  <div class="left_edit">Cost ($/per month):</div>
-  <div class="right_edit">
-    <input type="text" name="posting_cost" value="<?php echo  htmlspecialchars($page_editor->getCost()) ?>" />
-    </div>
-  </div>
-
-  <div class="edit">
-  <div class="left_edit">Info:</div>
-  <div class="right_edit">
-    <textarea type="text" name="posting_info" rows="10"> <?php echo  htmlspecialchars($page_editor->getInfo()) ?> </textarea>
-    </div>
-  </div>
-
-  <div class="edit">
+</select></div>
+</div></div>
+<h2><a href="#">Amenities</a></h2>
+<div>Amenity editor</div>
+<h2><a href="#">Photos</a></h2>
+<div>photos go here</div>
+</div>
+<div id="preview" style="display: none; width: 720px;"></div>
+<div class="edit">
   <div class="center_edit">
-  <input type="submit" name="Create"  value="Create new posting" />
-  <input type="submit" name="Create"value="Preview" onclick="preview();return false;" />
-  </div>
-  </div>
+    <input type="submit" name="Create" value="Create new posting" /> 
+    <input type="submit" name="Create" value="Preview" onclick="preview();return false;" /></div>
+</div>
 
-  <input type="hidden" name="posting_submitted"
-      value="1" />
-
-  </form>
-  <div id="preview" style="display:none;width:720px;"></div>
-  <script>
+<input type="hidden" name="posting_submitted" value="1" /></form>
+<script>
     function preview() {
      jQuery.facebox.loading();
       $.post("preview.php", $("#posting_form").serialize(),
@@ -152,13 +158,5 @@ if (isset($_GET['photo_test'])) {
     });
     };
   </script>
-<!-- END NEW CODE -->
-
-	<h2><a href="#">Amenities</a></h2>
-  <div>Amenity editor</div>
-	<h2><a href="#">Photos</a></h2>
-	<div>photos go here</div>
-</div>
-
 
 <?php require_once('../lib/footer.php');?>
