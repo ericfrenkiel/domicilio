@@ -1,0 +1,4 @@
+AuthName "www"
+AuthUserFile "/home/thedom/.htpasswds/dev_html/trunk/www/passwd"
+AuthType Basic
+require valid-user

@@ -18,9 +18,9 @@ function edx($array, $key, $default = null) {
 function slog( $s )
 {
   $tm = date( "d.m.Y H:i", time( ) );
-  $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s;
+  $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s . "\r\n";
 
-  $f = fopen("slog.txt", "a");
+  $f = fopen("../slog.txt", "a");
   fwrite( $f, $m );
   fclose( $f );
 }
@@ -28,9 +28,9 @@ function slog( $s )
 function elog( $s )
 {
   $tm = date( "d.m.Y H:i", time( ) );
-  $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s;
+  $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s . "\r\n";
 
-  $f = fopen("elog.txt", "a");
+  $f = fopen("../elog.txt", "a");
   fwrite( $f, $m );
   fclose( $f );
 }

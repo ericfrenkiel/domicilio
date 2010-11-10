@@ -1,0 +1,4 @@
+10.11.2010 08:20: /test_upload.php:
+    You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+10.11.2010 08:20: /test_upload.php:
+    You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
