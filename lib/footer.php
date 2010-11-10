@@ -11,19 +11,21 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta name="title" content="Domicilio" />
 <meta name="description" content="Domicilio is a social layer for real estate." />
-                <title>Domicilio: Social Real Estate</title>
-                <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <script type="text/javascript" src="/js/jquery.js"></script>
-                <script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
-                <script type="text/javascript"
-src="/js/jquery-ui-1.7.2.custom.min.js"></script>
-                <script type="text/javascript" src="/js/jquery.labelify.js"></script>
-                <script type="text/javascript"
-src="/js/jquery.infinitecarousel2.min.js"></script>
-                <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-                <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
-               <link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
-<script src="/js/jquery.fbox.js" type="text/javascript"></script>
+	<title>Domicilio: Social Real Estate</title>
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.labelify.js"></script>
+	<script type="text/javascript" src="/js/jquery.infinitecarousel2.min.js"></script>
+	<script src="/js/jquery.fbox.js" type="text/javascript"></script>
+	<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
+	<link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
+
 <?php
   global $head_included;
   $head_included = array_unique($head_included);
@@ -42,11 +44,8 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
     echo "<li><a href=\"/#\">Hi," . $me['name'] . "!</a></li>";
   }
 ?>
-                                <li><a href="/#">Home</a></li>
-                                <li><a href="/#">Blog</a></li>
-                                <li><a href="/#">About</a></li>
-                                <li><a href="/#">Help</a></li>
-                                <li><a href="/#"><b>Sign Up</b></a></li>
+				<li><a href="/listings.php">Search Listings</a></li>
+                                <li><a href="/create_posting.php"><img src="/images/craigslist.png"><span style="float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>
                         <a href="/"><img src="/images/logo.png" alt="Domicilio" border="0"
