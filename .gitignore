@@ -1,2 +1,7 @@
 !.gitignore
 .project
+.buildpath
+.settings/
+error_log
+search_index.php
+
