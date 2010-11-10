@@ -1,6 +1,6 @@
 <?php
 
-class PostingEditor {
+class PostingEditor extends Posting {
   protected
     $posting,
     $action;
