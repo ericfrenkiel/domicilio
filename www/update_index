@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php gen_search_index.php > search_index.php

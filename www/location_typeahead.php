@@ -1,27 +1,16 @@
 <?php 
-	$db = new PDO('mysql:host=localhost;dbname=thedom_info', 'thedom_thedom', 'ETP+}fViQKK_');
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	if (!$db) {
-		die ('cannot connect to database');	
-	}
-
-	$q = $_GET['q'];
-	try {
-		$prepared_statement = $db->prepare('select id, name from locations where name like :q');
-		$prepared_statement->execute(array(':q' => $q.'%'));
-		
-		$return_arr = array();
-		while ($row = $prepared_statement->fetch()) {
-			$row_array = array();
-        	$row_array['value'] = $row['id'];
-	        $row_array['name'] = $row['name'];
-	 
-	        array_push($return_arr,$row_array);		
+	require_once('search_index.php');
+	$all = SI();
+	// Index of all amenities
+	$q = strtolower($_GET['q']);
+	
+	$return_arr = array();
+	foreach ($all as $e) {
+		if (strncmp($q, strtolower($e['name']), strlen($q)) == 0) {
+			$return_arr[] = $e;
 		}
-
-	    header("Content-type: application/json");
-		echo json_encode($return_arr);
-	} catch(PDOException $e){
-		die ($e->getMessage());
-	}	 		
+	}
+	
+    header("Content-type: application/json");
+	echo json_encode($return_arr);
 ?>
