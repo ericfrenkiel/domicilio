@@ -37,6 +37,11 @@ src="/js/jquery.infinitecarousel2.min.js"></script>
                   <div id="header">
                         <div id="navigation">
                           <ol>
+<?php
+  if (isset($me) && isset($me['name'])) {
+    echo "<li><a href=\"/#\">Hi," . $me['name'] . "!</a></li>";
+  }
+?>
                                 <li><a href="/#">Home</a></li>
                                 <li><a href="/#">Blog</a></li>
                                 <li><a href="/#">About</a></li>

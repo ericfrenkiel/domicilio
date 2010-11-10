@@ -1,0 +1,26 @@
+10.11.2010 06:59: /photo_uploader.php:
+    test10.11.2010 07:02: /test_upload.php:
+    test: uploads/playbutton10.png10.11.2010 07:04: /test_upload.php:
+    test: uploads/playbutton47.png
+10.11.2010 07:05: /test_upload.php:
+    ok
+10.11.2010 07:12: /test_upload.php:
+    
+10.11.2010 07:13: /test_upload.php:
+    Evgeny Kuzyakov
+10.11.2010 07:14: /test_upload.php:
+    {"error":{"type":"OAuthException","message":"Unknown path components: \/100500\/photos"}}
+10.11.2010 07:16: /test_upload.php:
+    {"id":162345980472027}
+10.11.2010 08:12: /test_upload.php:
+    Uploading photo: {"id":162353607137931}
+10.11.2010 08:16: /test_upload.php:
+    Uploading photo: {"id":100524073354617}
+10.11.2010 08:18: /test_upload.php:
+    Uploading photo: {"id":162354500471175}
+10.11.2010 08:20: /test_upload.php:
+    Uploading photo: {"id":100524740021217}
+10.11.2010 08:20: /test_upload.php:
+    Uploading photo: {"id":162354773804481}
+10.11.2010 08:22: /test_upload.php:
+    Uploading photo: {"id":100525150021176}

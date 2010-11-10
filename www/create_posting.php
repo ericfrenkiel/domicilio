@@ -3,9 +3,9 @@ $require_signed = true;
 require_once('../lib/header.php');
 require_once('../lib/Posting.php');
 if (isset($_GET['photo_test'])) {
-  $photo = '/home/evgeny/trunk/www/images/logo.png';
+  $photo = '/home/evgeny/trunk/www/images/atata.jpg';
   if (is_readable($photo)) {
-    $res = upload_photo($photo, 'Our logo');
+    $res = upload_photo($photo, 'Test photo');
     echo htmlspecialchars(print_r($res, true));
   } else {
     echo "FAIL";
