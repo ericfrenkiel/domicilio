@@ -39,6 +39,8 @@
                   <div id="header">
                         <div id="navigation">
                           <ol>
+				<li><a href="/listings.php">Find a Pad</a></li>
+				<li><a href="/roomies.php">Find a Roomie</a></li>
                                 <li><a href="/create_posting.php"><img src="/images/craigslist.png"><span style="float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>
