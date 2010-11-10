@@ -39,6 +39,11 @@
                   <div id="header">
                         <div id="navigation">
                           <ol>
+<?php
+  if (isset($me) && isset($me['name'])) {
+    echo "<li><a href=\"/#\">Hi," . $me['name'] . "!</a></li>";
+  }
+?>
 				<li><a href="/listings.php">Search Listings</a></li>
                                 <li><a href="/create_posting.php"><img src="/images/craigslist.png"><span style="float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
