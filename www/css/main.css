@@ -195,7 +195,7 @@ body {
 	/* End Navigation Sub Styles */
 	
 #main {
-	background: #EFF2F7 url(../images/main-bkg.gif) no-repeat left top;
+	background: url(../images/main-bkg.gif) no-repeat left top;
 	width: 760px;
 	min-height: 500px;
 }
@@ -934,3 +934,39 @@ font-weight:bold;
 width:140px;
 float: right;
 }
+#amenities ul li div.has {
+background-position: 0px 0px;
+}
+#amenities ul li div.has_not {
+background-position: -17px 0px;
+}
+#amenities ul li div {
+background: transparent url(/images/amenities_icons.gif) no-repeat 0px 0px;
+float: left;
+height: 17px;
+width: 17px;
+}
+#amenities ul {
+float: left;
+padding-left: 11px;
+width: 202px;
+}
+#amenities ul li {
+list-style-type:none;
+}
+#description_details {
+border:1px solid #D9D9D6;
+float:left;
+margin-left:10px;
+padding:8px 4px;
+width:220px;
+}
+#details #description_text {
+border: 1px solid #D9D9D6;
+float: left;
+height: 350px;
+overflow: auto;
+padding: 8px;
+width: 380px;
+}
+.rounded

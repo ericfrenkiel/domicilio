@@ -11,15 +11,14 @@
 <h1>Beauitful 1 bd/1ba in SOMA</h1>
 	<div id="price">$2300</div>
 <br /> <br />
+lorem ipsum
 <div id="tabs">
 <ul>
-	<li><a href="#tabs-1">Basic Info</a></li>
 	<li><a href="#tabs-2">Photos</a></li>
 	<li><a href="#tabs-3">Maps</a></li>
 	<li><a href="#tabs-4">Streetview</a></li>
+	<li><a href="#tabs-1">Grab it</a></li>
 </ul>
-<div id="tabs-1" style="margin-bottom: 20px;">
-</div>
 <div id="tabs-2">
 <p>photos</p>
 </div>
@@ -74,42 +73,245 @@ $('#tabs').bind('tabsshow', function(event, ui) {
 
 </script>
 </div>
+<div id="tabs-1" style="margin-bottom: 20px;">
+</div>
+
 </div>
 <div id="tabs2">
 <ul>
 	<li><a href="#tabs-5">Description</a></li>
-	<li><a href="#tabs-6">Amenities</a></li>
+	<li><a href="#amenities">Amenities</a></li>
 </ul>
 <div id="tabs-5">
-Designed by E. Stewart Williams in 1947 for Frank Sinatra and his first wife, Nancy Barbato, The Twin Palms Estate is a spectacular example of mid-century architecture in the heart of Palm Springs. This estate boasts both mid-century style luxury and historical significance with modern amenities. This Palm Springs architectural gem features exquisite period furnishings and infamous piano-shaped swimming pool. Williams also has many other significant projects in the Palm Springs area.
 
-The legendary residence was host to some of the valley’s most glamorous parties with Hollywood’s brightest stars of the day. The twin palm trees located poolside, appropriately name the infamous estate. Frank Sinatra often hoisted his Jack Daniels emblem flag on the flag pole once positioned between the twin palms, which indicated an invite to his Movie Colony neighborhood cronies that revelry and cocktails were in order. The home was also witness to some of Sinatra’s most memorable bouts. One of the most outrageous was when Frank threw then-wife Ava Gardner’s possessions onto the driveway after she appeared at the house in an attempt to catch him with Lana Turner. You can still see the chip in the sink where Frank threw a bottle in a rage. The residence has been completely restored with vintage designer furnishings throughout the residence and includes the original sound and recording system installed by Valentino Electronics in Hollywood. The kitchen is the most recent restoration and sponsored by Viking with St Charles modern cabinetry resembling the origin kitchen design. The powder room is sponsored by Kohler.
+<div id="description" class="details_content">
+            <div id="description_text" class="rounded_less trans">
+                <p>please check homeawayconnect calendar property no. 407955</p>
 
-The home today is perfect for vacationing or special events. The residence includes a master suite, guest suite, guest bedroom, and an exterior entrance guest room. Each bedroom has an ensuite bathroom with an additional powder room in the great room. The kitchen is updated with today modern appliances and perfect for creating culinary art and entertaining. The estate is also wired with the latest technology, including wireless internet and iPod connectivity with surround sound. Guest can enjoy listening to nostalgic Sinatra tunes that are available for enjoyment. While the home does include the original recording equipment, today the cabinet is also used to showcase a flat screen television. Memorabilia can be seen throughout the home in this preserve architectural residence that was once Frank Sinatra’s desert retreat from Hollywood.
+<p>a desert-style luxury retreat in Venice Beach.
+<br>eight blocks from the beach, steps to Santa Monica.
+<br>Perfect for two. </p>
 
-Highlights Include:
--Four bedrooms each with ensuite bathrooms, additional power room is available in the great room
--Pool house with kitchenette, and his and hers cabana-style bathrooms
--Sinatra’s original recording studio still in place (although not connected for use)
--Massive sliding glass doors helps integrate the indoors to the outdoors from the great room opening onto expansive patio and the piano-shaped swimming
--Exquisitely furnished residence with period pieces and extensive Sinatra memorabilia and art throughout the estate
--Located in a Central Palm Springs near the Convention Center and Downtown
--Twin Palms is located just around the corner from residences once owned by Al Jolson, Jack Benny and Cary Grant in the famous Movie Colony neighborhood
+<p>Cactus Flower is a brand-new 100% sustainable building with solar electric power, solar 
+radiant floor heating, solar domestic hot water, reverse osmosis water filtration, hi-efficacy 
+appliances, organic cotton towels and linens and non-toxic cleaners.
+</p>
+            </div>
 
--Master Bedroom: King Bed, fireplace, ensuite bathroom with shower-tub and dual vanity, pool access from bedroom, TV
--Guest Bedroom #1: Queen Bed, ensuite bathroom with shower only, TV
--Guest Bedroom #2: Queen Bed, fireplace, bathroom with shower only, patio access from bedroom, TV
--Exterior entrance bedroom near kitchen: Queen Bed, ensuite bathroom with shower only, TV
--Two poolside bathrooms each with showers; additional powder room off great room
--Air Conditioning and wireless internet available
--Airport: Palm Springs Int’l – 3 Miles
--Shopping: Less than 1 mile
+            <ul id="description_details" class="rounded_less">
+                <li style="padding:0 0 8px 10px; font-size:14px;">Details</li>
+                <li class="alt"><span class="property">Room type:</span><span 
+class="value">Entire home/apt</span></li>
+                <li><span class="property">Bed type:</span><span class="value">Real 
+Bed</span></li>
+                <li class="alt"><span class="property">Accommodates:</span><span 
+class="value">2</span></li>
+                
+                    <li><span class="property">Bedrooms:</span><span 
+class="value">1</span></li>
+                
+                
+                    <li class="alt"><span class="property">Bathrooms:</span><span 
+class="value">1</span></li>
+                
 
--Daily Rate: $2,600.00 / night*11.5 % occupancy tax
--$350.00 Service-Amenity Fee - Three Night Minimum Required (additional nights may be required during some Holidays and Popular-Local Calendar Events); Rates inclusive of Departure Cleaning and Standard Pool Heating
+                
+                    <li><span class="property">Extra people:</span><span class="value" 
+id="extra_people_pricing">No Charge</span></li>
+                
+
+                
+                    <li class="alt"><span class="property">Minimum Stay:</span><span 
+class="value">7 nights</span></li>
+                
+                
+                    <li><span class="property">Weekly Price:</span><span class="value"><span 
+id="weekly_price_string">$1600</span> / week</span></li>
+                
+                
+                    <li class="alt"><span class="property">Monthly Price:</span><span 
+class="value"><span id="monthly_price_string">$5850</span> / month</span></li>
+                
+                
+                
+
+                
+
+                
+                    
+                        <li><span class="property">city:</span><span class="value">
+                        <a href="/venice">Venice</a></span>
+                        </li>
+
+                        
+                    
+                
+
+                
+                    <li class="alt"><span class="property">Size:</span><span 
+class="value">600ft<sup style="line-height:0;">2</sup> / 56m<sup 
+style="line-height:0;">2</sup></span></li>
+                
+                <li><span class="property">Cancellation:</span><span class="value"><a 
+href="/home/cancellation_policies" onclick="window.open(this.href);return 
+false;">Strict</a></span></li>
+                
+            </ul>
+        </div>
 
 </div>
-<div id="tabs-6">
+<div id="amenities">
+<div style="display: block; " class="details_content">
+            
+            
+                <ul>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Smoking Allowed </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Pets Allowed </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>TV </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Cable TV </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Internet <a class="tooltip" title="Internet (wired or wireless)"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Wireless Internet <a class="tooltip" title="A wireless router that guests can access 24/7."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Air Conditioning </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Heating </p>
+
+                        </li>
+                    
+                </ul>
+            
+                <ul>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Elevator in Building </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Handicap Accessible <a class="tooltip" title="The property is easily accessible.  Guests should communicate about individual needs."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Pool <a class="tooltip" title="A private swimming pool"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Kitchen <a class="tooltip" title="Kitchen is available for guest use"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Parking Included </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Washer / Dryer <a class="tooltip" title="Paid or Free, in building"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Doorman </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Gym <a class="tooltip" title="Guests have free access to a gym"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                </ul>
+            
+                <ul>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Hot Tub </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has"></div>
+                            <p>Indoor Fireplace </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Buzzer/Wireless Intercom </p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Breakfast <a class="tooltip" title="Breakfast is provided."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Family/Kid Friendly <a class="tooltip" title="The property is suitable for hosting families with children."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                        <li>
+                            <div class="has_not"></div>
+                            <p>Suitable for Events <a class="tooltip" title="The property can accommodate a gathering of 25 or more attendees."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
+
+                        </li>
+                    
+                </ul>
+            
+
+            <div class="clear"></div>
+
+        </div>
 </div>
 </div>
 <?php require_once('../lib/footer.php');?>
