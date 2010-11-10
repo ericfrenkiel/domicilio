@@ -28,30 +28,7 @@
 
 <script type="text/javascript">
 
-var ac = $("#l").autocomplete("/location_typeahead.php", {
-    width: 500,
-    dataType: "json",
-    highlight: false,
-    scroll: true,
-    scrollHeight: 300,
-    parse: function(data) {
-    	var jt = JSON.stringify(data);
-        
-    		var parsed = [];
-            for(var i=0;i<data.length;i++)
-            {
-            	parsed[parsed.length] = {
-    					data: data[i],
-    					value: data[i][0],
-    					result: data[i][0]
-    			};    
-        	}
-            return parsed;
-    },
-
-    
-
-});
+var ac = $("#l").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name"});
 
 function findValue(li) {
 	if( li == null ) return alert("No match!");

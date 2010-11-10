@@ -12,11 +12,14 @@
 		
 		$return_arr = array();
 		while ($row = $prepared_statement->fetch()) {
-        	$row_array[0] = $row['id'];
-	        $row_array[1] = $row['name'];
+			$row_array = array();
+        	$row_array['value'] = $row['id'];
+	        $row_array['name'] = $row['name'];
 	 
-	        array_push($return_arr,$row_array);		}
-		
+	        array_push($return_arr,$row_array);		
+		}
+
+	    header("Content-type: application/json");
 		echo json_encode($return_arr);
 	} catch(PDOException $e){
 		die ($e->getMessage());
