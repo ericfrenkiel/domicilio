@@ -1,5 +1,4 @@
 <?php
-
 require_once('../lib/header.php');
 require_once('../lib/Posting.php');
 if (isset($_GET['test'])) {
@@ -30,8 +29,26 @@ if (isset($_GET['test'])) {
                              ->setState('CA')
                              ->setInfo('Wassup, just take it'));
 
-  echo $page_editor->render();
-}
-require_once('../lib/footer.php');
 
+}
 ?>
+<script type="text/javascript">
+  $(function() {
+    $("#accordion").accordion({
+      active: false, collapsible: true, autoHeight: false
+    });
+  });
+  </script>
+<h1>Create Your Posting</h1>
+<br/><br />
+<div id="accordion">
+	<h2><a href="#">Property Details</a></h2>
+	<?php echo $page_editor->render();?>
+	<h2><a href="#">Amenities</a></h2>
+  <div>Amenity editor</div>
+	<h2><a href="#">Photos</a></h2>
+	<div>photos go here</div>
+</div>
+
+
+<?php require_once('../lib/footer.php');?>
