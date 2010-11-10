@@ -55,7 +55,7 @@ if (isset($_GET['photo_test'])) {
                  ->setInfo('Wassup, just take it');
     $is_edit = false;
   }
-  $page_editor->setAction('create_posting.php')
+  $page_editor->setAction('create_posting.php');
 	$page_editor->setCost('1000');
 	$page_editor->setTitle('10$ Super awesome place to live');
 	$page_editor->setAddress('1601 S California Ave');
