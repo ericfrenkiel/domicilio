@@ -195,9 +195,9 @@ body {
 	/* End Navigation Sub Styles */
 	
 #main {
-	background: url(../images/main-bkg.gif) no-repeat left top;
+	background: url(../images/gradient-29Oct2010.png) repeat-x left top;
 	width: 755px;
-	min-height: 500px;
+	min-height: 1000px;
 }
 #splash {
 	padding: 0px 0px;
