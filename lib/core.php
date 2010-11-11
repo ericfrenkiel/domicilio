@@ -20,7 +20,7 @@ function slog( $s )
   $tm = date( "d.m.Y H:i", time( ) );
   $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s . "\r\n";
 
-  $f = fopen("../slog.txt", "a");
+  $f = fopen("../logs/slog.txt", "a");
   fwrite( $f, $m );
   fclose( $f );
 }
@@ -30,7 +30,7 @@ function elog( $s )
   $tm = date( "d.m.Y H:i", time( ) );
   $m = $tm.": ".$_SERVER['PHP_SELF'].":\r\n    " . $s . "\r\n";
 
-  $f = fopen("../elog.txt", "a");
+  $f = fopen("../logs/elog.txt", "a");
   fwrite( $f, $m );
   fclose( $f );
 }
