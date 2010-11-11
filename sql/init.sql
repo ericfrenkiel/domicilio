@@ -14,9 +14,9 @@ fb_album_id BIGINT,
 PRIMARY KEY (id)
 ) ENGINE = MYISAM;
 
-insert into postings values (1, 208699			, 'Eric\'s cplace', 1800, 2, '500 3rd St', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 2, '674 Bay St', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 2, 'Somewhere in palo Alto', 'Palo Alto', 'CA', 'awesome place', 17236);
+insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St', 'San Francisco', 'CA', 'awesome place', 17236);
+insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St', 'San Francisco', 'CA', 'awesome place', 17236);
+insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, 'Somewhere in palo Alto', 'Palo Alto', 'CA', 'awesome place', 17236);
 
 DROP TABLE IF EXISTS locations;
 create table locations (
@@ -74,6 +74,7 @@ insert into amenities values(6, 'High Speed Internet Available', true);
 insert into amenities values(7, 'Limited Access', true);
 insert into amenities values(8, 'Wheelchair Access', true);
 insert into amenities values(9, 'Whirlpool(s)', true);
+insert into amenities values(10, 'Hardwood Floor', true);
 	
 drop table if exists posting_amenity;
 create table posting_amenity (
@@ -96,3 +97,7 @@ insert into posting_amenity values (2, 9);
 	
 insert into posting_amenity values (2, 6);
 insert into posting_amenity values (2, 7);
+insert into posting_amenity values (2, 10);
+insert into posting_amenity values (3, 1);
+insert into posting_amenity values (3, 6);
+insert into posting_amenity values (3, 8);

@@ -19,12 +19,12 @@
 	<script type="text/javascript" src="/js/jquery.labelify.js"></script>
 	<script type="text/javascript" src="/js/jquery.infinitecarousel2.min.js"></script>
 	<script src="/js/jquery.fbox.js" type="text/javascript"></script>
-	<script type='text/javascript' src='/js/jquery.autocomplete.js'></script>
+	<script type='text/javascript' src='/js/jquery.autoSuggest.js'></script>
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
 	<link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />	
+	<link rel="stylesheet" type="text/css" href="/css/autoSuggest.css" />	
 
 <?php
   global $head_included;
