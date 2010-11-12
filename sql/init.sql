@@ -14,9 +14,9 @@ fb_album_id BIGINT,
 PRIMARY KEY (id)
 ) ENGINE = MYISAM;
 
-insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, 'Somewhere in palo Alto', 'Palo Alto', 'CA', 'awesome place', 17236);
+insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St, San Francisco, CA', 'San Francisco', 'CA', 'awesome place', 17236);
+insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St., San Francisco, CA', 'San Francisco', 'CA', 'awesome place', 17236);
+insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, '1601 California St. Palo Alto, CA', 'Palo Alto', 'CA', 'awesome place', 17236);
 
 DROP TABLE IF EXISTS locations;
 create table locations (
@@ -34,7 +34,7 @@ insert into locations values (4, 3, 'Russian Hill', 3);
 insert into locations values (5, 3, 'Soma', 3);
 insert into locations values (6, 3, 'Pacific Heights', 3);
 insert into locations values (7, 2, 'Palo Alto', 3);
-	
+
 drop table if exists posting_location;
 create table posting_location (
 	posting_id INT not null,
@@ -62,7 +62,7 @@ create table amenities (
 	id int not null AUTO_INCREMENT,
 	name VARCHAR(4000),
 	searchable boolean,
- 	PRIMARY KEY(id)	
+ 	PRIMARY KEY(id)
 );
 
 insert into amenities values(1, 'On-Site Laundry', true);
@@ -75,12 +75,12 @@ insert into amenities values(7, 'Limited Access', true);
 insert into amenities values(8, 'Wheelchair Access', true);
 insert into amenities values(9, 'Whirlpool(s)', true);
 insert into amenities values(10, 'Hardwood Floor', true);
-	
+
 drop table if exists posting_amenity;
 create table posting_amenity (
 	posting_id INT not null,
 	amenity_id INT not null,
- 	UNIQUE(posting_id, amenity_id)	
+ 	UNIQUE(posting_id, amenity_id)
 );
 
 insert into posting_amenity values (1, 1);
@@ -94,7 +94,7 @@ insert into posting_amenity values (1, 8);
 
 insert into posting_amenity values (2, 8);
 insert into posting_amenity values (2, 9);
-	
+
 insert into posting_amenity values (2, 6);
 insert into posting_amenity values (2, 7);
 insert into posting_amenity values (2, 10);

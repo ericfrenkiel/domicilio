@@ -1,17 +1,12 @@
-<?php require_once('../lib/header.php');?>
-
-<form action="index.php">
-	<input type="text" id="l" value="" class="as-value"/><input name="submit" type="submit" class="as-value"/>
-</form>
-
 <?php
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
 	mysql_select_db('thedom_info', $link);
 	
-	$locations = array_filter(split(',', $_GET['as_values_q']));
-	
+	$locations = array_filter(split(',', $_GET['q']));
+	$page = $_GET['p'];	
 	// bedrooms predicate
+
 	$bedroom_predicate = 'AND (1 = 0';
 	$amenities_predicate = '';
 	$location_predicate = '';
@@ -40,55 +35,12 @@
     		$message .= 'Whole query: ' . $query;
     		die($message);
 	}
+
+	$result_arr = array();
 	while ($row = mysql_fetch_assoc($result)) {
-		echo 'posting_id:';
-		echo $row[id].' '.$row[title].' '.$row[info].' '.$row[address];
-		echo '<br>';
+		$result_arr[] = $row;
 	}
 	mysql_close();
+	echo json_encode($result_arr);
+	exit();
 ?>
-
-<script type="text/javascript">
-
-var ac = $("#l").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
-
-function findValue(li) {
-	if( li == null ) return alert("No match!");
-
-	// if coming from an AJAX call, let's use the CityId as the value
-	if( !!li.extra ) var sValue = li.extra[0];
-
-	// otherwise, let's just display the value in the text box
-	else var sValue = li.selectValue;
-
-	alert("The value you selected was: " + sValue);
-}
-
-function selectItem(li) {
-	findValue(li);
-}
-
-function formatItem(row) {
-	return row[0] + " (id: " + row[1] + ")";
-}
-
-function lookupAjax(){
-	var oSuggest = $("#l")[0].autocompleter;
-
-	oSuggest.findValue();
-
-	return false;
-}
-
-function lookupLocal(){
-	var oSuggest = $("#l")[0].autocompleter;
-
-	oSuggest.findValue();
-
-	return false;
-}
-</script>
-
-</html>
-
-<?php require_once('../lib/footer.php');?>
