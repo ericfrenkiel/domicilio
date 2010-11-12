@@ -1,9 +1,12 @@
 <?php require_once('../lib/header.php');?>
-
+<div id="searchpage" class="rounded_top">
+<div id="searchbar" class="rounded_top">
+<div id="search_params">
 <form action="index.php">
-	<input type="text" id="l" value="" class="as-value"/><input name="submit" type="submit" class="as-value"/>
+	<input type="text" id="location" value="" class="as-value rounded"/><input name="submit" type="submit" class="as-value"/>
 </form>
-
+</div></div>
+<div id="search_body">
 <?php
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
@@ -50,7 +53,7 @@
 
 <script type="text/javascript">
 
-var ac = $("#l").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
+var ac = $("#location").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
 
 function findValue(li) {
 	if( li == null ) return alert("No match!");
@@ -73,7 +76,7 @@ function formatItem(row) {
 }
 
 function lookupAjax(){
-	var oSuggest = $("#l")[0].autocompleter;
+	var oSuggest = $("#location")[0].autocompleter;
 
 	oSuggest.findValue();
 
@@ -81,14 +84,14 @@ function lookupAjax(){
 }
 
 function lookupLocal(){
-	var oSuggest = $("#l")[0].autocompleter;
+	var oSuggest = $("#location")[0].autocompleter;
 
 	oSuggest.findValue();
 
 	return false;
 }
 </script>
-
+</div></div>
 </html>
 
 <?php require_once('../lib/footer.php');?>
