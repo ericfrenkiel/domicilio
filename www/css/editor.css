@@ -22,3 +22,16 @@
 .center_edit {
   text-align: center;
 }
+
+.photoPreview {
+  max-height: 100px;
+  margin: 10px;
+  border: 1px solid silver;
+  cursor: pointer;
+}
+
+.preview_div {
+  width: 720px;
+  height: 130px;
+  overflow: auto;
+}

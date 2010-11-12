@@ -2,20 +2,6 @@
 $require_signed = true;
 require_once('../lib/header.php');
 ?>
-  <style>
-    .photoPreview {
-      max-height: 100px;
-      margin: 10px;
-      border: 1px solid silver;
-      cursor: pointer;
-    }
-
-    .preview_div {
-      width: 750px;
-      height: 130px;
-      overflow: auto;
-    }
-  </style>
   Selected photos:
   <div id='selected_images' class="preview_div"></div>
   Your photos:
@@ -145,8 +131,6 @@ require_once('../lib/header.php');
         });
     </script>
 <?
-include_css('fileuploader.css');
-include_js('fileuploader.js');
 require_once('../lib/footer.php');
 
 ?>
