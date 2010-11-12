@@ -314,5 +314,6 @@ false;">Strict</a></span></li>
         </div>
 </div>
 </div>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=168089563214696&amp;xfbml=1"></script><fb:comments width="425"></fb:comments>
 <?php require_once('../lib/footer.php');?>
 
