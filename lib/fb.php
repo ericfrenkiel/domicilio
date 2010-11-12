@@ -67,6 +67,7 @@
       'appId'  => THEDOM_APP_ID,
       'secret' => THEDOM_APP_SECRET,
       'cookie' => true,
+
     ));
 
     global $session;
@@ -81,7 +82,6 @@
         $me = $facebook->api('/me');
       } catch (FacebookApiException $e) {
         error_log($e);
-        die();
       }
     }
 
@@ -91,6 +91,7 @@
       {
         $login_url = $facebook->getLoginUrl(array(
           'next' => $this_url,
+          'req_perms' => 'user_photos,user_videos',
           'cancel_url' => $this_url . "?cancel"));
 
         die("<script>window.top.location='" . addslashes($login_url) .
