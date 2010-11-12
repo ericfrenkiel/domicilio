@@ -46,7 +46,9 @@
                           <ol>
 <?php
   if (isset($me) && isset($me['name'])) {
-    echo "<li><a href=\"/#\">Hi," . $me['name'] . "!</a></li>";
+    echo "<li><a href=\"/#\">Hi," . $me['first_name'] . "!</a></li>";
+	echo "<img src='https://graph.facebook.com/".$me['id']."/picture' />";
+
   }
 ?>
 				<li><a href="/listings.php">Search Listings</a></li>
