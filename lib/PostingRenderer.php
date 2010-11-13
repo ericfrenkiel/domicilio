@@ -48,6 +48,10 @@ class PostingRenderer {
     $out .= htmlspecialchars($this->posting->getInfo());
     $out .= "</div>";
 
+    foreach ($this->posting->getPhotos() as $photo) {
+      $out .= "<img src=\"" . htmlspecialchars($photo['preview']) . "\" />";
+    }
+
     $out .= "</div>";
     return $out;
   }

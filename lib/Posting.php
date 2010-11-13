@@ -12,17 +12,28 @@ class Posting {
     $info,
     $cost,
     $ownerId,
-    $photos;
+    $photos = array();
 
   public static function fromPOST() {
-    return id(new Posting())
-             ->setId(edx($_POST, 'posting_id', false))
-             ->setTitle(edx($_POST, 'posting_title', 'New posting'))
-             ->setInfo(edx($_POST, 'posting_info', 'No info'))
-             ->setCity(edx($_POST, 'posting_city', ''))
-             ->setState(edx($_POST, 'posting_state'))
-             ->setAddress(edx($_POST, 'posting_address', ''))
-             ->setCost(edx($_POST, 'posting_cost', 0));
+    $posting = id(new Posting())
+                 ->setId(edx($_POST, 'posting_id', false))
+                 ->setTitle(edx($_POST, 'posting_title', 'New posting'))
+                 ->setInfo(edx($_POST, 'posting_info', 'No info'))
+                 ->setCity(edx($_POST, 'posting_city', ''))
+                 ->setState(edx($_POST, 'posting_state'))
+                 ->setAddress(edx($_POST, 'posting_address', ''))
+                 ->setCost(edx($_POST, 'posting_cost', 0));
+    $img_id_str = 'img_input_id_';
+    foreach($_POST as $key => $val) {
+      if (substr($key, 0, strlen($img_id_str)) !== $img_id_str) {
+        continue;
+      }
+      $photo_id = $val;
+      $photo_src = unsafe_post('img_input_src_' . $photo_id);
+      $photo_preview = unsafe_post('img_input_preview_' . $photo_id);
+      $posting->addPhoto($photo_id, $photo_preview, $photo_src);
+    }
+    return $posting;
   }
 
   public static function fromDB($id) {
@@ -87,6 +98,19 @@ class Posting {
     return "http://maps.google.com/maps/api/staticmap?center=" . $location
       . "&zoom=14&size=256x256&markers=color:blue|label:H|"
       . $location . "&sensor=false";
+  }
+
+  public function addPhoto($photo_id, $photo_preview, $photo_src) {
+    $this->photos[] = array(
+      'id' => $photo_id,
+      'preview' => $photo_preview,
+      'src' => $photo_src,
+    );
+    return $this;
+  }
+
+  public function getPhotos() {
+    return $this->photos;
   }
 
   public function setId($new_id) {
