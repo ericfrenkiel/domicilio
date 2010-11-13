@@ -69,14 +69,24 @@ while ($row = mysql_fetch_assoc($result)) {
  }
 mysql_close();
 
-foreach($result_arr as $row) {
-  echo 'posting_id:';
-  echo $row[id].' '.$row[title].' '.$row[info].' '.$row[address];
-  echo '<br>';
-}
-
 ?>
+<ul>
+<?php
+foreach($result_arr as $row):?> 
+  <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;">
+  <span class="apt_title"><a href="/view_posting.php?id=<?php echo $row[id]; ?>"><?php echo $row[title];?></a> </span>
+  <div class="price">                
+      <div class="price_data">                    
+          <sup class="currency_if_required"></sup><sup>$</sup>                   
+      <div class="currency_with_sup"><?php echo $row[cost]?></div>               
+       </div>
+   <div class="price_modifier">                    Per month               
+    </div> 
+               </div>
 
+  </li>
+<?php endforeach;?>
+</ul>
 
 <script type="text/javascript">
 
