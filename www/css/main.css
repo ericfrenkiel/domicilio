@@ -213,9 +213,7 @@ body {
 }
 #left {
 	float: left;
-	line-height: 1.6em;
-	width: 560px;
-	padding: 30px;
+	width: 620px;
 }
 #pageAbout #left {
 	float: left;
@@ -280,7 +278,7 @@ body {
 #pageSupport #right {
 	float: right;
 	line-height: 1.6em;
-	width: 620px;
+	width: 610px;
 	padding: 5px;
 }
 #pageDocs #left {
@@ -303,11 +301,9 @@ border:1px solid #CCCCCC;
 margin-bottom:5px;
 }
 #right {
-	background: url('../images/right-bkg.jpg') no-repeat 0 10px;
 	float: right;
-	line-height: 1.2em;
-	width: 260px;
-	padding: 70px 30px 30px;
+	width: 100px;
+	margin-right: 5px;
 }
 #pageHome #right {
 	padding: 20px;

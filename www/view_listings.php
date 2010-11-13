@@ -65,7 +65,7 @@ foreach($result_arr as $row):?>
   <div class="price">                
       <div class="price_data">                    
           <sup class="currency_if_required"></sup><sup>$</sup>                   
-      <div class="currency_with_sup">2200</div>               
+      <div class="currency_with_sup"><?php echo $row[cost]?></div>               
        </div>
    <div class="price_modifier">                    Per month               
     </div> 

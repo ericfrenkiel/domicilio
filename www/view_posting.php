@@ -16,6 +16,7 @@ $row = mysql_fetch_assoc($result);
 	$(function() {
 		$("#tabs").tabs();
 		$("#tabs2").tabs();
+		$("button").button();
 	});
 </script>
 <script type="text/javascript"
@@ -45,12 +46,13 @@ $row = mysql_fetch_assoc($result);
                </div>
 <br /> <br />
 <?php echo $row['address'] ?>
+<div id="left">
 <div id="tabs">
 <ul>
 	<li><a href="#tabs-2">Photos</a></li>
 	<li><a href="#tabs-3">Maps</a></li>
 	<li><a href="#tabs-4">Streetview</a></li>
-	<li><a href="#tabs-1" onclick="alert('here');record(<?php echo $_GET['id']?>);">Grab it</a></li>
+	<li><a href="#tabs-1" onclick="alert('here');record(<?php echo $_GET['id']?>);">Contact Information</a></li>
 </ul>
 <div id="tabs-2">
 <?php
@@ -59,7 +61,7 @@ $query = "select * from posting_photos where posting_id=$id";
 $result= mysql_query( $query );
 while ($img_row = mysql_fetch_assoc($result)) {
 ?>
-        <img src="<?php echo $img_row['photo_url'] ?>"/>
+        <img src="<?php echo $img_row['photo_url'] ?>" width="350"/>
 <?php
 }
 
@@ -159,6 +161,7 @@ function contactOwner() {
 </div>
 
 </div>
+
 <div id="tabs2" style="margin-top:10px;margin-bottom:10px;">
 <ul>
 	<li><a href="#tabs-5">Description</a></li>
@@ -319,13 +322,17 @@ function contactOwner() {
 
                 </ul>
 
+</div>
+</div>
 
             <div class="clear"></div>
 
         </div>
+</div><div id="right">
+<input class="v3_button" value="Grab" style="width:50px;height:25px;" />
+<input class="v3_button v3_orange" value="Save" style="width:50px;height:25px;" />
+<input class="v3_button v3_red" value="Poll" style="width:50px;height:25px;" />
 </div>
-</div>
-
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=168089563214696&amp;xfbml=1"></script><fb:comments width="425"></fb:comments>
 </div>
 <?php require_once('../lib/footer.php');?>
