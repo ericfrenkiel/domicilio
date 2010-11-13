@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 require_once('../lib/header.php');
 $link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
@@ -7,7 +7,6 @@ $id = $_GET['id'];
 $query = "select * from postings where id=$id";
 $result= mysql_query( $query );
 $row = mysql_fetch_assoc($result);
-
 
 ?>
 
@@ -23,17 +22,53 @@ $row = mysql_fetch_assoc($result);
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=false">
 </script>
-<script>
-    function record(id) {
+ <div id="fb-root"></div>
+ <script>
 
-        FB.login(function(response) {
-        if (response.session) {
-                alert('Success');
-        } else {
-                alert('Fail');
-        }
+function make_request(id, fb_id) {
+  $.ajax({
+      url: 'ajax/record.php?id='+id+'&fb_id='+fb_id,
+        success: function(data) {
+        $('.result').html(data);
+        alert('Load was performed.');
+      }
+    });
+}
+
+function login(id) {
+  FB.login(function(response) {
+             if (response.session) {
+               FB.api('/me', function(response) {
+                        if (response.session) {
+                          make_request(id, response.id);
+                        } else {
+                          alert('You have to allow to connect to Facebook to perform this action');
+                        }
+                      });
+             }
+           }
+          );
+}
+
+function record(id) {
+  FB.init({
+      appId  : '111665148898653',
+        status : true, // check login status
+        cookie : true, // enable cookies to allow the server to access the session
+        xfbml  : true  // parse XFBML
         });
-    }
+
+  FB.getLoginStatus(function(response) {
+                      if (response.session) {
+                        FB.api('/me', function(response) {
+                                 make_request(id, response.id);
+                               });
+                      } else {
+                        login(id);
+                      }
+                    });
+}
+
 </script>
 <h1><?php echo $row['title']?></h1>
 	<div id="price">$<?php echo $row['cost'] ?></div>
@@ -44,7 +79,7 @@ $row = mysql_fetch_assoc($result);
 	<li><a href="#tabs-2">Photos</a></li>
 	<li><a href="#tabs-3">Maps</a></li>
 	<li><a href="#tabs-4">Streetview</a></li>
-	<li><a href="#tabs-1" onclick="alert('here');record(<?php echo $_GET['id']?>);">Grab it</a></li>
+	<li><a href="#tabs-1" onclick="record(<?php echo $_GET['id']?>);">Grab it</a></li>
 </ul>
 <div id="tabs-2">
 <?php
@@ -130,14 +165,11 @@ initialize();
 </script>
 <script>
 $('#tabs').bind('tabsshow', function(event, ui) {
-  if (ui.panel.id == "tabs-4") {
-	google.maps.event.trigger(panorama, 'resize');
-	panorama.setZoom( panorama.getZoom() );
-    }
-});
-
-        }
-}
+                  if (ui.panel.id == "tabs-4") {
+                    google.maps.event.trigger(panorama, 'resize');
+                    panorama.setZoom( panorama.getZoom() );
+                  }
+                });
 
 </script>
 </div>
@@ -319,6 +351,6 @@ function contactOwner() {
         </div>
 </div>
 </div>
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=168089563214696&amp;xfbml=1"></script><fb:comments width="425"></fb:comments>
+<!--div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=168089563214696&amp;xfbml=1"></script><fb:comments width="425"></fb:comments -->
 <?php require_once('../lib/footer.php');?>
 

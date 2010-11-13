@@ -1,18 +1,18 @@
 <?php
-	
+
 	$db = new PDO('mysql:host=localhost;dbname=thedom_info', 'thedom_thedom', 'ETP+}fViQKK_');
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	if (!$db) {
-		die ('cannot connect to database');	
+		die ('cannot connect to database');
 	}
-	
+
 	function fill_table(&$all, $table_name, $prefix) {
 		global $db;
 		$st = $db->query("select id, name from $table_name");
 		while ($r = $st->fetch()) {
 			$e['name'] 	= $r['name'];
 			$e['value'] 	= $prefix.$r['id'];
-			$all[] = $e; 
+			$all[] = $e;
 		}
 	}
 	fill_table(&$all, 'locations', 'l_');
@@ -24,6 +24,7 @@
 	$all[] = array('name' => 'Five Bedrooms', 'value' => 'b_5');
 	$all[] = array('name' => 'Six Bedrooms', 'value' => 'b_6');
 	$all[] = array('name' => 'Seven Bedrooms', 'value' => 'b_7');
+	$all[] = array('name' => 'Bookmarked', 'value' => 'bm');
 
 	echo '<?php function SI() { return  unserialize(\''.serialize($all).'\');  }?>';
 ?>
