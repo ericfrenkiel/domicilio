@@ -52,7 +52,7 @@
   }
 ?>
 				<li><a href="/listings.php">Search Listings</a></li>
-                                <li><a href="/create_posting.php"><img src="/image/craigslist.png"><span style="float:right;margin-left:3px;">Post on Craigslist</span></a></li>
+                                <li><a href="/create_posting.php"><img style="border:none;" src="/images/craigslist.png"><span style="font-weight: bold;float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>
                         <a href="/"><img src="/images/logo.png" alt="Domicilio" border="0"

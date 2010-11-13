@@ -5,8 +5,9 @@
 <div id="search_params">
 
 
-<form action="index.php">
-	<input type="text" id="location" value="" class="as-value rounded"/><input name="submit" type="submit" class="as-value"/>
+<form action="view_listings.php">
+	<input type="text" id="as-selections-q" value="" class="as-value rounded"/>
+<input type="submit" style="-moz-border-radius-bottomleft: 0pt; -moz-border-radius-topleft: 0pt; width: 120px; position: relative;" class="as-value v3_button v3_fixed_width" value="Search" name="submit">
 </form>
 </div></div>
 <div id="search_body">
@@ -66,7 +67,7 @@ foreach($result_arr as $row) {
 
 <script type="text/javascript">
 
-var ac = $("#location").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
+var ac = $("#as-selections-q").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
 
 function findValue(li) {
 	if( li == null ) return alert("No match!");
@@ -89,7 +90,7 @@ function formatItem(row) {
 }
 
 function lookupAjax(){
-	var oSuggest = $("#location")[0].autocompleter;
+	var oSuggest = $("#as-selections-q")[0].autocompleter;
 
 	oSuggest.findValue();
 
@@ -97,7 +98,7 @@ function lookupAjax(){
 }
 
 function lookupLocal(){
-	var oSuggest = $("#location")[0].autocompleter;
+	var oSuggest = $("#as-selections-q")[0].autocompleter;
 
 	oSuggest.findValue();
 
