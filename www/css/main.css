@@ -196,7 +196,7 @@ body {
 #main {
 /*	background: url(../images/gradient-29Oct2010.png) repeat-x left top;*/
 	width: 755px;
-	min-height: 1000px;
+	height: auto;
 }
 #splash {
 	padding: 0px 0px;
@@ -1112,4 +1112,53 @@ border-width:1px 0 1px 1px;
 font-weight:bold;
 font-family:inherit;
 letter-spacing:-.5px;}
-
+.price {
+float:right;
+margin-top:-4px;
+width:128px;
+}
+.price_data {
+color:#3D3D3D;
+float:right;
+font-size:36px;
+font-weight:bold;
+height:44px;
+letter-spacing:-0.5px;
+line-height:44px;
+padding:2px 10px 0 0;
+}
+.currency_if_required {
+float:right !important;
+font-size:9px !important;
+line-height:30px !important;
+}
+.currency_with_sup {
+float:right;
+}
+.price_modifier {
+color:#BBBBBB;
+float:right;
+font-size:10px;
+margin-top:-5px;
+padding-right:14px;
+text-align:right;
+width:103px;
+}
+.apt_title {
+font-size:20px;
+font-weight:bold;
+height:22px;
+letter-spacing:-0.6px;
+line-height:22px;
+}
+#search_body ul li {
+	display: block;
+	text-decoration: none;
+}
+#view {
+	background-color:#F2F2EB; -webkit-border-radius:10px; -moz-border-radius: 10px;padding:10px;
+}
+.v3_blue {
+background-position:0 -42px !important;
+border-color:#679BBC !important;
+}

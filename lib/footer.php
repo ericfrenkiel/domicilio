@@ -15,7 +15,7 @@
 	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<script type="text/javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
-	<script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.labelify.js"></script>
 	<script type="text/javascript" src="/js/jquery.infinitecarousel2.min.js"></script>
 	<script src="/js/jquery.fbox.js" type="text/javascript"></script>
@@ -60,7 +60,7 @@
 
   }
 ?>
-				<li><a href="/listings.php">Search Listings</a></li>
+				<li><a href="/view_listings.php">Search Listings</a></li>
                                 <li><a href="/create_posting.php"><img style="border:none;" src="/images/craigslist.png"><span style="font-weight: bold;float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>
@@ -75,8 +75,8 @@
 ?>
  </div>
                   <div id="footer">
-                          <div id="footersearch" style="float:left;"><input type="text"
-value="Find a Property" style="float: right; margin-right: 11px; margin-top: 3px;"></div>
+                          <div id="footersearch" style="float:right;">&copy; 2010 Domicilio, Inc.</div>
+                          <a style="float: left; color: black;text-decoration:none;"  href="/equalhousing.php"><img style="border:none;" width="17" height="13" src="/images/house.png">Equal Housing Opportunity</a>
                 </div>
         </body>
 </html>

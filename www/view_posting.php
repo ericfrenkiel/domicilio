@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 require_once('../lib/header.php');
 $link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
@@ -7,8 +7,6 @@ $id = $_GET['id'];
 $query = "select * from postings where id=$id";
 $result= mysql_query( $query );
 $row = mysql_fetch_assoc($result);
-
-
 ?>
 
 
@@ -35,8 +33,16 @@ $row = mysql_fetch_assoc($result);
         });
     }
 </script>
+<div id="view">
 <h1><?php echo $row['title']?></h1>
-	<div id="price">$<?php echo $row['cost'] ?></div>
+<div class="price">                
+      <div class="price_data">                    
+          <sup class="currency_if_required"></sup><sup>$</sup>                   
+      <div class="currency_with_sup"><?php echo $row['cost'] ?></div>               
+       </div>
+   <div class="price_modifier">                    Per month               
+    </div> 
+               </div>
 <br /> <br />
 <?php echo $row['address'] ?>
 <div id="tabs">
@@ -153,7 +159,7 @@ function contactOwner() {
 </div>
 
 </div>
-<div id="tabs2">
+<div id="tabs2" style="margin-top:10px;margin-bottom:10px;">
 <ul>
 	<li><a href="#tabs-5">Description</a></li>
 	<li><a href="#amenities">Amenities</a></li>
@@ -319,6 +325,8 @@ function contactOwner() {
         </div>
 </div>
 </div>
+
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=168089563214696&amp;xfbml=1"></script><fb:comments width="425"></fb:comments>
+</div>
 <?php require_once('../lib/footer.php');?>
 
