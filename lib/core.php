@@ -15,6 +15,12 @@ function edx($array, $key, $default = null) {
   return $array[$key];
 }
 
+function unsafe_post($s) {  $val = idx($_POST, $s, '');
+  return get_magic_quotes_gpc()
+    ? stripslashes($val)
+    : $val;
+}
+
 function slog( $s )
 {
   $tm = date( "d.m.Y H:i", time( ) );

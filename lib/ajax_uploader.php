@@ -166,9 +166,11 @@ function start_upload() {
     require_once('../lib/fb.php');
     init_fb();
     $res = upload_photo($filename, basename($filename));
-    echo "{success:true}";
-  } else {
-    // to pass data through iframe you will need to encode all html tags
-    echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+    if ($res->id) {
+      $result = array('success'=>true, 'id' => $res->id);
+    } else {
+      $result = array('error' => 'Could not upload to facebook');
+    }
   }
+  echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 }
