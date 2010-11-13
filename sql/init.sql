@@ -18,6 +18,26 @@ insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St
 insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St., San Francisco, CA', 'San Francisco', 'CA', 'awesome place', 17236);
 insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, '1601 California St. Palo Alto, CA', 'Palo Alto', 'CA', 'awesome place', 17236);
 
+DROP TABLE IF EXISTS posting_photos;
+create table posting_photos (
+        posting_id bigint not null,
+        photo_id bigint not null,
+        photo_url varchar(4000) not null,
+        photo_url_thumbnail varchar(4000) not null
+) ENGINE=MYISAM;
+
+insert into posting_photos values (1, 98423808305,
+'http://sphotos.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_n.jpg',
+'http://photos-e.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_a.jpg');
+
+insert into posting_photos values (2, 98423808305,
+'http://sphotos.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_n.jpg',
+'http://photos-e.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_a.jpg');
+
+insert into posting_photos values (3, 98423808305,
+'http://sphotos.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_n.jpg',
+'http://photos-e.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_a.jpg');
+
 DROP TABLE IF EXISTS locations;
 create table locations (
 	id int not null AUTO_INCREMENT,
