@@ -8,24 +8,33 @@ class PostingRenderer {
     $this->posting = $posting;
   }
 
-  public function render() {
+  public function render($craig = false) {
     if (!$this->posting) {
       return "No posting";
     }
-    require_once( '../lib/head_control.php');
-    include_css("renderer.css");
     $out = "";
+    if ($craig) {
+      $out .= "<style>";
+      $out .= file_get_contents('css/renderer.css');
+      $out .= "</style>";
+    } else {
+      require_once( '../lib/head_control.php');
+      include_css("renderer.css?" . mt_rand());
+    }
 
     $out .= "<div class=\"posting_page\">";
 
     $out .= "<h1 class=\"posting_header\">"
-      . htmlspecialchars($this->posting->getTitle()) . "</h1>";
+      . htmlspecialchars($this->posting->getTitle()) . "</h1><br />";
 
     $static_map_url = $this->posting->getStaticMapUrl();
     if ($static_map_url) {
       $alt = htmlspecialchars($this->posting->getFullAddress());
-      $out .= "<a href=\"#map\" rel=\"facebox\"> <img class=\"posting_map\" alt=\"" . $alt . "\" title=\""
+      $out .= "<div class=\"posting_map\">";
+      $out .= "<a href=\"#map\">"
+        . "<img class=\"posting_map_img\" alt=\"" . $alt . "\" title=\""
         . $alt . "\" src=\"" . $static_map_url . "\"/></a>";
+      $out .= "</div>";
     }
 
     $out .= "<div class=\"right_info\">";

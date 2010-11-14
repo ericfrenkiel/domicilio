@@ -1,0 +1,27 @@
+.posting_map {  float: left;
+  width:260px;
+}
+
+.right_info {
+  width:500px;
+  min-height:260px;
+}
+
+.desription {  width:760px;
+}
+
+.right_elem {
+  display:inline;
+  width:500px;
+}
+
+.right_elem_name {
+  display:inline;
+  width:100px;
+}
+
+.right_elem_value {
+  display:inline;
+  width:400px;
+}
+
