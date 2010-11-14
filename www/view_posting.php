@@ -9,9 +9,6 @@ $result= mysql_query( $query );
 $row = mysql_fetch_assoc($result);
 ?>
 
-
-
-
 <script>
 	$(function() {
 		$("#tabs").tabs();
