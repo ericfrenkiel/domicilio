@@ -2,17 +2,16 @@
 
 require_once("../lib/core.php");
 require_once("../lib/db.php");
+
+
 if (isset($_POST['posting_submitted'])) {
   require_once('../lib/Posting.php');
   $posting = Posting::fromPOST();
   echo "Preview <hr />";
-  require_once('../lib/PostingRenderer.php');
-  $renderer = new PostingRenderer($posting);
-  echo $renderer->render();
 }
 ?>
 
- 
+<?php if (isset($_POST['posting_submitted'])): ?> 
 <div style="color: #000000;"> 
   <font size="2"> 
   <table width="100%" height="100%" border="0" align="center" cellpadding="10" cellspacing="0" style="-moz-border-radius-topright:10px;font-family:Arial,Helvetica,sans-serif;"> 
@@ -47,14 +46,14 @@ if (isset($_POST['posting_submitted'])) {
                               <td height="30" align="left" valign="top"> 
                                 <div style="color: #206591;"> 
                                   <font size="5"> 
-                                    305 Franklin St, San Francisco, CA</font> 
+                                    <?php echo $posting->getAddress();?></font> 
                                 </div> 
                               </td> 
                             </tr> 
                             <tr> 
                               <td width="560" align="left" valign="top"> 
                                 <div style="color: #000000;"> 
-                                  Sunny studio apartment in great neighborhood. Convenient central location, close to amenities and public transportation.
+                                  
                                 </div> 
                               </td> 
                             </tr> 
@@ -146,25 +145,7 @@ if (isset($_POST['posting_submitted'])) {
                                       <table width="100%" border="0" cellspacing="0" cellpadding="3"> 
                                         <tbody><tr> 
                                           <td> 
-                                            Convenient central location, close to amenities and public transportation. Excellent neighborhood character with fine restaurants, art galleries, specialty retail shops and cultural venues.
-                                            <br> 
-                                            <br> 
-                                            Studio unit carpeted throughout, full kitchen with breakfast nook, large main room, full bath, and huge, walk-in closet space.
-                                            <br> 
-                                            <br> 
-                                            No pets. Non-smoking building.
-                                            <br> 
-                                            <br> 
-                                            Street parking only.
-                                            <br> 
-                                            <br> 
-                                            Off-site laundry facilities nearby.
-                                            <br> 
-                                            <br> 
-                                            Available immediately.
-                                            <br> 
-                                            <br> 
-                                            Can be seen by confirmed appointment only. For an appointment please call Cedric at 415/255-9678. If leaving a voicemail message, please indicate times you are available to see the unit and a phone number.
+                                            <?php echo $posting->getInfo(); ?>
                                           </td> 
                                         </tr> 
                                       </tbody></table> 
@@ -536,3 +517,4 @@ if (isset($_POST['posting_submitted'])) {
         <td align="center"></td> 
       </tr> 
     </tbody></table>
+    <?php endif;?>

@@ -214,153 +214,124 @@ function contactOwner() {
         </div>
 
 </div>
-<div id="amenities">
-<div style="display: block; " class="details_content">
-                <ul>
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Smoking Allowed </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Pets Allowed </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>TV </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Cable TV </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Internet <a class="tooltip" title="Internet (wired or wireless)"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Wireless Internet <a class="tooltip" title="A wireless router that guests can access 24/7."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Air Conditioning </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Heating </p>
-
-                        </li>
-
-                </ul>
-
-                <ul>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Elevator in Building </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Handicap Accessible <a class="tooltip" title="The property is easily accessible.  Guests should communicate about individual needs."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Pool <a class="tooltip" title="A private swimming pool"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Kitchen <a class="tooltip" title="Kitchen is available for guest use"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Parking Included </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Washer / Dryer <a class="tooltip" title="Paid or Free, in building"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Doorman </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Gym <a class="tooltip" title="Guests have free access to a gym"><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                </ul>
-
-                <ul>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Hot Tub </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has"></div>
-                            <p>Indoor Fireplace </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Buzzer/Wireless Intercom </p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Breakfast <a class="tooltip" title="Breakfast is provided."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Family/Kid Friendly <a class="tooltip" title="The property is suitable for hosting families with children."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                        <li>
-                            <div class="has_not"></div>
-                            <p>Suitable for Events <a class="tooltip" title="The property can accommodate a gathering of 25 or more attendees."><img alt="Questionmark_hover" src="/images/icons/questionmark_hover.png?1279494361" style="width:12px; height:12px;"></a></p>
-
-                        </li>
-
-                </ul>
-
-</div>
-</div>
+  <div id="amenities" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+      <div class="details_content" style="display: block;">
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Smoking Allowed
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Pets Allowed
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              TV
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Cable TV
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Internet <a title="Internet (wired or wireless)" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Wireless Internet <a title="A wireless router that guests can access 24/7." class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Air Conditioning
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Heating
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Elevator in Building
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Handicap Accessible <a title="The property is easily accessible. Guests should communicate about individual needs." class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Pool <a title="A private swimming pool" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Kitchen <a title="Kitchen is available for guest use" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Parking Included
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Washer / Dryer <a title="Paid or Free, in building" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Doorman
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Gym <a title="Guests have free access to a gym" class="tooltip"></a>
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Hot Tub
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Indoor Fireplace
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
             <div class="clear"></div>
 
