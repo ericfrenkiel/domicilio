@@ -29,15 +29,12 @@ function updateSearchResult() {
 <form action="view_listings.php?auth_nikita=1" name="searchForm">
         <input type="hidden" name="auth_nikita" value="1" />
 	<input type="text" id="as-selections-q" value="" class="as-value rounded"/>
-<input type="text" style="-autoSuggmoz-border-radius-bottomleft: 0pt; -moz-border-radius-topleft: 0pt; width: 120px; position: relative;"
-class="as-value v3_button v3_fixed_width" value="Search" name="submit" onClick="updateSearchResult();">
-
+<input type="submit" style="-moz-border-radius-bottomleft: 0pt; -moz-border-radius-topleft: 0pt; width: 120px; position: relative;" class="as-value v3_button v3_fixed_width" value="Search" name="submit">
 </form>
-</div>
-</div>
 
 <div id="search_results">
 </div>
+
 
 <div id="search_js">
 <script type="text/javascript">
@@ -83,6 +80,7 @@ function lookupLocal(){
 </div>
 
 
-<?php require_once('../lib/footer.php');?>
+<?php mysql_close();
+require_once('../lib/footer.php');?>
 
 
