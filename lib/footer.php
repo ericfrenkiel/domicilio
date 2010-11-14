@@ -26,15 +26,6 @@
 <script type="text/javascript"  src="http://maps.google.com/maps/api/js?sensor=true">
 </script>
  <script src="http://connect.facebook.net/en_US/all.js"></script>
- <script>
-   FB.init({
-     appId  : '111665148898653',
-     status : true, // check login status
-     cookie : true, // enable cookies to allow the server to access the session
-     xfbml  : true  // parse XFBML
-   });
- </script>
-
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
 	<link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -49,6 +40,7 @@
 ?>
 </head>
 <body>
+ <div id="fb-root"></div>
                 <div id="container">
                   <div id="header">
                         <div id="navigation">

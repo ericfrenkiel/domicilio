@@ -121,3 +121,12 @@ insert into posting_amenity values (2, 10);
 insert into posting_amenity values (3, 1);
 insert into posting_amenity values (3, 6);
 insert into posting_amenity values (3, 8);
+
+drop table if exists posting_interest;
+create table posting_interest (
+	posting_id BIGINT not null,
+	profile_id BIGINT not null,
+        time TIMESTAMP not null,
+ 	UNIQUE(posting_id, profile_id)
+);
+
