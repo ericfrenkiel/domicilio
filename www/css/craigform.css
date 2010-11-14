@@ -1,0 +1,1 @@
+.div_form {  width: 750px;}.div_form .row {  width: auto;  height: auto;}.div_form span.std, .div_form span.req, .div_form span.err {  font-weight: bold;}.div_form label {  width: auto;  font-size: 1em;}.div_form .row div {  float:left;  padding:0 5px;}.div_form span.req {  color: green}.div_form div.title {  white-space: nowrap;}

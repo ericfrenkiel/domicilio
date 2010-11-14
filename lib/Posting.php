@@ -38,19 +38,40 @@ class Posting {
 
   public static function fromDB($id) {
     $res = db_query("select id, title, cost, address, city, state,"
-      . " info, owner_id from postings where id='" . db_escape($id) . "'");
+      . " info, owner_id from postings where id='" . db_escape($id) . "';");
     if ($arr = db_fetch($res)) {
-      return id(new Posting())
-               ->setId(edx($arr, 0, false))
-               ->setTitle(edx($arr, 1, 'New posting'))
-               ->setCost(edx($arr, 2, 0))
-               ->setAddress(edx($arr, 3, ''))
-               ->setCity(edx($arr, 4, ''))
-               ->setState(edx($arr, 5))
-               ->setInfo(edx($arr, 6, 'No info'))
-               ->setOwnerId(edx($arr, 7, 0));
+      $id = $arr[0];
+      $posting = id(new Posting())
+                   ->setId($id)
+                   ->setTitle(edx($arr, 1, 'New posting'))
+                   ->setCost(edx($arr, 2, 0))
+                   ->setAddress(edx($arr, 3, ''))
+                   ->setCity(edx($arr, 4, ''))
+                   ->setState(edx($arr, 5))
+                   ->setInfo(edx($arr, 6, 'No info'))
+                   ->setOwnerId(edx($arr, 7, 0));
+      $res = db_query("select photo_id, photo_url,"
+          . " photo_url_thumbnail from posting_photos where posting_id = '"
+          . db_escape($id) . "';");
+      while($arr = db_fetch($res)) {
+        $posting->addPhoto($arr[0], $arr[2], $arr[1]);
+      }
+      return $posting;
     } else {
       return false;
+    }
+  }
+
+  protected function insertPhotosToDB() {
+    foreach($this->photos as $photo) {
+      $res = db_query("insert into posting_photos (posting_id, photo_id,"
+        . " photo_url, photo_url_thumbnail) VALUES ("
+        . "'" . db_escape($this->id) . "', "
+        . "'" . db_escape($photo['id']) . "', "
+        . "'" . db_escape($photo['src']) . "', "
+        . "'" . db_escape($photo['preview']) . "'"
+        . ");"
+      );
     }
   }
 
@@ -67,6 +88,9 @@ class Posting {
       . ");"
     );
     $this->id = mysql_insert_id();
+    if ($this->id) {
+      $this->insertPhotosToDB();
+    }
     return $this;
   }
 
@@ -82,6 +106,9 @@ class Posting {
         . "owner_id='" . db_escape($this->ownerId) . "' "
         . "where id='" . db_escape($this->id) . "';"
       );
+      $res = db_query("delete from posting_photos where posting_id = '"
+          . db_escape($this->id) . "';");
+      $this->insertPhotosToDB();
     }
     return $this;
   }

@@ -19,7 +19,12 @@ function unsafe_post($s) {  $val = idx($_POST, $s, '');
   return get_magic_quotes_gpc()
     ? stripslashes($val)
     : $val;
+}
+
+function get($s, $defualt = null) {  return idx($_GET, $s, $defualt);
 }
+function json_answer($a) {  return json_encode($a);
+}
 
 function slog( $s )
 {
