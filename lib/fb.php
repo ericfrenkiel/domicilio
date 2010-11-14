@@ -64,7 +64,6 @@
       'appId'  => THEDOM_APP_ID,
       'secret' => THEDOM_APP_SECRET,
       'cookie' => true,
-
     ));
 
     global $session;
@@ -83,11 +82,13 @@
     }
 
     // login or logout url will be needed depending on current user state.
-    if (!$me) {
+    global $require_signed;
+    if (!$me && $require_signed) {
       if (!isset($_GET['cancel']))
       {
         $login_url = $facebook->getLoginUrl(array(
           'next' => $this_url,
+          'req_perms' => 'user_photos,user_videos',
           'cancel_url' => $this_url . "?cancel"));
 
         die("<script>window.top.location='" . addslashes($login_url) .
