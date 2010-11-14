@@ -65,10 +65,18 @@ function parse_craig_options($txt) {
   return $result;
 }
 
+function render_posting($_posting) {  global $posting;
+  $posting = $_posting;
+  ob_start();
+  require('../lib/pattern.php');
+  $temp_buf = ob_get_clean();
+  ob_end_clean();
+  return $temp_buf;
+}
+
 function fill_form($form, $id) {  require_once('../lib/Posting.php');
   require_once('../lib/PostingRenderer.php');
   $posting = Posting::fromDB($id);  $email = 'bigdude@gmail.com';
-  $renderer = new PostingRenderer($posting);
   $form = preg_replace(
     array(
       "/<button type=\"button\".+?<br clear=\"all\"><\/div>/",
@@ -93,7 +101,7 @@ function fill_form($form, $id) {  require_once('../lib/Posting.php');
       "$1",
       "\${0}" . htmlspecialchars($posting->getCost()),
       "\${0}" . htmlspecialchars($posting->getTitle()),
-      "\${0}" . htmlspecialchars($renderer->render(true)),
+      "\${0}" . htmlspecialchars(render_posting($posting)),
       htmlspecialchars($email),
       htmlspecialchars($email),
       "\${0}" . htmlspecialchars($posting->getAddress()),
