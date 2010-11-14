@@ -26,7 +26,7 @@
 <script type="text/javascript"  src="http://maps.google.com/maps/api/js?sensor=true">
 </script>
  <script src="http://connect.facebook.net/en_US/all.js"></script>
-	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css?2" />
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/jquery.css" />
 	<link href="/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" type="text/css" href="/css/autoSuggest.css" />
@@ -41,6 +41,9 @@
 </head>
 <body>
  <div id="fb-root"></div>
+ <script>
+   FB.Canvas.setAutoResize();
+ </script>
                 <div id="container">
                   <div id="header">
                         <div id="navigation">

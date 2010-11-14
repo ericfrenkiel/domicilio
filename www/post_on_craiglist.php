@@ -7,9 +7,10 @@ require_once('../lib/craig.php');
 
 $id = (int)idx($_GET, 'id', 0);
 $posting = Posting::fromDB($id);
-require_once('../lib/PostingRenderer.php');
-$renderer = new PostingRenderer($posting);
-echo $renderer->render();
+if ($posting && $posting->getOwnerId() === $uid) {
+  require_once('../lib/PostingRenderer.php');
+  $renderer = new PostingRenderer($posting);
+  echo $renderer->render();
 ?>
 <div id="fb-root"></div>
 <script>
@@ -103,8 +104,10 @@ requestSelect(1, '/');
 <div id="div_form" class="div_form" style="display:none;">
 </div>
 <?
-include_css('craigform.css?' . mt_rand());
-
+  include_css('craigform.css?' . mt_rand());
+} else { //Posting owner is different failed
+  echo "You can't post this posting to craigslist";
+}
 require_once('../lib/footer.php');
 
 ?>
