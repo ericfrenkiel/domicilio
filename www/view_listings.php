@@ -8,8 +8,6 @@
         require_once '../lib/header.php';
 ?>
 
-<script type="text/javascript" src="/js/search_index.js"></script>
-
 <div id="searchpage" class="rounded_top">
 <div id="searchbar" class="rounded_top">
 <div id="search_params">
