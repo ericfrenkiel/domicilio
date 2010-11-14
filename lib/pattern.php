@@ -80,7 +80,7 @@ if (isset($_POST['posting_submitted'])) {
                                     <td align="right" valign="top"> 
                                       <div style="color: #000000;"> 
                                         <font size="4"> 
-                                          $1,295/month</font> 
+                                          $<?php echo $posting->getCost()?>/month</font> 
                                       </div> 
                                     </td> 
                                   </tr> 
@@ -169,7 +169,7 @@ if (isset($_POST['posting_submitted'])) {
                                             <table width="350" border="0" cellspacing="0" cellpadding="1"> 
                                               <tbody><tr> 
                                                 <td height="25" align="center"> 
-                                                  see additional photos below
+                                                      Map
                                                 </td> 
                                               </tr> 
                                             </tbody></table> 
@@ -200,30 +200,124 @@ if (isset($_POST['posting_submitted'])) {
                                                 RENTAL FEATURES</span> 
                                             </div> 
                                             <hr size="1" noshade="" style="border-top: 1px solid #333333;"> 
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="3"> 
-                                              <tbody><tr> 
-                                                <td width="33%"> 
-                                                  - Central heat
-                                                </td> 
-                                                <td width="33%"> 
-                                                  - High/Vaulted ceiling
-                                                </td> 
-                                                <td width="33%"> 
-                                                  - Walk-in closet
-                                                </td> 
-                                              </tr> 
-                                              <tr> 
-                                                <td width="33%"> 
-                                                  - Breakfast nook
-                                                </td> 
-                                                <td width="33%"> 
-                                                  - Refrigerator
-                                                </td> 
-                                                <td width="33%"> 
-                                                  - Stove/Oven
-                                                </td> 
-                                              </tr> 
-                                            </tbody></table> 
+  <div id="amenities" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+      <div class="details_content" style="display: block;">
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Smoking Allowed
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Pets Allowed
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              TV
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Cable TV
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Internet <a title="Internet (wired or wireless)" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Wireless Internet <a title="A wireless router that guests can access 24/7." class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Air Conditioning
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Heating
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Elevator in Building
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Handicap Accessible <a title="The property is easily accessible. Guests should communicate about individual needs." class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Pool <a title="A private swimming pool" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Kitchen <a title="Kitchen is available for guest use" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Parking Included
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Washer / Dryer <a title="Paid or Free, in building" class="tooltip"></a>
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Doorman
+            </p>
+          </li>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Gym <a title="Guests have free access to a gym" class="tooltip"></a>
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div class="has_not"></div>
+            <p>
+              Hot Tub
+            </p>
+          </li>
+          <li>
+            <div class="has"></div>
+            <p>
+              Indoor Fireplace
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
                                           </td> 
                                         </tr> 
                                       </tbody></table> 
