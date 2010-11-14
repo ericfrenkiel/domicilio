@@ -24,7 +24,10 @@
 	$all[] = array('name' => 'Five Bedrooms', 'value' => 'b_5');
 	$all[] = array('name' => 'Six Bedrooms', 'value' => 'b_6');
 	$all[] = array('name' => 'Seven Bedrooms', 'value' => 'b_7');
-	$all[] = array('name' => 'Bookmarked', 'value' => 'bm');
+	$all[] = array('name' => 'Grabbed', 'value' => 'bm');
+	$all[] = array('name' => 'Mine', 'value' => 'me');
 
-	echo '<?php function SI() { return  unserialize(\''.serialize($all).'\');  }?>';
+
+        echo 'var search_index = '.Json_encode(array('items' => $all)).';';
+
 ?>

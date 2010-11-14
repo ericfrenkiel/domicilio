@@ -9,6 +9,7 @@
         require_once '../lib/header.php';
 ?>
 
+<script type="text/javascript" src="/js/search_index.js"></script>
 
 <div id="searchpage" class="rounded_top">
 <div id="searchbar" class="rounded_top">
@@ -72,25 +73,24 @@ mysql_close();
 ?>
 <ul>
 <?php
-foreach($result_arr as $row):?> 
+foreach($result_arr as $row):?>
   <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;">
   <span class="apt_title"><a href="/view_posting.php?id=<?php echo $row[id]; ?>"><?php echo $row[title];?></a> </span>
-  <div class="price">                
-      <div class="price_data">                    
-          <sup class="currency_if_required"></sup><sup>$</sup>                   
-      <div class="currency_with_sup"><?php echo $row[cost]?></div>               
+  <div class="price">
+      <div class="price_data">
+          <sup class="currency_if_required"></sup><sup>$</sup>
+      <div class="currency_with_sup"><?php echo $row[cost]?></div>
        </div>
-   <div class="price_modifier">                    Per month               
-    </div> 
+   <div class="price_modifier">                    Per month
+    </div>
                </div>
-
   </li>
 <?php endforeach;?>
 </ul>
 
 <script type="text/javascript">
 
-var ac = $("#as-selections-q").autoSuggest("/location_typeahead.php", {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
+var ac = $("#as-selections-q").autoSuggest(search_index.items, {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q"});
 
 function findValue(li) {
 	if( li == null ) return alert("No match!");
