@@ -69,8 +69,9 @@ function record(id) {
 
 </script>
 <div id="view">
-<h1><?php echo htmlspecialchars($posting->getTitle()); ?></h1>
-<div class="price">
+<h1><?php echo htmlspecialchars($posting->getTitle()); ?></h1><br/>
+<p style="margin-left: 30px;"><?php echo htmlspecialchars($posting->getFullAddress()); ?></p>
+<div class="price" style="position: relative; top:-70px;">
       <div class="price_data">
           <sup class="currency_if_required"></sup><sup>$</sup>
       <div class="currency_with_sup"><?php echo htmlspecialchars($posting->getCost()); ?></div>
@@ -78,20 +79,25 @@ function record(id) {
    <div class="price_modifier">                    Per month
     </div>
                </div>
-<br /> <br />
-<?php echo htmlspecialchars($posting->getAddress()); ?>
-<div id="left">
+
+
+<!--<div id="left">-->
+	
+	<div class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;">Contact Poster</div>
+	<div class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;">Save for Later</div>
+	<div class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;">Ask my Friends</div>
+	<br /><br />
 <div id="tabs">
 <ul>
 	<li><a href="#tabs-2">Photos</a></li>
 	<li><a href="#tabs-3">Maps</a></li>
 	<li><a href="#tabs-4">Streetview</a></li>
-	<li><a href="#tabs-1">Contact Information</a></li>
+<!--	<li><a href="#tabs-1">Contact Information</a></li> -->
 </ul>
 
 
 <div id="tabs-2" style="min-height: 400px; min-width:500px; text-align: center;background-color: black;">
-	<div class="images" style="height:600px; width: 590px;">
+	<div class="images" style="height:600px; width: 700px;">
 		<?php foreach ($posting->getPhotos() as $photo): ?>
   			<img  src=" <?php echo  htmlspecialchars($photo['src']);?> "/>
 		<?php endforeach; ?>
@@ -166,7 +172,7 @@ function initialize() {
 initialize();
 </script>
 </div>
-<div id="tabs-1" style="min-height: 400px; min-width:500px; margin-bottom: 20px;">
+<!--<div id="tabs-1" style="min-height: 400px; min-width:500px; margin-bottom: 20px;">
 
 <script>
 function contactOwner() {
@@ -175,8 +181,9 @@ function contactOwner() {
 </script>
 
 <input value="Contact The Owner" onClick="contactOwner()" type="button" onClick="contactOwner()"/>
-</div>
 
+</div>
+-->
 </div>
 
 <div id="tabs2" style="margin-top:10px;margin-bottom:10px;">
@@ -188,7 +195,7 @@ function contactOwner() {
 
 <div id="description" class="details_content">
             <div id="description_text" class="rounded_less trans">
-<?php echo $row['info']?>
+<?php echo htmlspecialchars($posting->getInfo())?>
             </div>
 
         </div>
@@ -316,13 +323,11 @@ function contactOwner() {
             <div class="clear"></div>
 
         </div>
-</div><div id="right">
-<div class="v3_button" style="width:50px;height:25px;">Grab</div>
-<div class="v3_button v3_orange" style="width:50px;height:25px;">Save</div>
-<div class="v3_button v3_red" style="width:50px;height:25px;">Poll</div>
-</div>
+<!--</div><div id="right">-->
 
 </div>
+
+<!--</div>-->
 
 
 <?php
