@@ -17,13 +17,13 @@ class Posting {
 
   public static function fromPOST() {
     $posting = id(new Posting())
-                 ->setId(edx($_POST, 'posting_id', false))
-                 ->setTitle(edx($_POST, 'posting_title', 'New posting'))
-                 ->setInfo(edx($_POST, 'posting_info', 'No info'))
-                 ->setCity(edx($_POST, 'posting_city', ''))
-                 ->setState(edx($_POST, 'posting_state'))
-                 ->setAddress(edx($_POST, 'posting_address', ''))
-                 ->setCost(edx($_POST, 'posting_cost', 0));
+                 ->setId(unsafe_post('posting_id', false))
+                 ->setTitle(unsafe_post('posting_title', 'New posting'))
+                 ->setInfo(unsafe_post('posting_info', 'No info'))
+                 ->setCity(unsafe_post('posting_city', ''))
+                 ->setState(unsafe_post('posting_state'))
+                 ->setAddress(unsafe_post('posting_address', ''))
+                 ->setCost(unsafe_post('posting_cost', 0));
     $img_id_str = 'img_input_id_';
     foreach($_POST as $key => $val) {
       if (substr($key, 0, strlen($img_id_str)) !== $img_id_str) {
@@ -94,7 +94,7 @@ class Posting {
 
   public function addToDB() {
     $res = db_query("insert into postings (title, cost, address, city, state,"
-      . " info, owner_id, lat, lng) values ("
+      . " info, owner_id, location) values ("
       . "'" . db_escape($this->title) . "', "
       . "'" . db_escape($this->cost) . "', "
       . "'" . db_escape($this->address) . "', "

@@ -42,10 +42,10 @@
 $result_arr = array();
 $uniq = array();
 while ($row = mysql_fetch_assoc($result)) {
-  if (isset($uniq[$row[0]])) {
+  if (isset($uniq[$row[id]])) {
     continue;
   }
-  $uniq[$row[0]] = true;
+  $uniq[$row[id]] = true;
   $result_arr[] = $row;
  }
 mysql_close();
