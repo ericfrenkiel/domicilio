@@ -10,7 +10,7 @@
 
 
 <div id="bigbar" style="width: auto; height: 50px;margin:0px auto;">
->>>>>>> 8e762cb85a6bdc6f6f9e511aa04a72c9ef145d3b
+
 <form action="/view_listings.php">
 	<input type="text" id="as-selections-q" value="" class="as-value rounded" style="float:left;height: 28px;"/>
 <input name="submit" type="submit" value="Search" class="v3_button v3_fixed_width" style="-moz-border-radius-bottomleft:0;
