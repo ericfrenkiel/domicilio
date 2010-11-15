@@ -7,13 +7,15 @@
         foreach (split(',', $_GET['as_values_q']) as $l) {
                 $filter[$l] = 1;
         }
-        function add_filtered(&$all, $value, $name) {
+        function add_filtered(&$all, $value, $name, $image = null) {
                 global $web;
                 global $filter;
                 global $initial;
                 $r = array();
                 $r['name'] = $name;
                 $r['value'] = $value;
+                if ($image !== null)
+                        $r['image'] = $image;
                 $all[] = $r;
                 if ($filter[$value]) {
                         $initial[] = $r;
@@ -45,10 +47,13 @@
 	add_filtered(&$all, 'bm', 'Grabbed');
         add_filtered(&$all, 'me', 'Mine');
 
-	add_filtered(&$all, 'n_1', 'near Eric');
-	add_filtered(&$all, 'n_2', 'near Eugene');
-	add_filtered(&$all, 'n_3', 'near Nikita');
+        $friends = json_decode(curl_request("https://graph.facebook.com/me/friends", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET')));
 
+        foreach ($friends->{'data'} as $f) {
+                $id = $f->{'id'};
+                add_filtered(&$all, 'f_'.$f->{'id'}, 'near '.$f->{'name'}, "https://graph.facebook.com/$id/picture");
+        }
         echo 'var search_index = '.Json_encode(array('items' => $all)).';';
         echo 'var search_init = '.Json_encode(array('items' => $initial)).';';
 ?>
+

@@ -88,7 +88,7 @@
       {
         $login_url = $facebook->getLoginUrl(array(
           'next' => $this_url,
-          'req_perms' => 'user_photos,user_videos',
+          'req_perms' => 'user_photos,user_videos,user_checkins',
           'cancel_url' => $this_url . "?cancel"));
 
         die("<script>window.top.location='" . addslashes($login_url) .

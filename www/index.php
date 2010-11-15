@@ -1,6 +1,7 @@
-<?php require_once('../lib/header.php');?>
-
-<script type="text/javascript" src="/js/search_index.js"></script>
+<?php
+$require_signed=1;
+require_once('../lib/header.php');
+?>
 
 <div id="tagline" style="margin: 0px auto; margin-bottom: 30px; margin-top:30px; width: 500px; height: auto;">
 
@@ -24,7 +25,7 @@ width:120px;position:relative;top:0x;
 
 <script type="text/javascript">
 <?php require 'gen_search_index.php' ?>
-var ac = $("#as-selections-q").autoSuggest(search_index.items, {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q", preFill: search_init.items});
+var ac = $("#as-selections-q").autoSuggest(search_index.items, {asHtmlID: "q", preFill: search_init.items});
 </script>
 
 </div>
