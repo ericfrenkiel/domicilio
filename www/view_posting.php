@@ -89,6 +89,14 @@ function shareWithFriends() {
 	  }
 	);
 }
+function contactPoster() {
+jQuery.facebox('The poster has been notified of your interest. You will hear back soon!');
+$('#contactPoster').remove(); 
+}
+function savePosting() {
+jQuery.facebox('Posting saved! To see it again just type "me" into the magic bar.');
+$('#savePosting').remove(); 
+}
 
 </script>
 <div id="view">
@@ -106,8 +114,8 @@ function shareWithFriends() {
 
 <!--<div id="left">-->
 	
-	<div class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;" >Contact Poster</div>
-	<div class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;">Save for Later</div>
+	<div id="contactPoster" class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;"  onclick="contactPoster()">Contact Poster</div>
+	<div id ="savePosting" class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;" onclick="savePosting()">Save for Later</div>
 	<div class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;" onclick="shareWithFriends();">Ask my Friends</div>
 	<br /><br />
 <div id="tabs">
