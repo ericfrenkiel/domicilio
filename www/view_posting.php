@@ -66,6 +66,29 @@ function record(id) {
     }
   });
 }
+function shareWithFriends() {
+	FB.ui(
+	  {
+	    method: 'stream.publish',
+	    message: 'I\'m thinking of moving here soon. What do you think?',
+	    attachment: {
+	      name: '<?php echo $posting->getTitle() ?>',
+	      caption: '<?php echo $posting->getFullAddress() ?>',
+	      description: (
+	        ' '
+	      ),
+	      href: '<?php echo THEDOM_APP_URL ;?>view_posting.php?id=<?php echo $posting->getId(); ?>/'
+	    },
+	    action_links: [
+	      { text: 'Check out Domicilio', href: '<?php echo THEDOM_APP_URL; ?>' }
+	    ],
+	    user_message_prompt: 'Ask your friends if this is a good place to live.'
+	  },
+	  function(response) {
+	    
+	  }
+	);
+}
 
 </script>
 <div id="view">
@@ -83,9 +106,9 @@ function record(id) {
 
 <!--<div id="left">-->
 	
-	<div class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;">Contact Poster</div>
+	<div class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;" >Contact Poster</div>
 	<div class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;">Save for Later</div>
-	<div class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;">Ask my Friends</div>
+	<div class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;" onclick="shareWithFriends();">Ask my Friends</div>
 	<br /><br />
 <div id="tabs">
 <ul>
