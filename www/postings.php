@@ -24,7 +24,7 @@ function updateSearchResult() {
 }
 </script>
 
-<form action="view_listings.php?auth_nikita=1" name="searchForm">
+<form action="postings.php?auth_nikita=1" name="searchForm">
         <input type="hidden" name="auth_nikita" value="1" />
 	<input type="text" id="as-selections-q" value="" class="as-value rounded"/>
 <input type="submit" style="-moz-border-radius-bottomleft: 0pt; -moz-border-radius-topleft: 0pt; width: 120px; position: relative;" class="as-value v3_button v3_fixed_width" value="Search" name="submit">
