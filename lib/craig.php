@@ -71,6 +71,7 @@ function render_posting($_posting) {  global $posting;
   require('../lib/pattern.php');
   $temp_buf = ob_get_clean();
   ob_end_clean();
+  $temp_buf = preg_replace('/\s{2,}/',' ', $temp_buf);
   return $temp_buf;
 }
 
@@ -79,37 +80,44 @@ function fill_form($form, $id) {  require_once('../lib/Posting.php');
   $posting = Posting::fromDB($id);  $email = 'bigdude@gmail.com';
   $form = preg_replace(
     array(
+      "/<form/",
       "/<button type=\"button\".+?<br clear=\"all\"><\/div>/",
       "/<div id=\"map\">/",
       "/action=\"/",
       "/<div class=\"highlight\".+?<\/div><br>/",
+      "/(<\/textarea>)\s*?<br>\s*?<br>/",
       "/<div class=\"bchead\".+?<\/div>(.+?)<br>/",
       "/Rent:<\/span>.+?value=\"/", //Rent
       "/Posting Title:<\/span>.+?value=\"/", //Title
-      "/<textarea .+?>/", //Html
+      "/<br clear=\"all\">\s*?<span class=\"req\">Posting Description:"
+        . "<\/span>.+?(<textarea) (.+?>)/", //Html
       "/Your email address/", //Mail 1
       "/Type email address again/", //Mail 1
       "/xstreet0.+?value=\"/", //Street
       "/name=\"city\".+?value=\"/", //City
       "/name=\"region\".+?value=\"/", //State
+      "/Continue/",
     ),
     array(
+      "\${0} target=\"_blank\" ",
       "",
       "<div class=\"row\">",
       "action=\"https://post.craigslist.org",
       "",
       "$1",
+      "$1",
       "\${0}" . htmlspecialchars($posting->getCost()),
       "\${0}" . htmlspecialchars($posting->getTitle()),
-      "\${0}" . htmlspecialchars(render_posting($posting)),
+      "\${1} style=\"display:none;\" \${2}" . htmlspecialchars(render_posting($posting)),
       htmlspecialchars($email),
       htmlspecialchars($email),
       "\${0}" . htmlspecialchars($posting->getAddress()),
       "\${0}" . htmlspecialchars($posting->getCity()),
       "\${0}" . htmlspecialchars($posting->getState()),
+      "Preview and Post",
     ),
     $form);
-  return $form;
+  return $form . "<hr />";
 }
 
 function parse_craig_form($txt, $id) {
