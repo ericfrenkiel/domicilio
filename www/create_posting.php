@@ -31,12 +31,12 @@ if (isset($_GET['test'])) {
   $is_edit = true;
   if ($posting === false) {
     $posting = id(new Posting())
-                 ->setCost('1000')
-                 ->setTitle('10$ Super awesome place to live')
-                 ->setAddress('1601 S California Ave')
-                 ->setCity('Palo Alto')
+                 ->setCost('')
+                 ->setTitle('')
+                 ->setAddress('')
+                 ->setCity('')
                  ->setState('CA')
-                 ->setInfo('Wassup, just take it');
+                 ->setInfo('');
     $is_edit = false;
   }
 }
