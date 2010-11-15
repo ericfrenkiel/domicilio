@@ -23,12 +23,10 @@ if (isset($_GET['test'])) {
   } else {
     $posting->addToDB();
   }
-  header("Location: view.php?id=" . $posting->getId());
+  header("Location: view_posting.php?id=" . $posting->getId());
   return;
 } else {
-  require_once('../lib/PostingEditor.php');
-  $page_editor = new PostingEditor();
-  $id = idx($_GET, 'id', 0);
+  $id = (int)idx($_GET, 'id', 0);
   $posting = Posting::fromDB($id);
   $is_edit = true;
   if ($posting === false) {
@@ -41,13 +39,6 @@ if (isset($_GET['test'])) {
                  ->setInfo('Wassup, just take it');
     $is_edit = false;
   }
-  $page_editor->setAction('create_posting.php');
-	$page_editor->setCost('1000');
-	$page_editor->setTitle('10$ Super awesome place to live');
-	$page_editor->setAddress('1601 S California Ave');
-	$page_editor->setCity('Palo Alto');
-	$page_editor->setState('CA');
-	$page_editor->setInfo('Wassup, just take it');
 }
 ?>
 <?php include_css("editor.css");?>
@@ -58,13 +49,19 @@ if (isset($_GET['test'])) {
     });
   });
   </script>
-<h1>Create Your Posting</h1>
+<?php
+  if ($is_edit) {
+    echo "<h1>Edit Your Posting</h1>";
+  } else {
+    echo "<h1>Create Your Posting</h1>";
+  }
+?>
 <br />
 <br />
 <form id="posting_form" method="post"
-	action="<?php echo $page_editor->getAction() ?>"><input
+	action="create_posting.php"><input
 	type="hidden" name="posting_id"
-	value="<?php echo htmlspecialchars($page_editor->getId()) ?>">
+	value="<?php echo htmlspecialchars($posting->getId()) ?>">
 <div id="accordion">
 <h2><a href="#">Property Details</a></h2>
 <div>
@@ -73,21 +70,21 @@ if (isset($_GET['test'])) {
 <div class="edit">
 <div class="left_edit">Title:</div>
 <div class="right_edit"><input type="text" name="posting_title"
-	value="<?php echo htmlspecialchars($page_editor->getTitle()) ?> " />
+	value="<?php echo htmlspecialchars($posting->getTitle()) ?> " />
 </div>
 </div>
 
 <div class="edit">
 <div class="left_edit">Cost ($/per month):</div>
 <div class="right_edit"><input type="text" name="posting_cost"
-	value="<?php echo  htmlspecialchars($page_editor->getCost()) ?>" />
+	value="<?php echo htmlspecialchars($posting->getCost()); ?>" />
 </div>
 </div>
 
 <div class="edit">
 <div class="left_edit">Info:</div>
 <div class="right_edit"><textarea type="text" name="posting_info"
-	rows="10"> <?php echo  htmlspecialchars($page_editor->getInfo()) ?> </textarea>
+	rows="10"> <?php echo  htmlspecialchars($posting->getInfo()) ?> </textarea>
 </div>
 </div>
 
@@ -97,14 +94,14 @@ if (isset($_GET['test'])) {
 <div><div class="edit">
 <div class="left_edit">Address:</div>
 <div class="right_edit"><input type="text" name="posting_address"
-  value="<?php echo  htmlspecialchars($page_editor->getAddress())?>" />
+  value="<?php echo  htmlspecialchars($posting->getAddress())?>" />
 </div>
 </div>
 
 <div class="edit">
 <div class="left_edit">City:</div>
 <div class="right_edit"><input type="text" name="posting_city"
-  value="<?php echo  htmlspecialchars($page_editor->getCity()) ?>" />
+  value="<?php echo  htmlspecialchars($posting->getCity()) ?>" />
 </div>
 </div>
 
@@ -113,7 +110,7 @@ if (isset($_GET['test'])) {
 <div class="right_edit"><select name="posting_state" size="1">
 <?php
   global $state_list;
-  $cur_state = $page_editor->getState();
+  $cur_state = $posting->getState();
   foreach ($state_list as $short => $long): ?>
   <option value="<?php echo  $short ?>"
     <?php if ($short === $cur_state) echo "selected='selected'"; ?>>
@@ -264,7 +261,7 @@ if (isset($_GET['test'])) {
         //$("input:submit").button().css('background-color','#fea913');
       });
 
-    </script> 
+    </script>
 </div>
 </div>
 <div id="preview" style="display: none; width: 720px;"></div>

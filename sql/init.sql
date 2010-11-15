@@ -10,13 +10,14 @@ address varchar(1000),
 city varchar(64),
 state varchar(32),
 info varchar(20000),
-fb_album_id BIGINT,
+lat varchar(64),
+lng varchar(64),
 PRIMARY KEY (id)
 ) ENGINE = MYISAM;
 
-insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St, San Francisco, CA', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St., San Francisco, CA', 'San Francisco', 'CA', 'awesome place', 17236);
-insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, '1601 California St. Palo Alto, CA', 'Palo Alto', 'CA', 'awesome place', 17236);
+insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St, San Francisco, CA', 'San Francisco', 'CA', 'awesome place', '40.7142298', '-73.9614669');
+insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St., San Francisco, CA', 'San Francisco', 'CA', 'awesome place', '40.7142298', '-73.9614669');
+insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, '1601 California St. Palo Alto, CA', 'Palo Alto', 'CA', 'awesome place', '40.7142298', '-73.9614669');
 
 DROP TABLE IF EXISTS posting_photos;
 create table posting_photos (

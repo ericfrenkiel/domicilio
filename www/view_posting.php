@@ -7,11 +7,6 @@ $id = (int)idx($_GET, 'id', 0);
 $posting = Posting::fromDB($id);
 if ($posting) {
 ?>
-<<<<<<< HEAD
-
-=======
- <div id="fb-root"></div>
->>>>>>> 8e762cb85a6bdc6f6f9e511aa04a72c9ef145d3b
 <script>
 	$(function() {
 		$("#tabs").tabs();
