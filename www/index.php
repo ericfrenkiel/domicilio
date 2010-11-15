@@ -25,7 +25,7 @@ width:120px;position:relative;top:0x;
 
 <script type="text/javascript">
 <?php require 'gen_search_index.php' ?>
-var ac = $("#as-selections-q").autoSuggest(search_index.items, {asHtmlID: "q", preFill: search_init.items});
+var ac = $("#as-selections-q").autoSuggest(search_index.items, {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "q", preFill: search_init.items});
 </script>
 
 </div>

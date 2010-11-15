@@ -8,7 +8,8 @@
     if (!$ch) {
       $ch = curl_init();
     }
-    if (!isset($params['method'])) {      $params['method'] = 'post';
+    if (!isset($params['method'])) {
+      $params['method'] = 'post';
     }
     if (!isset($params['access_token'])) {
       $params['access_token'] = THEDOM_APP_ID . '|' . THEDOM_APP_SECRET;
@@ -39,7 +40,8 @@
     return $result;
   }
 
-  function upload_photo($photo, $photo_text = '') {    global $session;
+  function upload_photo($photo, $photo_text = '') {
+    global $session;
     $res_coded = curl_request('https://graph.facebook.com/me/photos',
       array('message' => $photo_text,
             'source' => '@' . realpath($photo),
@@ -58,7 +60,8 @@
     return $res;
   }
 
-  function init_fb() {    $this_url = THEDOM_APP_URL . $_SERVER['PHP_SELF'];
+  function init_fb() {
+    $this_url = THEDOM_APP_URL . $_SERVER['PHP_SELF'];
     global $facebook;
     $facebook = new Facebook(array(
       'appId'  => THEDOM_APP_ID,
@@ -88,7 +91,7 @@
       {
         $login_url = $facebook->getLoginUrl(array(
           'next' => $this_url,
-          'req_perms' => 'user_photos,user_videos,user_checkins',
+          'req_perms' => 'user_photos,user_videos,user_checkins,publish_stream,email,friends_checkins',
           'cancel_url' => $this_url . "?cancel"));
 
         die("<script>window.top.location='" . addslashes($login_url) .

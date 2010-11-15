@@ -15,7 +15,7 @@
 <script>
 function updateSearchResult() {
   $.ajax({
-      url: "/ajax/search_results.php?q=" + $("#as-values-q").val(),
+      url: "/search_results.php?q=" + $("#as-values-q").val(),
         cache: false,
         success: function(html){
         $("#search_results").html(html);

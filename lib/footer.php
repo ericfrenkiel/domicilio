@@ -42,6 +42,28 @@
 <body>
  <div id="fb-root"></div>
  <script>
+
+   FB.init({
+     appId  : '<?php echo THEDOM_APP_ID ?>',
+     status : true, // check login status
+     cookie : true, // enable cookies to allow the server to access the session
+     xfbml  : false  // parse XFBML
+   });
+
+FB.login(function(response) {
+  if (response.session) {
+    if (response.perms) {
+      // user is logged in and granted some permissions.
+      // perms is a comma separated list of granted permissions
+    } else {
+      // user is logged in, but did not grant any permissions
+    }
+  } else {
+    // user is not logged in
+  }
+}, {perms:'user_photos,user_videos,user_checkins,publish_stream,email,friends_checkins'});
+
+
    FB.Canvas.setAutoResize();
  </script>
                 <div id="container">

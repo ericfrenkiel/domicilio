@@ -1,8 +1,10 @@
 <?php
+//      require_once('../lib/header.php');
         $filter = array();
 
         $all = array();
         $initial = array();
+        $id_to_address = array();
 
         foreach (split(',', $_GET['as_values_q']) as $l) {
                 $filter[$l] = 1;
@@ -51,8 +53,11 @@
 
         foreach ($friends->{'data'} as $f) {
                 $id = $f->{'id'};
-                add_filtered(&$all, 'f_'.$f->{'id'}, 'near '.$f->{'name'}, "https://graph.facebook.com/$id/picture");
+
+                add_filtered(&$all, 'n_'.$f->{'id'}, 'near '.$f->{'name'}, "https://graph.facebook.com/$id/picture");
         }
+
+
         echo 'var search_index = '.Json_encode(array('items' => $all)).';';
         echo 'var search_init = '.Json_encode(array('items' => $initial)).';';
 ?>

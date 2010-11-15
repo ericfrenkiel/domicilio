@@ -1,4 +1,5 @@
 <?php
+        require_once '../lib/header.php';
 	$LISTINGS_PER_PAGE = 100;
 	$link = mysql_connect('localhost', 'thedom_thedom', 'ETP+}fViQKK_');
 	mysql_select_db('thedom_info', $link);
@@ -9,6 +10,7 @@
 	$amenities_predicate = '';
 	$location_predicate = '';
         $bm_predicate = '';
+        $users = array();
 	foreach ($locations as $l) {
 		if (strncasecmp($l, 'b_', 2) == 0) {
 			$bedroom_predicate .= ' OR bedrooms = '.substr($l, 2);
@@ -24,13 +26,54 @@
                 if (strncasecmp($l, 'bm', 2) == 0 && $uid) {
                         $bm_predicate = "AND exists(select * from posting_interest where postings.id = posting_interest.posting_id AND profile_id=$uid)";
                 }
+                if (strncasecmp($l, 'n_', 2) == 0) {
+                        $users[] = substr($l, 2);
+                }
 	}
 	$bedroom_predicate .= ')';
 
 	if ($bedroom_predicate == 'AND (1 = 0)') $bedroom_predicate = '';
 
-	// amenities predicate
-	$query = "select distinct postings.id, postings.title, postings.cost, postings.address, postings.city, postings.state, posting_photos.posting_id, posting_photos.photo_url_thumbnail from postings inner join posting_photos on postings.id = posting_photos.posting_id WHERE 1 = 1 $bedroom_predicate $location_predicate $amenities_predicate $bm_predicate";
+
+        $locations = array();
+        $locations_predicate;
+        $locations_project;
+        if ($users) {
+                foreach ($users as $fb_id) {
+                        $locations[$fb_id] = array();
+                        $places = json_decode(curl_request("https://graph.facebook.com/$fb_id/checkins", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET')));
+                        foreach ($places->{'data'} as $checkin) {
+                                $locations[$fb_id][] = array('lat' => $checkin->{place}->{location}->{latitude}, 'lon' => $checkin->{place}->{'location'}->{'longitude'});
+                        }
+                }
+
+                $locations_predicate = "AND (1 = 0";
+                foreach ($users as $fb_id) {
+                        $locations_project .= ", 1 = 0";
+                        foreach ($locations[$fb_id] as $l) {
+                                $cond = " or GLength(LineStringFromWKB(LineString(postings.location, GeomFromText('POINT({$l['lat']} {$l['lon']})')))) < 0.1";
+                                $locations_project .= " $cond";
+                                $locations_predicate .= " $cond";
+                        }
+                        $locations_project .= " as d_$fb_id";
+                }
+                $locations_predicate .= ")";
+        }
+
+	$query = "select distinct postings.id,
+                        postings.title,
+                        postings.cost,
+                        postings.address,
+                        postings.city,
+                        postings.state,
+                        posting_photos.posting_id,
+                        posting_photos.photo_url_thumbnail
+                        $locations_project
+                from
+                        postings
+                inner join posting_photos on postings.id = posting_photos.posting_id
+                WHERE 1 = 1
+                        $bedroom_predicate $location_predicate $amenities_predicate $bm_predicate $locations_predicate";
 	$result= mysql_query( $query );
 	if (!$result) {
 	  $message  = 'Invalid query: ' . mysql_error() . "\n";
@@ -38,14 +81,11 @@
 	  die($message);
 	}
 
+
+
 // createan array and traverse it twcice one for the ,ap and once for the results
 $result_arr = array();
-$uniq = array();
 while ($row = mysql_fetch_assoc($result)) {
-  if (isset($uniq[$row[id]])) {
-    continue;
-  }
-  $uniq[$row[id]] = true;
   $result_arr[] = $row;
  }
 mysql_close();
@@ -69,6 +109,16 @@ foreach($result_arr as $row):?>
        </div>
    <div class="price_modifier">                    Per month
     </div>
+
+<div class="face_pil">
+<?php
+        foreach ($users as $fb_id) {
+                if ($row["d_$fb_id"]) {
+                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic/>';
+                }
+        }
+?>
+</div>
                </div>
 
   </li>

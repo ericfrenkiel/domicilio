@@ -1141,3 +1141,6 @@ line-height:22px;
 background-position:0 -42px !important;
 border-color:#679BBC !important;
 }
+#as-results-q {
+position: relative; top: 33px;
+}
