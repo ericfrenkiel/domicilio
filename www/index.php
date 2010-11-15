@@ -6,7 +6,7 @@ require_once('../lib/header.php');
 <div id="tagline" style="margin: 0px auto; margin-bottom: 30px; margin-top:30px; width: 500px; height: auto;">
 
 
-<span style="margin:20px;font-size: 36px;height: 50px;">Find your next apartment<font align="center" style="margin-top:10px; font-size: 20px;position:relative;left:130px;"><br />(<i>near your friends</i>)</font></span>
+<span style="margin:20px;font-size: 36px;height: 50px;">Find your next apartment<font align="center" style="margin-top:10px; font-size: 20px;position:relative;left:130px;"><br /><i>near your friends!</i></font></span>
 </div>
 
 

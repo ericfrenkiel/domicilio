@@ -55,7 +55,7 @@
 
   }
 ?>
-				<li><a href="/view_listings.php">Search Listings</a></li>
+				<li><a href="/postings.php">Search Postings</a></li>
                                 <li><a href="/create_posting.php"><img style="border:none;" src="/images/craigslist.png"><span style="font-weight: bold;float:right;margin-left:3px;">Post on Craigslist</span></a></li>
                           </ol>
                         </div>

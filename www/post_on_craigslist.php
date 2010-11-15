@@ -8,9 +8,8 @@ require_once('../lib/craig.php');
 $id = (int)idx($_GET, 'id', 0);
 $posting = Posting::fromDB($id);
 if ($posting && $posting->getOwnerId() === $uid) {
-  require_once('../lib/PostingRenderer.php');
-  $renderer = new PostingRenderer($posting);
-  echo $renderer->render();
+  echo "<h1><img src=\"/images/craigslist_logo.png\" style=\"width:50px; height:50px; vertical-align:middle;\">Post " .
+   htmlspecialchars($posting->getTitle()) . " on Craigslist</h1><br style=\"clear:both;\"/><br />";
 ?>
 <div id="fb-root"></div>
 <script>
@@ -24,20 +23,22 @@ if ($posting && $posting->getOwnerId() === $uid) {
     document.getElementById('fb-root').appendChild(e);
   }());
 </script>
-<hr />
 <div>
 <div id="div_sel_1" style="display:none;">
 <label for="sel_1" style="width:150px">World place</label>
 <select name="sel_1" id="sel_1" style="width:500px"></select>
 </div>
+<image id="loader_1" style="display:none;" src="images/js/loading.gif" />
 <div id="div_sel_2" style="display:none;">
 <label for="sel_2" style="width:150px">Metro Area</label>
 <select name="sel_2" id="sel_2" style="width:500px"></select>
 </div>
+<image id="loader_2" style="display:none;" src="images/js/loading.gif" /
 <div id="div_sel_3" style="display:none;">
 <label for="sel_3" style="width:150px">Region</label>
 <select name="sel_3" id="sel_3" style="width:500px"></select>
 </div>
+<image id="loader_3" style="display:none;" src="images/js/loading.gif" />
 </div>
 
 <script>
@@ -50,20 +51,29 @@ function fillSelect(id, options) {
     if (obj == '/') {
       continue;
     }
-    $('#sel_' + id).append(
-      '<option>' + options[obj] + '</option>'
-    );
-    $('#sel_' + id + ' option:last-child').val(obj);
+    if (count == 0 && id == 1) {
+      $('#sel_' + id).append(
+        '<option>'  + '</option>'
+      );
+      $('#sel_' + id + ' option:last-child').val('');
+    } else {
+      $('#sel_' + id).append(
+        '<option>' + options[obj] + '</option>'
+      );
+      $('#sel_' + id + ' option:last-child').val(obj);
+    }
     ++ count;
   }
   if (count) {
     $('#div_sel_' + id).css('display', '');
     $('#sel_' + id).change(function() {
       var url = $('option:selected', '#sel_' + id).val();
-      if (id == 1) {
-        url += '/H/apa';
+      if (url) {
+        if (id == 1) {
+          url += '/H/apa';
+        }
+        requestSelect(id + 1, url);
       }
-      requestSelect(id + 1, url);
     }).change();
   }
 }
@@ -73,6 +83,14 @@ function drawForm(data) {
   $('#div_form').css('display', '');
 }
 
+function draw_loading(id) {
+  $('#loader_' + id).css('display', '');
+}
+
+function hide_loading(id) {
+  $('#loader_' + id).css('display', 'none');
+}
+
 function requestSelect(id, url) {
   for (var i = id; i <= 3; ++ i) {
     $('#sel_' + i).unbind();
@@ -80,11 +98,13 @@ function requestSelect(id, url) {
     $('#div_sel_' + i).css('display', 'none');
   }
   $('#div_form').css('display', 'none');
+  draw_loading(id);
   $.post("craig_ajax.php", {
       url: url,
       posting_id: posting_id
       }, function(data) {
     var obj = $.parseJSON(data);
+    hide_loading(id);
     if (obj.success) {
       if (obj.form) {
         drawForm(obj.data);
@@ -100,6 +120,7 @@ function requestSelect(id, url) {
 }
 requestSelect(1, '/');
 </script>
+<image id="loader_4" style="display:none;" src="images/js/loading.gif" />
 <hr>
 <div id="div_form" class="div_form" style="display:none;">
 </div>

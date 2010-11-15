@@ -12,6 +12,7 @@ class Posting {
     $info,
     $cost,
     $ownerId,
+    $location = array('lat' => 0, 'lng' => 0),
     $photos = array();
 
   public static function fromPOST() {
@@ -33,12 +34,26 @@ class Posting {
       $photo_preview = unsafe_post('img_input_preview_' . $photo_id);
       $posting->addPhoto($photo_id, $photo_preview, $photo_src);
     }
+    $posting->generateLocation();
     return $posting;
+  }
+
+  protected function generateLocation() {
+    $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" .
+      $this->getEncodedAddress() . "&sensor=false";
+    $res = easy_curl($url);
+    if ($res) {
+      $obj = json_decode($res);
+      if ($obj->status == "OK" && count($obj->results)) {
+        $loc = $obj->results[0]->geometry->location;
+        $this->setLocation($loc->lat, $loc->lng);
+      }
+    }
   }
 
   public static function fromDB($id) {
     $res = db_query("select id, title, cost, address, city, state,"
-      . " info, owner_id from postings where id='" . db_escape($id) . "';");
+      . " info, owner_id, lat, lng from postings where id='" . db_escape($id) . "';");
     if ($arr = db_fetch($res)) {
       $id = $arr[0];
       $posting = id(new Posting())
@@ -49,7 +64,8 @@ class Posting {
                    ->setCity(edx($arr, 4, ''))
                    ->setState(edx($arr, 5))
                    ->setInfo(edx($arr, 6, 'No info'))
-                   ->setOwnerId(edx($arr, 7, 0));
+                   ->setOwnerId(edx($arr, 7, 0))
+                   ->setLocation(edx($arr, 8, 0), edx($arr, 9, 0));
       $res = db_query("select photo_id, photo_url,"
           . " photo_url_thumbnail from posting_photos where posting_id = '"
           . db_escape($id) . "';");
@@ -77,14 +93,16 @@ class Posting {
 
   public function addToDB() {
     $res = db_query("insert into postings (title, cost, address, city, state,"
-      . " info, owner_id) values ("
+      . " info, owner_id, lat, lng) values ("
       . "'" . db_escape($this->title) . "', "
       . "'" . db_escape($this->cost) . "', "
       . "'" . db_escape($this->address) . "', "
       . "'" . db_escape($this->city) . "', "
       . "'" . db_escape($this->state) . "', "
       . "'" . db_escape($this->info) . "', "
-      . "'" . db_escape($this->ownerId) . "'"
+      . "'" . db_escape($this->ownerId) . "', "
+      . "'" . db_escape($this->location['lat']) . "', "
+      . "'" . db_escape($this->location['lng']) . "'"
       . ");"
     );
     $this->id = mysql_insert_id();
@@ -104,6 +122,8 @@ class Posting {
         . "state='" . db_escape($this->state) . "', "
         . "info='" . db_escape($this->info) . "', "
         . "owner_id='" . db_escape($this->ownerId) . "' "
+        . "lat='" . db_escape($this->location['lat']) . "' "
+        . "lng='" . db_escape($this->location['lng']) . "' "
         . "where id='" . db_escape($this->id) . "';"
       );
       $res = db_query("delete from posting_photos where posting_id = '"
@@ -113,15 +133,28 @@ class Posting {
     return $this;
   }
 
+  public function setLocation($new_lat, $new_lng) {
+    $this->location = array('lat' => $new_lat, 'lng' => $new_lng);
+    return $this;
+  }
+
+  public function getLocation() {
+    return $this->location;
+  }
+
   public function getFullAddress() {
     return $this->getAddress() . ", " . $this->getCity() . ", "
       . $this->getState();
   }
 
-  public function getStaticMapUrl() {
-    $location = urlencode($this->getAddress()) . ","
+  protected function getEncodedAddress() {
+    return urlencode($this->getAddress()) . ","
       . urlencode($this->getCity()) . ","
       . urlencode($this->getState());
+  }
+
+  public function getStaticMapUrl() {
+    $location = $this->getEncodedAddress();
     return "http://maps.google.com/maps/api/staticmap?center=" . $location
       . "&zoom=14&size=256x256&markers=color:blue|label:H|"
       . $location . "&sensor=false";
