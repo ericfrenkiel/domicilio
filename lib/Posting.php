@@ -17,13 +17,13 @@ class Posting {
 
   public static function fromPOST() {
     $posting = id(new Posting())
-                 ->setId(edx($_POST, 'posting_id', false))
-                 ->setTitle(edx($_POST, 'posting_title', 'New posting'))
-                 ->setInfo(edx($_POST, 'posting_info', 'No info'))
-                 ->setCity(edx($_POST, 'posting_city', ''))
-                 ->setState(edx($_POST, 'posting_state'))
-                 ->setAddress(edx($_POST, 'posting_address', ''))
-                 ->setCost(edx($_POST, 'posting_cost', 0));
+                 ->setId(unsafe_post('posting_id', false))
+                 ->setTitle(unsafe_post('posting_title', 'New posting'))
+                 ->setInfo(unsafe_post('posting_info', 'No info'))
+                 ->setCity(unsafe_post('posting_city', ''))
+                 ->setState(unsafe_post('posting_state'))
+                 ->setAddress(unsafe_post('posting_address', ''))
+                 ->setCost(unsafe_post('posting_cost', 0));
     $img_id_str = 'img_input_id_';
     foreach($_POST as $key => $val) {
       if (substr($key, 0, strlen($img_id_str)) !== $img_id_str) {
@@ -53,7 +53,8 @@ class Posting {
 
   public static function fromDB($id) {
     $res = db_query("select id, title, cost, address, city, state,"
-      . " info, owner_id, lat, lng from postings where id='" . db_escape($id) . "';");
+      . " info, owner_id, X(location), Y(location) from postings where id='"
+      . db_escape($id) . "';");
     if ($arr = db_fetch($res)) {
       $id = $arr[0];
       $posting = id(new Posting())
@@ -93,7 +94,7 @@ class Posting {
 
   public function addToDB() {
     $res = db_query("insert into postings (title, cost, address, city, state,"
-      . " info, owner_id, lat, lng) values ("
+      . " info, owner_id, location) values ("
       . "'" . db_escape($this->title) . "', "
       . "'" . db_escape($this->cost) . "', "
       . "'" . db_escape($this->address) . "', "
@@ -101,8 +102,8 @@ class Posting {
       . "'" . db_escape($this->state) . "', "
       . "'" . db_escape($this->info) . "', "
       . "'" . db_escape($this->ownerId) . "', "
-      . "'" . db_escape($this->location['lat']) . "', "
-      . "'" . db_escape($this->location['lng']) . "'"
+      . "GeomFromText('POINT(" . db_escape($this->location['lat'])
+        . " " . db_escape($this->location['lng']) . ")') "
       . ");"
     );
     $this->id = mysql_insert_id();
@@ -121,9 +122,9 @@ class Posting {
         . "city='" . db_escape($this->city) . "', "
         . "state='" . db_escape($this->state) . "', "
         . "info='" . db_escape($this->info) . "', "
-        . "owner_id='" . db_escape($this->ownerId) . "' "
-        . "lat='" . db_escape($this->location['lat']) . "' "
-        . "lng='" . db_escape($this->location['lng']) . "' "
+        . "owner_id='" . db_escape($this->ownerId) . "', "
+        . "location=GeomFromText('POINT(" . db_escape($this->location['lat'])
+          . " " . db_escape($this->location['lng']) . ")') "
         . "where id='" . db_escape($this->id) . "';"
       );
       $res = db_query("delete from posting_photos where posting_id = '"

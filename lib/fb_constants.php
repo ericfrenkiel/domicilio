@@ -1,5 +1,5 @@
 <?
-  define( 'THEDOM_APP_URL', "http://apps.facebook.com/nikita_domicilio/" );
-  define( 'THEDOM_APP_ID', "111665148898653" );
-  define( 'THEDOM_APP_SECRET', "122d40eac2a366b5e8d05b83ba93ce95" );
+  define( 'THEDOM_APP_URL', "http://apps.facebook.com/domeric/" );
+  define( 'THEDOM_APP_ID', "168089563214696" );
+  define( 'THEDOM_APP_SECRET', "2024c53da1f4a41967923d04b6787cf6" );
 ?>

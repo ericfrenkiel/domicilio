@@ -46,7 +46,7 @@ if (isset($_GET['uber_shity_secret_test'])) {
 <script type="text/javascript">
   $(function() {
     $("#accordion").accordion({
-      active: false, collapsible: true, autoHeight: false
+      active: 0, collapsible: false, autoHeight: false
     });
   });
   </script>

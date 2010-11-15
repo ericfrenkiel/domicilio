@@ -13,7 +13,7 @@ require_once('../lib/header.php');
 <div id="bigbar" style="width: auto; height: 50px;margin:0px auto;">
 
 <form action="/postings.php">
-	<input type="text" id="as-selections-q" value="" class="as-value rounded" style="float:left;height: 28px;"/>
+	<input type="text" id="as-selections-q" value="" class="as-value rounded" style="float:left;height: 28px; -moz-radius-border: 5px;-webkit-radius-border: 5px;"/>
 <input name="submit" type="submit" value="Search" class="v3_button v3_fixed_width" style="-moz-border-radius-bottomleft:0;
 -moz-border-radius-topleft:0;
 -webkit-border-radius-topleft:0;
