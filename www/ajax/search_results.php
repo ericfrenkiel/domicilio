@@ -30,7 +30,7 @@
 	if ($bedroom_predicate == 'AND (1 = 0)') $bedroom_predicate = '';
 
 	// amenities predicate
-	$query = "select * from postings inner join posting_photos on postings.id = posting_photos.posting_id WHERE 1 = 1 $bedroom_predicate $location_predicate $amenities_predicate $bm_predicate";
+	$query = "select distinct postings.id, postings.title, postings.cost, postings.address, postings.city, postings.state, posting_photos.posting_id, posting_photos.photo_url_thumbnail from postings inner join posting_photos on postings.id = posting_photos.posting_id WHERE 1 = 1 $bedroom_predicate $location_predicate $amenities_predicate $bm_predicate";
 	$result= mysql_query( $query );
 	if (!$result) {
 	  $message  = 'Invalid query: ' . mysql_error() . "\n";
@@ -50,7 +50,7 @@ mysql_close();
 <ul>
 <?php
 foreach($result_arr as $row):?>
-  <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;padding-top:5px;">
+  <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;padding-top:5px;display:block;">
   <div class="apt_img" style="display: block; float:left;  min-width: 100px; height: 95px;margin-right:1q0px;"><a href="/view_posting.php?id=<?php echo $row[id]; ?>">
         <img style="padding:5px;border:none;" height="65" src="<?php echo $row[photo_url_thumbnail]; ?>" /></a></div>
   <div class="apt_info" style="display:block;">

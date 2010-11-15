@@ -267,7 +267,7 @@ if (isset($_GET['test'])) {
 <div id="preview" style="display: none; width: 720px;"></div>
 <div class="edit">
   <div class="center_edit">
-    <input class="v3_button v3_fixed_width" type="submit" name="Create" value="Create new posting" />
+    <input class="v3_button v3_fixed_width" type="submit" name="Create" value="Continue" />
     <input class="v3_button v3_fixed_width" type="submit" name="Create" value="Preview" onclick="preview();return false;" /></div>
 </div>
 
