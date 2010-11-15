@@ -92,11 +92,11 @@ function shareWithFriends() {
 }
 function contactPoster() {
 jQuery.facebox('The poster has been notified of your interest. You will hear back soon!');
-$('#contactPoster').remove(); 
+$('#contactPoster').fadeOut(); 
 }
 function savePosting() {
 jQuery.facebox('Posting saved! To see it again just type "me" into the magic bar.');
-$('#savePosting').remove(); 
+$('#savePosting').fadeOut(); 
 }
 
 </script>
