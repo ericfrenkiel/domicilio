@@ -8,7 +8,8 @@ require_once('../lib/craig.php');
 $id = (int)idx($_GET, 'id', 0);
 $posting = Posting::fromDB($id);
 if ($posting && $posting->getOwnerId() === $uid) {
-  echo "<h1>Post " . htmlspecialchars($posting->getTitle()) . " on Craigslist</h1><br /><br />";
+  echo "<h1><img src=\"/images/craigslist_logo.png\" style=\"width:50px; height:50px; vertical-align:middle;\">Post " .
+   htmlspecialchars($posting->getTitle()) . " on Craigslist</h1><br style=\"clear:both;\"/><br />";
 ?>
 <div id="fb-root"></div>
 <script>
@@ -50,20 +51,29 @@ function fillSelect(id, options) {
     if (obj == '/') {
       continue;
     }
-    $('#sel_' + id).append(
-      '<option>' + options[obj] + '</option>'
-    );
-    $('#sel_' + id + ' option:last-child').val(obj);
+    if (count == 0 && id == 1) {
+      $('#sel_' + id).append(
+        '<option>'  + '</option>'
+      );
+      $('#sel_' + id + ' option:last-child').val('');
+    } else {
+      $('#sel_' + id).append(
+        '<option>' + options[obj] + '</option>'
+      );
+      $('#sel_' + id + ' option:last-child').val(obj);
+    }
     ++ count;
   }
   if (count) {
     $('#div_sel_' + id).css('display', '');
     $('#sel_' + id).change(function() {
       var url = $('option:selected', '#sel_' + id).val();
-      if (id == 1) {
-        url += '/H/apa';
+      if (url) {
+        if (id == 1) {
+          url += '/H/apa';
+        }
+        requestSelect(id + 1, url);
       }
-      requestSelect(id + 1, url);
     }).change();
   }
 }

@@ -5,7 +5,7 @@ require_once('../lib/Posting.php');
 require_once('../lib/constants/states.php');
 include_css('fileuploader.css');
 include_js('fileuploader.js');
-if (isset($_GET['test'])) {
+if (isset($_GET['uber_shity_secret_test'])) {
   $res = db_query('desc postings');
   echo "<pre>";
   while ($arr = db_fetch($res)) {
@@ -17,13 +17,14 @@ if (isset($_GET['test'])) {
   echo "</pre>";
 } else if (isset($_POST['posting_submitted'])) {
   $posting = Posting::fromPOST();
-  $posting->setOwnerId(123);
+  global $uid;
+  $posting->setOwnerId($uid);
   if ($posting->getId()) {
     $posting->updateDB();
   } else {
     $posting->addToDB();
   }
-  header("Location: view_posting.php?id=" . $posting->getId());
+  header("Location: post_on_craigslist.php?id=" . $posting->getId());
   return;
 } else {
   $id = (int)idx($_GET, 'id', 0);
