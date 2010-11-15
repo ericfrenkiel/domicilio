@@ -980,6 +980,7 @@ border-width:1px 0 1px 1px;
 -webkit-border-bottom-right-radius: 0;
 font-weight:bold;
 font-family:inherit;
+overflow:hidden;
 letter-spacing:-.5px;}
     #as-selections-q:focus{outline:none;}
 
