@@ -45,7 +45,7 @@ if (isset($_GET['test'])) {
 <script type="text/javascript">
   $(function() {
     $("#accordion").accordion({
-      active: false, collapsible: true, autoHeight: false
+      active: 0, collapsible: false, autoHeight: true
     });
   });
   </script>
