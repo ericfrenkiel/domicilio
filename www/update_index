@@ -1,3 +1,0 @@
-#!/bin/bash
-
-php gen_search_index.php > js/search_index.js

@@ -7,6 +7,7 @@ $id = (int)idx($_GET, 'id', 0);
 $posting = Posting::fromDB($id);
 if ($posting) {
 ?>
+ <div id="fb-root"></div>
 <script>
 	$(function() {
 		$("#tabs").tabs();
@@ -17,6 +18,9 @@ if ($posting) {
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=false">
 </script>
+<script type="text/javascript" src="/js/galleria.js"></script>
+<script>Galleria.loadTheme('js/themes/classic/galleria.classic.js');</script>
+
  <script>
 
 function make_request(id, fb_id) {
@@ -84,13 +88,16 @@ function record(id) {
 	<li><a href="#tabs-4">Streetview</a></li>
 	<li><a href="#tabs-1">Contact Information</a></li>
 </ul>
-<div id="tabs-2" style="min-height: 400px; min-width:500px; text-align: center;">
-<?php
-foreach ($posting->getPhotos() as $photo) {
-  echo "<img src=\"" . htmlspecialchars($photo['src']) . "\" "
-    . "style=\"max-width:450px;\" /><br />";
-}
-?>
+
+
+<div id="tabs-2" style="min-height: 400px; min-width:500px; text-align: center;background-color: black;">
+	<div class="images" style="height:600px; width: 590px;">
+		<?php foreach ($posting->getPhotos() as $photo): ?>
+  			<img  src=" <?php echo  htmlspecialchars($photo['src']);?> "/>
+		<?php endforeach; ?>
+	</div>
+
+<script>$('.images').galleria();</script>
 </div>
 <div id="tabs-3" style="min-height: 400px; min-width:500px;" >
 <script>
