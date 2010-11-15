@@ -53,7 +53,8 @@ class Posting {
 
   public static function fromDB($id) {
     $res = db_query("select id, title, cost, address, city, state,"
-      . " info, owner_id, lat, lng from postings where id='" . db_escape($id) . "';");
+      . " info, owner_id, X(location), Y(location) from postings where id='"
+      . db_escape($id) . "';");
     if ($arr = db_fetch($res)) {
       $id = $arr[0];
       $posting = id(new Posting())
@@ -101,8 +102,8 @@ class Posting {
       . "'" . db_escape($this->state) . "', "
       . "'" . db_escape($this->info) . "', "
       . "'" . db_escape($this->ownerId) . "', "
-      . "'" . db_escape($this->location['lat']) . "', "
-      . "'" . db_escape($this->location['lng']) . "'"
+      . "GeomFromText('POINT(" . db_escape($this->location['lat'])
+        . " " . db_escape($this->location['lng']) . ")') "
       . ");"
     );
     $this->id = mysql_insert_id();
@@ -121,9 +122,9 @@ class Posting {
         . "city='" . db_escape($this->city) . "', "
         . "state='" . db_escape($this->state) . "', "
         . "info='" . db_escape($this->info) . "', "
-        . "owner_id='" . db_escape($this->ownerId) . "' "
-        . "lat='" . db_escape($this->location['lat']) . "' "
-        . "lng='" . db_escape($this->location['lng']) . "' "
+        . "owner_id='" . db_escape($this->ownerId) . "', "
+        . "location=GeomFromText('POINT(" . db_escape($this->location['lat'])
+          . " " . db_escape($this->location['lng']) . ")') "
         . "where id='" . db_escape($this->id) . "';"
       );
       $res = db_query("delete from posting_photos where posting_id = '"
