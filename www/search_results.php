@@ -34,6 +34,19 @@
 
 	if ($bedroom_predicate == 'AND (1 = 0)') $bedroom_predicate = '';
 
+function getCheckins($fb_id) {
+        global $session;
+	$result= mysql_query( "select * from cache where fb_id = $fb_id" );
+        $row = mysql_fetch_assoc($result);
+        if ($row) {
+                $places = json_decode($row['data']);
+        } else {
+                $places_str = curl_request("https://graph.facebook.com/$fb_id/checkins", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET'));
+                $places = json_decode($places_str);
+                mysql_query("insert into cache values($fb_id,'".mysql_real_escape_string( $places_str )."')");
+        }
+        return $places;
+}
 
         $locations = array();
         $locations_predicate;
@@ -41,7 +54,7 @@
         if ($users) {
                 foreach ($users as $fb_id) {
                         $locations[$fb_id] = array();
-                        $places = json_decode(curl_request("https://graph.facebook.com/$fb_id/checkins", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET')));
+                        $places = getCheckins($fb_id);
                         foreach ($places->{'data'} as $checkin) {
                                 $locations[$fb_id][] = array('lat' => $checkin->{place}->{location}->{latitude}, 'lon' => $checkin->{place}->{'location'}->{'longitude'});
                         }
