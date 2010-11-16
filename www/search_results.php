@@ -85,7 +85,12 @@
 
 // createan array and traverse it twcice one for the ,ap and once for the results
 $result_arr = array();
+$uniq = array();
 while ($row = mysql_fetch_assoc($result)) {
+  if (isset($uniq[$row[id]])) {
+    continue;
+  }
+  $uniq[$row[id]] = true;
   $result_arr[] = $row;
  }
 mysql_close();
