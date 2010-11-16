@@ -15,8 +15,11 @@ PRIMARY KEY (id)
 ) ENGINE = MYISAM;
 
 insert into postings values (1, 208699			, 'Eric\'s place', 1800, 2, '500 3rd St', 'San Francisco', 'CA', 'awesome place', GeomFromText('POINT(37.7809910 -122.3955896)'));
-insert into postings values (2, 660659391		, 'Nikita\'s place', 1800, 1, '674 Bay St.', 'San Francisco', 'CA', 'awesome place', GeomFromText('POINT(37.8051129 -122.4178697)'));
-insert into postings values (3, 100000898798374	, 'Evgeny\' place', 1800, 3, '1601 California Ave', 'Palo Alto', 'CA', 'awesome place', GeomFromText('POINT(37.4159670 -122.1517860)'));
+insert into postings values (2, 208699		, 'Nikita\'s place', 1800, 1, '674 Bay St.', 'San Francisco', 'CA', 'awesome place', GeomFromText('POINT(37.8051129 -122.4178697)'));
+insert into postings values (3, 208699	, 'Evgeny\' place', 1800, 3, '1601 California Ave', 'Palo Alto', 'CA', 'awesome place', GeomFromText('POINT(37.4159670 -122.1517860)'));
+
+#660659391
+#100000898798374
 
 DROP TABLE IF EXISTS posting_photos;
 create table posting_photos (

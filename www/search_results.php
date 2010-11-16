@@ -98,7 +98,12 @@ function getCheckins($fb_id) {
 
 // createan array and traverse it twcice one for the ,ap and once for the results
 $result_arr = array();
+$uniq = array();
 while ($row = mysql_fetch_assoc($result)) {
+  if (isset($uniq[$row[id]])) {
+    continue;
+  }
+  $uniq[$row[id]] = true;
   $result_arr[] = $row;
  }
 mysql_close();
@@ -109,8 +114,10 @@ mysql_close();
 <?php
 foreach($result_arr as $row):?>
   <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;padding-top:5px;display:block;">
-  <div class="apt_img" style="display: block; float:left;  min-width: 100px; height: 95px;margin-right:1q0px;"><a href="/view_posting.php?id=<?php echo $row[id]; ?>">
+<div class="pop_image_small"> 
+<div class="apt_img" style="display: block; float:left;  min-width: 100px; height: 95px;margin-right:1q0px;"><a class="image_link" href="/view_posting.php?id=<?php echo $row[id]; ?>">
         <img style="padding:5px;border:none;" height="65" src="<?php echo $row[photo_url_thumbnail]; ?>" /></a></div>
+</div>
   <div class="apt_info" style="display:block;">
     <div class="apt_title" style="float:left;display:block;"><a href="/view_posting.php?id=<?php echo $row[id]; ?>"><?php echo $row[title];?></a> </div>
     <div class="apt_address" style="float:left;display:block;width:500px;"><?php echo $row[address]?></div>
@@ -123,16 +130,16 @@ foreach($result_arr as $row):?>
    <div class="price_modifier">                    Per month
     </div>
 
+               </div>
 <div class="face_pil">
 <?php
         foreach ($users as $fb_id) {
                 if ($row["d_$fb_id"]) {
-                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic/>';
+                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic style="margin-right: 3px;"/>';
                 }
         }
 ?>
 </div>
-               </div>
 
   </li>
 <?php endforeach;?>

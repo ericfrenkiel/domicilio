@@ -157,7 +157,7 @@ class Posting {
   public function getStaticMapUrl() {
     $location = $this->getEncodedAddress();
     return "http://maps.google.com/maps/api/staticmap?center=" . $location
-      . "&zoom=14&size=256x256&markers=color:blue|label:H|"
+      . "&zoom=14&size=350x262&markers=color:blue|label:H|"
       . $location . "&sensor=false";
   }
 
