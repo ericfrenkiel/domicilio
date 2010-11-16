@@ -1145,7 +1145,7 @@ border-color:#679BBC !important;
 position: relative; top: 33px;
 }
 .pop_image_small {
-background:url("/images/uiwidgets/pop_image_small.png") no-repeat scroll 0 56px transparent;
+background:url("/images/pop_image_small.png") no-repeat scroll 0 56px transparent;
 float:left;
 height:94px;
 padding:0 9px;

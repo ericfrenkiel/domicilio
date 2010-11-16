@@ -87,7 +87,7 @@ function shareWithFriends() {
 	);
 }
 function contactPoster() {
-jQuery.facebox('The poster has been notified of your interest. You will hear back soon!');
+jQuery.facebox('The owner has been notified of your interest. You will hear back soon!');
 $('#contactPoster').fadeOut();
 }
 function savePosting() {
@@ -111,7 +111,7 @@ $('#savePosting').fadeOut();
 
 <!--<div id="left">-->
 
-	<div id="contactPoster" class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;"  onclick="contactPoster()">Contact Poster</div>
+	<div id="contactPoster" class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;"  onclick="contactPoster()">Contact Owner</div>
 	<div id ="savePosting" class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;" onclick="savePosting()">Save for Later</div>
 	<div id="askFriends" class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;" onclick="shareWithFriends();">Ask my Friends</div>
 	<br /><br />
