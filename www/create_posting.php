@@ -154,7 +154,7 @@ if (isset($_GET['uber_shity_secret_test'])) {
   global $uid;
   if ($uid) {
     $res = db_query("select fb_photo_id from photos where "
-      . "owner_id = '" . db_escape($uid) . "';");
+      . "owner_id = '" . db_escape($uid) . "' order by id desc;");
     $ids = array();
     while ($arr = db_fetch($res)) {
       $ids[] = "'" . $arr[0] . "'";

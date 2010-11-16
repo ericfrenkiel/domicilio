@@ -1,3 +1,9 @@
+<style>
+  .preview_img {
+    max-width: 350px;
+    max-height: 350px;
+  }
+</style>
 <div style="color: #000000;">
 	<table width="100%" height="100%" border="0" align="center" cellpadding="10" cellspacing="0" style="-moz-border-radius-topright:10px;font-family:Arial,Helvetica,sans-serif;">
 		<tbody>
@@ -32,7 +38,7 @@
 																			<tr valign="top">
 																				<td height="30" align="left" valign="top">
 																					<div style="color: #206591;">
-																						<font size="5"><?php echo $posting->getAddress();?></font>
+																						<font size="5"><?php echo htmlspecialchars($posting->getFullAddress()) ;?></font>
 																					</div>
 																				</td>
 																			</tr>
@@ -128,7 +134,7 @@
 																										<tbody>
 																											<tr>
 																												<td>
-																													<?php echo $posting->getInfo(); ?>
+																													<?php echo htmlspecialchars($posting->getInfo()); ?>
 																												</td>
 																											</tr>
 																										</tbody>
@@ -140,7 +146,7 @@
 																										<tbody>
 																											<tr>
 																												<td>
-																													<img style="-moz-border-radius:10px;" src="http://maps.google.com/maps/api/staticmap?center=1601+S+California+Ave,Palo+Alto,CA&amp;zoom=14&amp;size=350x262&amp;markers=color:blue|label:H|1601+S+California+Ave,Palo+Alto,CA&amp;sensor=false" border="1" width="350" height="262"><br>
+																													<img style="-moz-border-radius:10px;" src="<?php echo $posting->getStaticMapUrl(); ?>" border="1" width="350" height="262"><br>
 																												</td>
 																											</tr>
 																										</tbody>
@@ -386,14 +392,14 @@
 																														<tbody>
 																															<?php foreach($posting->getPhotos() as $key => $photo):?>
 																															<?php if ($key % 2 == 0):?>
-																															<tr align="center" valign="top">
+																															<tr align="center" valign="middle">
 																															<?php endif;?>
 																																<td height="262">
-																																	<div align="center" style="padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px;">		
+																																	<div align="center" style="padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px;">
 																																		<?php if ($posting->getId()):?>
-																																		<a href="<?php echo THEDOM_APP_URL ?>view_posting.php?id=<?php echo $posting->getId() ?>"><img src="<?php echo $photo['preview'] ?>" border="0" /></a>
+																																		<a href="<?php echo THEDOM_APP_URL ?>view_posting.php?id=<?php echo $posting->getId() ?>"><img class="preview_img" src="<?php echo $photo['preview'] ?>" border="0" /></a>
 																																		<?php else:?>
-																																			<img src="<?php echo $photo['preview'] ?>" border="0" />
+																																			<img  class="preview_img" src="<?php echo $photo['src'] ?>" border="0" />
 																																		<?php endif;?>
 																																	</div>
 																																</td>

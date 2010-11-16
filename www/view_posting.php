@@ -34,8 +34,9 @@ function make_request(id, fb_id) {
 }
 
 function login(id) {
-  FB.login(function(response) {
-     if (response.session) {
+FB.login(function(response) {
+  if (response.session) {
+    if (response.perms) {
        FB.api('/me', function(response) {
           if (response.session) {
             make_request(id, response.id);
@@ -43,19 +44,14 @@ function login(id) {
             alert('You have to allow to connect to Facebook to perform this action');
           }
         });
-     }
-   }
-  );
+    } else {
+    }
+  } else {
+  }
+}, {perms:'user_photos,user_videos,user_checkins,publish_stream,email,friends_checkins'});
 }
 
 function record(id) {
-  FB.init({
-      appId  : '<?php echo THEDOM_APP_ID; ?>',
-        status : true, // check login status
-        cookie : true, // enable cookies to allow the server to access the session
-        xfbml  : false  // parse XFBML
-     });
-
   FB.getLoginStatus(function(response) {
     if (response.session) {
       FB.api('/me', function(response) {
@@ -72,8 +68,8 @@ function shareWithFriends() {
 	    method: 'stream.publish',
 	    message: 'I\'m thinking of moving here soon. What do you think?',
 	    attachment: {
-	      name: '<?php echo $posting->getTitle() ?>',
-	      caption: '<?php echo $posting->getFullAddress() ?>',
+	      name: '<?php echo addslashes($posting->getTitle()) ?>',
+	      caption: '<?php echo addslashes($posting->getFullAddress()) ?>',
 	      description: (
 	        ' '
 	      ),
@@ -92,11 +88,11 @@ function shareWithFriends() {
 }
 function contactPoster() {
 jQuery.facebox('The poster has been notified of your interest. You will hear back soon!');
-$('#contactPoster').fadeOut(); 
+$('#contactPoster').fadeOut();
 }
 function savePosting() {
 jQuery.facebox('Posting saved! To see it again just type "me" into the magic bar.');
-$('#savePosting').fadeOut(); 
+$('#savePosting').fadeOut();
 }
 
 </script>
@@ -114,7 +110,7 @@ $('#savePosting').fadeOut();
 
 
 <!--<div id="left">-->
-	
+
 	<div id="contactPoster" class="v3_button" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;"  onclick="contactPoster()">Contact Poster</div>
 	<div id ="savePosting" class="v3_button v3_orange" style="float:left;width:140px;height:25px;padding:5px 10px; margin-right:10px;" onclick="savePosting()">Save for Later</div>
 	<div id="askFriends" class="v3_button v3_blue" style="float:left;width:140px;height:25px;padding:5px 10px;margin-right:10px;" onclick="shareWithFriends();">Ask my Friends</div>
@@ -147,7 +143,7 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var req = <?php echo json_encode(array(
       'address' => $posting->getFullAddress())); ?>;
-    geocoder.geocode( req, function(results, status) {
+    geocoder.geocode(req, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         position = results[0].geometry.location;
         var myOptions = {
