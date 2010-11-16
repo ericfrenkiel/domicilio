@@ -20,7 +20,7 @@ if (isset($_GET['uber_shity_secret_test'])) {
   global $uid;
   $posting->setOwnerId($uid);
   if ($posting->getId()) {
-    $posting->updateDB();
+    $posting->updateToDB();
   } else {
     $posting->addToDB();
   }

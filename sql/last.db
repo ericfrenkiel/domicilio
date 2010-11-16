@@ -1,0 +1,277 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: thedom_info
+-- ------------------------------------------------------
+-- Server version	5.0.91-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `amenities`
+--
+
+DROP TABLE IF EXISTS `amenities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `amenities` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(4000) default NULL,
+  `searchable` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `amenities`
+--
+
+LOCK TABLES `amenities` WRITE;
+/*!40000 ALTER TABLE `amenities` DISABLE KEYS */;
+INSERT INTO `amenities` VALUES (1,'On-Site Laundry',1),(2,'Door Attendant',1),(3,'Parking Space(s)',1),(4,'Fitness Center',1),(5,'Garage',1),(6,'High Speed Internet Available',1),(7,'Limited Access',1),(8,'Wheelchair Access',1),(9,'Whirlpool(s)',1),(10,'Hardwood Floor',1);
+/*!40000 ALTER TABLE `amenities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL auto_increment,
+  `parent_id` int(11) NOT NULL,
+  `name` varchar(4000) NOT NULL,
+  `type` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (1,0,'USA',0),(2,1,'California',1),(3,2,'San Francisco',2),(4,3,'Russian Hill',3),(5,3,'Soma',3),(6,3,'Pacific Heights',3),(7,2,'Palo Alto',3);
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations_potings`
+--
+
+DROP TABLE IF EXISTS `locations_potings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations_potings` (
+  `posting_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  UNIQUE KEY `posting_id` (`posting_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations_potings`
+--
+
+LOCK TABLES `locations_potings` WRITE;
+/*!40000 ALTER TABLE `locations_potings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `locations_potings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `photos`
+--
+
+DROP TABLE IF EXISTS `photos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `photos` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `owner_id` bigint(20) NOT NULL,
+  `title` varchar(256) default NULL,
+  `fb_photo_id` bigint(20) NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `fb_photo_id` (`fb_photo_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE;
+/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `photos` VALUES (1,100001910730579,'playbutton32.png',100525150021176),(2,208699,'38915_694890521663_202424_38484987_2681093_n.jpg',718875919733),(3,208699,'54909_451930372615_569882615_5558013_1259719_o.jpg',718876209153),(4,208699,'03_3_Research_Sectors_1 copy.jpg',718876877813),(5,208699,'n209436_33752373_7183.jpg',718877351863),(6,208699,'Screen shot 2010-11-07 at 6.44.20 PM.png',718879632293),(7,660659391,'bpass.png',10150119946479392),(8,208699,'01808_aviewofparadise_2560x1600.jpg',718895176143),(9,208699,'Australia.gif',719101243183),(10,100001910730579,'playbutton46.png',100790143328010),(11,100000898798374,'playbutton70.png',162590527114239),(12,100001910730579,'20060222184926_superb parrot94.jpg',100827169990974),(13,100001910730579,'1279357913_003-paradise-island-x87.jpg',100827769990914),(14,100001910730579,'playbutton61.png',100827796657578),(15,100001910730579,'1279357913_003-paradise-island-x64.jpg',100827813324243),(16,100000898798374,'playbutton85.png',162612257112066),(17,100000898798374,'playbutton92.png',162829013757057),(18,100000898798374,'playbutton73.png',162830020423623),(19,100000898798374,'20060222184926_superb parrot39.jpg',162830587090233),(20,100001910730579,'playbutton36.png',101091086631249),(21,100001910730579,'playbutton23.png',101093793297645),(22,100001910730579,'Animals_Birds__000739_130.jpg',101094933297531),(23,100001910730579,'20060222184926_superb parrot91.jpg',101097086630649),(24,100001910730579,'20060222184926_superb parrot74.jpg',101099993297025),(25,100001910730579,'playbutton67.png',101100013297023),(26,100001910730579,'Sandy Cay Caribbean beach.jpg',101129609960730),(27,100000898798374,'Paradise_Island_Wallpaper_by_nxxos.jpg',163067887066503),(28,208699,'Screen shot 2010-11-13 at 11.04.11 AM.png',719757867303),(29,208699,'Screen shot 2010-11-07 at 6.38.19 PM.png',719879513523),(30,208699,'Screen shot 2010-11-07 at 6.44.20 PM.png',719879518513),(31,208699,'Screen shot 2010-11-06 at 7.58.07 PM.png',719879523503),(32,208699,'Screen shot 2010-11-08 at 12.43.44 PM (2).png',719879538473),(33,208699,'Screen shot 2010-11-07 at 6.48.32 PM.png',719879563423),(34,208699,'Screen shot 2010-11-08 at 12.43.58 PM (2).png',719879568413),(35,208699,'Screen shot 2010-11-08 at 12.43.44 PM.png',719879558433),(36,208699,'Screen shot 2010-11-08 at 12.43.58 PM.png',719879588373),(37,208699,'Screen shot 2010-11-07 at 6.48.32 PM17.png',720037811293),(38,208699,'Screen shot 2010-11-07 at 6.48.32 PM31.png',720069732323),(39,208699,'Screen shot 2010-11-08 at 12.43.58 PM (2)32.png',720081723293),(40,208699,'Screen shot 2010-11-13 at 11.04.11 AM.png',720203823603),(41,100000898798374,'logo.jpg',163590160347609),(42,208699,'beach-house-interior-design.jpg',720263189633),(43,208699,'bathroom-island-house-plans.jpg',720263199613),(44,208699,'beach-house-decorating-idea.jpg',720263194623),(45,208699,'caribbean-island-house-plan.jpg',720263229553),(46,208699,'interiors-island-house-plans.jpg',720263239533),(47,208699,'mediterranean-house-plans.jpg',720263234543),(48,208699,'beach-house-decorating-idea33.jpg',720366028543),(49,208699,'beach-house-interior-design38.jpg',720366043513),(50,208699,'caribbean-island-house-plan33.jpg',720366048503),(51,208699,'interiors-island-house-plans50.jpg',720366063473),(52,208699,'mediterranean-house-plans38.jpg',720366073453),(53,208699,'bathroom-island-house-plans42.jpg',720366078443),(54,208699,'beach-house-decorating-idea.jpg',720508612803),(55,208699,'bathroom-island-house-plans.jpg',720508617793),(56,208699,'interiors-island-house-plans.jpg',720508647733),(57,208699,'caribbean-island-house-plan.jpg',720508652723),(58,208699,'mediterranean-house-plans.jpg',720508667693),(59,208699,'Screen shot 2010-11-13 at 11.04.11 AM47.png',720508687653),(60,208699,'pict_3739_0.jpg',720526257443),(61,208699,'pict_3739_1.jpg',720526262433),(62,208699,'pict_3739_2.jpg',720526267423),(63,208699,'IMG_0008.JPG',720529490963),(64,208699,'IMG_0010.JPG',720529495953),(65,208699,'IMG_0007.JPG',720529500943),(66,208699,'IMG_0012.JPG',720529535873),(67,208699,'IMG_0011.JPG',720529545853),(68,208699,'IMG_0013.JPG',720529555833),(69,208699,'IMG_0018.JPG',720529575793),(70,208699,'IMG_0016.JPG',720529570803),(71,208699,'IMG_0019.JPG',720529580783),(72,208699,'IMG_0024.JPG',720529590763),(73,208699,'pict_2052_0.jpg',720530848243),(74,208699,'pict_2052_1.jpg',720530853233),(75,208699,'pict_2052_2.jpg',720530858223),(76,208699,'pict_2052_4.jpg',720530893153),(77,208699,'pict_2052_3.jpg',720530903133),(78,208699,'pict_2052_5.jpg',720530928083),(79,208699,'pict_2052_6.jpg',720530943053),(80,208699,'pict_2052_7.jpg',720530948043),(81,660659391,'1.jpeg',10150124841374392),(82,660659391,'2.jpeg',10150124841534392),(83,660659391,'3.jpeg',10150124841539392),(84,660659391,'5.jpeg',10150124841629392),(85,660659391,'4.jpeg',10150124841849392),(86,208699,'P1050816.jpg',720532025883),(87,208699,'P1050812.jpg',720532030873),(88,208699,'P1050815.jpg',720532040853),(89,660659391,'11.jpeg',10150124843629392),(90,660659391,'22.jpeg',10150124843664392),(91,208699,'P1050829.jpg',720532090753),(92,660659391,'33.jpeg',10150124843689392),(93,660659391,'44.jpeg',10150124843734392);
+/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posting_amenity`
+--
+
+DROP TABLE IF EXISTS `posting_amenity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posting_amenity` (
+  `posting_id` int(11) NOT NULL,
+  `amenity_id` int(11) NOT NULL,
+  UNIQUE KEY `posting_id` (`posting_id`,`amenity_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posting_amenity`
+--
+
+LOCK TABLES `posting_amenity` WRITE;
+/*!40000 ALTER TABLE `posting_amenity` DISABLE KEYS */;
+INSERT INTO `posting_amenity` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(2,6),(2,7),(2,8),(2,9),(2,10),(3,1),(3,6),(3,8);
+/*!40000 ALTER TABLE `posting_amenity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posting_interest`
+--
+
+DROP TABLE IF EXISTS `posting_interest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posting_interest` (
+  `x` point default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posting_interest`
+--
+
+LOCK TABLES `posting_interest` WRITE;
+/*!40000 ALTER TABLE `posting_interest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posting_interest` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posting_location`
+--
+
+DROP TABLE IF EXISTS `posting_location`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posting_location` (
+  `posting_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  UNIQUE KEY `posting_id` (`posting_id`,`location_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posting_location`
+--
+
+LOCK TABLES `posting_location` WRITE;
+/*!40000 ALTER TABLE `posting_location` DISABLE KEYS */;
+INSERT INTO `posting_location` VALUES (1,1),(1,2),(1,3),(1,5),(2,1),(2,2),(2,3),(2,4),(3,1),(3,2),(3,7);
+/*!40000 ALTER TABLE `posting_location` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posting_photos`
+--
+
+DROP TABLE IF EXISTS `posting_photos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posting_photos` (
+  `posting_id` bigint(20) NOT NULL,
+  `photo_id` bigint(20) NOT NULL,
+  `photo_url` varchar(4000) NOT NULL,
+  `photo_url_thumbnail` varchar(4000) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posting_photos`
+--
+
+LOCK TABLES `posting_photos` WRITE;
+/*!40000 ALTER TABLE `posting_photos` DISABLE KEYS */;
+INSERT INTO `posting_photos` VALUES (1,163067887066503,'http://hphotos-ash2.fbcdn.net/hs266.ash2/54294_163067887066503_100000898798374_323307_1370975_o.jpg','http://photos-e.ak.fbcdn.net/hphotos-ak-ash2/hs454.ash2/72738_163067887066503_100000898798374_323307_1370975_a.jpg'),(2,98423808305,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_n.jpg','http://photos-e.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_a.jpg'),(3,98423808305,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_n.jpg','http://photos-e.ak.fbcdn.net/hphotos-ak-snc1/hs085.snc1/5041_98423808305_40796308305_1960517_6704612_a.jpg'),(4,720526267423,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1166.snc4/150886_720526267423_208699_39095604_4108815_n.jpg','http://photos-d.ak.fbcdn.net/hphotos-ak-snc4/hs1166.snc4/150886_720526267423_208699_39095604_4108815_a.jpg'),(4,720526262433,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs968.snc4/76193_720526262433_208699_39095603_3104557_n.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-snc4/hs968.snc4/76193_720526262433_208699_39095603_3104557_a.jpg'),(4,720526257443,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs590.ash2/154262_720526257443_208699_39095602_5166432_n.jpg','http://photos-g.ak.fbcdn.net/hphotos-ak-ash2/hs590.ash2/154262_720526257443_208699_39095602_5166432_a.jpg'),(5,720263194623,'http://hphotos-snc4.fbcdn.net/hs582.snc4/55930_720263194623_208699_39090210_3681493_o.jpg','http://photos-f.ak.fbcdn.net/hphotos-ak-snc4/hs1180.snc4/150256_720263194623_208699_39090210_3681493_t.jpg'),(5,720263199613,'http://hphotos-snc4.fbcdn.net/hs518.snc4/53487_720263199613_208699_39090211_5176266_o.jpg','http://photos-d.ak.fbcdn.net/hphotos-ak-snc4/hs1158.snc4/150040_720263199613_208699_39090211_5176266_t.jpg'),(5,720263189633,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs930.snc4/74330_720263189633_208699_39090209_4702575_n.jpg','http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs930.snc4/74330_720263189633_208699_39090209_4702575_n.jpg'),(5,720366073453,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs488.ash2/76114_720366073453_208699_39092165_3897400_n.jpg','http://photos-h.ak.fbcdn.net/hphotos-ak-ash2/hs488.ash2/76114_720366073453_208699_39092165_3897400_a.jpg'),(5,720366063473,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs925.snc4/73871_720366063473_208699_39092164_5684866_n.jpg','http://photos-b.ak.fbcdn.net/hphotos-ak-snc4/hs925.snc4/73871_720366063473_208699_39092164_5684866_a.jpg'),(5,720366048503,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs917.snc4/73013_720366048503_208699_39092163_4139928_n.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-snc4/hs917.snc4/73013_720366048503_208699_39092163_4139928_a.jpg'),(5,720263239533,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs925.snc4/73831_720263239533_208699_39090215_2774346_n.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-snc4/hs925.snc4/73831_720263239533_208699_39090215_2774346_a.jpg'),(6,720529590763,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1158.snc4/150048_720529590763_208699_39095727_3287187_n.jpg','http://photos-e.ak.fbcdn.net/hphotos-ak-snc4/hs1158.snc4/150048_720529590763_208699_39095727_3287187_t.jpg'),(6,720529580783,'http://hphotos-snc4.fbcdn.net/hs512.snc4/52951_720529580783_208699_39095726_5848455_o.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-snc4/hs1225.snc4/155747_720529580783_208699_39095726_5848455_a.jpg'),(6,720529570803,'http://hphotos-snc4.fbcdn.net/hs566.snc4/56359_720529570803_208699_39095724_17713_o.jpg','http://photos-g.ak.fbcdn.net/hphotos-ak-snc4/hs1171.snc4/154386_720529570803_208699_39095724_17713_a.jpg'),(6,720529575793,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs987.snc4/76059_720529575793_208699_39095725_7470611_n.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-snc4/hs987.snc4/76059_720529575793_208699_39095725_7470611_t.jpg'),(6,720529555833,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs983.snc4/75605_720529555833_208699_39095723_5258878_n.jpg','http://photos-f.ak.fbcdn.net/hphotos-ak-snc4/hs983.snc4/75605_720529555833_208699_39095723_5258878_t.jpg'),(6,720529545853,'http://hphotos-snc4.fbcdn.net/hs547.snc4/54442_720529545853_208699_39095722_8306114_o.jpg','http://photos-d.ak.fbcdn.net/hphotos-ak-snc4/hs993.snc4/76633_720529545853_208699_39095722_8306114_a.jpg'),(6,720529535873,'http://hphotos-snc4.fbcdn.net/hs587.snc4/56422_720529535873_208699_39095721_4593872_o.jpg','http://photos-b.ak.fbcdn.net/hphotos-ak-snc4/hs1226.snc4/155801_720529535873_208699_39095721_4593872_a.jpg'),(6,720529500943,'http://hphotos-ash2.fbcdn.net/hs268.ash2/54488_720529500943_208699_39095720_1279462_o.jpg','http://photos-h.ak.fbcdn.net/hphotos-ak-ash2/hs475.ash2/74885_720529500943_208699_39095720_1279462_a.jpg'),(6,720529495953,'http://hphotos-ash2.fbcdn.net/hs509.ash2/131118_720529495953_208699_39095719_2360378_o.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-ash2/hs593.ash2/154519_720529495953_208699_39095719_2360378_a.jpg'),(6,720529490963,'http://hphotos-ash2.fbcdn.net/hs268.ash2/54492_720529490963_208699_39095718_485199_o.jpg','http://photos-g.ak.fbcdn.net/hphotos-ak-ash2/hs570.ash2/149286_720529490963_208699_39095718_485199_a.jpg'),(7,720530848243,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs488.ash2/76159_720530848243_208699_39095739_1156773_n.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/hs488.ash2/76159_720530848243_208699_39095739_1156773_a.jpg'),(7,720530853233,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1124.snc4/148626_720530853233_208699_39095740_1401599_n.jpg','http://photos-b.ak.fbcdn.net/hphotos-ak-snc4/hs1124.snc4/148626_720530853233_208699_39095740_1401599_a.jpg'),(7,720530858223,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs569.ash2/149187_720530858223_208699_39095741_4496145_n.jpg','http://photos-h.ak.fbcdn.net/hphotos-ak-ash2/hs569.ash2/149187_720530858223_208699_39095741_4496145_a.jpg'),(7,720530893153,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1161.snc4/150334_720530893153_208699_39095742_3324982_n.jpg','http://photos-f.ak.fbcdn.net/hphotos-ak-snc4/hs1161.snc4/150334_720530893153_208699_39095742_3324982_a.jpg'),(7,720530903133,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs951.snc4/74425_720530903133_208699_39095743_3144596_n.jpg','http://photos-d.ak.fbcdn.net/hphotos-ak-snc4/hs951.snc4/74425_720530903133_208699_39095743_3144596_a.jpg'),(7,720530928083,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1121.snc4/148366_720530928083_208699_39095744_6481283_n.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-snc4/hs1121.snc4/148366_720530928083_208699_39095744_6481283_a.jpg'),(7,720530943053,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs951.snc4/74464_720530943053_208699_39095745_1837510_n.jpg','http://photos-g.ak.fbcdn.net/hphotos-ak-snc4/hs951.snc4/74464_720530943053_208699_39095745_1837510_a.jpg'),(7,720530948043,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1200.snc4/155223_720530948043_208699_39095746_6578708_n.jpg','http://photos-e.ak.fbcdn.net/hphotos-ak-snc4/hs1200.snc4/155223_720530948043_208699_39095746_6578708_a.jpg'),(8,10150124841534392,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1188.snc4/150998_10150124841534392_660659391_7810303_4787302_n.jpg','http://photos-b.ak.fbcdn.net/hphotos-ak-snc4/hs1188.snc4/150998_10150124841534392_660659391_7810303_4787302_a.jpg'),(8,10150124841629392,'http://sphotos.ak.fbcdn.net/hphotos-ak-snc4/hs1124.snc4/148643_10150124841629392_660659391_7810307_2997583_n.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-snc4/hs1124.snc4/148643_10150124841629392_660659391_7810307_2997583_a.jpg'),(8,10150124841849392,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs595.ash2/154722_10150124841849392_660659391_7810315_4397153_n.jpg','http://photos-f.ak.fbcdn.net/hphotos-ak-ash2/hs595.ash2/154722_10150124841849392_660659391_7810315_4397153_a.jpg'),(8,10150124841374392,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs597.ash2/154963_10150124841374392_660659391_7810299_3187482_n.jpg','http://photos-b.ak.fbcdn.net/hphotos-ak-ash2/hs597.ash2/154963_10150124841374392_660659391_7810299_3187482_a.jpg'),(8,10150124841539392,'http://sphotos.ak.fbcdn.net/hphotos-ak-ash2/hs583.ash2/150508_10150124841539392_660659391_7810304_7087711_n.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/hs583.ash2/150508_10150124841539392_660659391_7810304_7087711_a.jpg'),(9,720532025883,'http://hphotos-snc4.fbcdn.net/hs502.snc4/51924_720532025883_208699_39095785_2916669_o.jpg','http://photos-c.ak.fbcdn.net/hphotos-ak-snc4/hs951.snc4/74463_720532025883_208699_39095785_2916669_a.jpg'),(9,720532030873,'http://hphotos-ash2.fbcdn.net/hs287.ash2/56410_720532030873_208699_39095786_6292046_o.jpg','http://photos-a.ak.fbcdn.net/hphotos-ak-ash2/hs581.ash2/150375_720532030873_208699_39095786_6292046_a.jpg'),(9,720532040853,'http://hphotos-snc4.fbcdn.net/hs548.snc4/54569_720532040853_208699_39095787_1974098_o.jpg','http://photos-g.ak.fbcdn.net/hphotos-ak-snc4/hs949.snc4/74215_720532040853_208699_39095787_1974098_s.jpg'),(9,720532090753,'http://hphotos-ash2.fbcdn.net/hs296.ash2/57323_720532090753_208699_39095788_1893761_o.jpg','http://photos-h.ak.fbcdn.net/hphotos-ak-ash2/hs496.ash2/76895_720532090753_208699_39095788_1893761_a.jpg');
+/*!40000 ALTER TABLE `posting_photos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `postings`
+--
+
+DROP TABLE IF EXISTS `postings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `postings` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `owner_id` bigint(20) NOT NULL,
+  `title` varchar(1000) default NULL,
+  `cost` varchar(64) default NULL,
+  `bedrooms` int(11) default NULL,
+  `address` varchar(1000) default NULL,
+  `city` varchar(64) default NULL,
+  `state` varchar(32) default NULL,
+  `info` varchar(20000) default NULL,
+  `location` point default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postings`
+--
+
+LOCK TABLES `postings` WRITE;
+/*!40000 ALTER TABLE `postings` DISABLE KEYS */;
+INSERT INTO `postings` VALUES (1,208699,'Eric\'s place','1800',2,'500 3rd St','San Francisco','CA','awesome place','\0\0\0\0\0\0\04ºYÉ˜„B@–®\nWQô^¿'),(2,208699,'Nikita\'s place','1800',1,'674 Bay St.','San Francisco','CA','awesome place','\0\0\0\0\0\0\0:ãÉ\rÁB@Qﬂç`æö^¿'),(3,208699,'Evgeny\' place','1800',3,'1601 California Ave','Palo Alto','CA','awesome place','\0\0\0\0\0\0\0çõ\Zh>µB@g†‹∂â^¿'),(4,208699,'One bedroom condo w/ den','5000',NULL,'88 King Street','San Francisco','CA','This light-infused 1 bedroom 1 bath +den home at the Glassworks building is embellished with artful touches, including bamboo floors, granite counter-tops, Studio Becker European-built cabinetry, Bosch and Sub Zero appliances, Dornbracht-inspired baths, and floor to ceiling windows, with amazing ballpark and city views.\r\n\r\n- Fully appointed with beautiful modern furnishings\r\n- 13√¢‚Ç¨‚Ñ¢ Living room ceilings\r\n- Bamboo hardwood flooring\r\n- Studio Becker European-built kitchen cabinets with solid black granite counter tops\r\n- Sub Zero refrigerator and Bosch appliances\r\n- Dornbracht and Villeroy & Boch fixtures with contrasting limestone flooring in the baths\r\n- Central Heating and Air Conditioning\r\n- Electric, gas, water and garbage are included\r\n- Parking is available for an extra monthly fee\r\n- Available for short term rental, with a three month minimum beginning December 2010 ','\0\0\0\0\0\0\0d#ØÎ„B@-≤ùÔò^¿'),(5,208699,'Goregous Newly Remodeled 1 bd/1ba','3500',NULL,'200 Brannan Street','San Francisco','CA','  This light-infused 1 bedroom 1 bath +den home at the Glassworks building is embellished with artful touches, including bamboo floors, granite counter-tops, Studio Becker European-built cabinetry, Bosch and Sub Zero appliances, Dornbracht-inspired baths, and floor to ceiling windows, with amazing ballpark and city views.\r\n\r\n- Fully appointed with beautiful modern furnishings\r\n- 13√¢‚Ç¨‚Ñ¢ Living room ceilings\r\n- Bamboo hardwood flooring\r\n- Studio Becker European-built kitchen cabinets with solid black granite counter tops\r\n- Sub Zero refrigerator and Bosch appliances\r\n- Dornbracht and Villeroy & Boch fixtures with contrasting limestone flooring in the baths\r\n- Central Heating and Air Conditioning\r\n- Electric, gas, water and garbage are included\r\n- Parking is available for an extra monthly fee\r\n- Available for short term rental, with a three month minimum beginning December 2010 ','\0\0\0\0\0\0\0£í:M‰B@_‘ÓWô^¿'),(6,208699,'Amazing Spacious 1 Bedroom in SOMA','2000',NULL,'829 Folsom Street','San Francisco','CA','  This light-infused 1 bedroom 1 bath +den home at the Glassworks building is embellished with artful touches, including bamboo floors, granite counter-tops, Studio Becker European-built cabinetry, Bosch and Sub Zero appliances, Dornbracht-inspired baths, and floor to ceiling windows, with amazing ballpark and city views.\r\n\r\n- Fully appointed with beautiful modern furnishings\r\n- 13√¢‚Ç¨‚Ñ¢ Living room ceilings\r\n- Bamboo hardwood flooring\r\n- Studio Becker European-built kitchen cabinets with solid black granite counter tops\r\n- Sub Zero refrigerator and Bosch appliances\r\n- Dornbracht and Villeroy & Boch fixtures with contrasting limestone flooring in the baths\r\n- Central Heating and Air Conditioning\r\n- Electric, gas, water and garbage are included\r\n- Parking is available for an extra monthly fee\r\n- Available for short term rental, with a three month minimum beginning December 2010 ','\0\0\0\0\0\0\0éXãO‰B@∫øz‹∑ô^¿'),(7,208699,' Upscale 2Bb/2Ba Luxury Condo w/ deck','4800',NULL,'219 Brannan','San Francisco','CA','  outh Beach living at its finest! 2 bedroom 2 bath condo w/ excellent finishes and great outdoor space.\r\n\r\nUnit features open living and dining area w/ hardwood floors, large master suite, gourmet kitchen with designer appliances and cabinetry, washer/dryer in unit, and a large deck.\r\n\r\nThe building is equipped with a state of the art fitness center, pool, 24Hr concierge & security. Close walking distance to PacBell Park, the Ferry Building, the Embarcadero, great restaurants, Muni, & Bart. ','\0\0\0\0\0\0\00,æ-‰B@0Û¸ò^¿'),(8,660659391,'Modern townhouse in the heart of Pac Heights','2400',NULL,'2225 Washington St','San Francisco','CA','  Amazing place with ','\0\0\0\0\0\0\0¥’õfÂB@EùπáÑõ^¿'),(9,208699,'* 21st floor Corner Unit at Infinity Towers ','4500',NULL,'301 Main Street','San Francisco','CA','  This unfurnished 2 bedroom 2 bath corner unit on the 21st floor features carpeted floors, quality appliances, in-unit washer dryer, power blinds throughout, and beautiful city & bay views. Water and garbage paid, no smoking in the unit. One-car garage parking included and access to all the special attributes the Infinity has to offer :\r\n\r\n*Heated 75ft lap pool \r\n*Huge fitness center \r\n*24 hour door person and security \r\n*2 conference rooms\r\n*private screening room\r\n*Club House \r\n*Business center and conference room. ','\0\0\0\0\0\0\0ß‘E\nÂB@∂ilØô^¿'),(10,660659391,'A Real Bungalo In Russian Hill','674 Russian Hill',NULL,'','','CA','  Amazing real bungalo in San Francisco!','\0\0\0\0\0\0\0J`sûcB@|âgø⁄]¿'),(11,660659391,' Outstanding Place in Nob Hill','3000',NULL,'Hyde at Jackson ','San Francisco','CA','  This is a charming place in the best part of Nob Hill','\0\0\0\0\0\0\0åΩ_¥ÂB@+Ñ’X¬ö^¿');
+/*!40000 ALTER TABLE `postings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `postings_amenities`
+--
+
+DROP TABLE IF EXISTS `postings_amenities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `postings_amenities` (
+  `posting_id` int(11) NOT NULL,
+  `amenity_id` int(11) NOT NULL,
+  UNIQUE KEY `posting_id` (`posting_id`,`amenity_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postings_amenities`
+--
+
+LOCK TABLES `postings_amenities` WRITE;
+/*!40000 ALTER TABLE `postings_amenities` DISABLE KEYS */;
+/*!40000 ALTER TABLE `postings_amenities` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-11-16  7:08:28
