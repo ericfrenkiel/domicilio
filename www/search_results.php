@@ -117,16 +117,16 @@ foreach($result_arr as $row):?>
    <div class="price_modifier">                    Per month
     </div>
 
+               </div>
 <div class="face_pil">
 <?php
         foreach ($users as $fb_id) {
                 if ($row["d_$fb_id"]) {
-                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic/>';
+                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic style="margin-right: 3px;"/>';
                 }
         }
 ?>
 </div>
-               </div>
 
   </li>
 <?php endforeach;?>
