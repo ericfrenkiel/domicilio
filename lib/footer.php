@@ -51,7 +51,11 @@
      xfbml  : false  // parse XFBML
    });
 
-   FB.Canvas.setAutoResize();
+   function updateIFrameSize() {
+     FB.Canvas.setSize({width:760, height:$('body').height()});
+   }
+   FB.Canvas.setSize({width:760, height:1300});
+ //  setInterval('updateIFrameSize()', 5);
  </script>
                 <div id="container">
                   <div id="header">
