@@ -1144,3 +1144,24 @@ border-color:#679BBC !important;
 #as-results-q {
 position: relative; top: 33px;
 }
+.pop_image_small {
+background:url("/images/pop_image_small.png") no-repeat scroll 0 56px transparent;
+float:left;
+height:94px;
+padding:0 9px;
+position:relative;
+width:122px;
+right: 30px;
+}
+.pop_image_small a.image_link {
+-moz-box-shadow:0 0 2px #999999;
+background:none repeat scroll 0 0 #FFFFFF;
+border:1px solid #D7D7D7;
+cursor:pointer;
+display:block;
+float:left;
+height:74px;
+padding:3px;
+width:114px;
+}
+

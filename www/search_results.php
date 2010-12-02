@@ -34,6 +34,19 @@
 
 	if ($bedroom_predicate == 'AND (1 = 0)') $bedroom_predicate = '';
 
+function getCheckins($fb_id) {
+        global $session;
+	$result= mysql_query( "select * from cache where fb_id = $fb_id" );
+        $row = mysql_fetch_assoc($result);
+        if ($row) {
+                $places = json_decode($row['data']);
+        } else {
+                $places_str = curl_request("https://graph.facebook.com/$fb_id/checkins", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET'));
+                $places = json_decode($places_str);
+                mysql_query("insert into cache values($fb_id,'".mysql_real_escape_string( $places_str )."')");
+        }
+        return $places;
+}
 
         $locations = array();
         $locations_predicate;
@@ -41,7 +54,7 @@
         if ($users) {
                 foreach ($users as $fb_id) {
                         $locations[$fb_id] = array();
-                        $places = json_decode(curl_request("https://graph.facebook.com/$fb_id/checkins", array(type => 'checkin', 'access_token' => $session['access_token'], 'method' => 'GET')));
+                        $places = getCheckins($fb_id);
                         foreach ($places->{'data'} as $checkin) {
                                 $locations[$fb_id][] = array('lat' => $checkin->{place}->{location}->{latitude}, 'lon' => $checkin->{place}->{'location'}->{'longitude'});
                         }
@@ -100,9 +113,11 @@ mysql_close();
 <ul>
 <?php
 foreach($result_arr as $row):?>
-  <li class="listing" style="float:left; width:700px;height:100px;border-bottom:1px dotted #A8A8A8;padding-top:5px;display:block;">
-  <div class="apt_img" style="display: block; float:left;  width: 100px; height: 100px;margin-right:10px; text-align:left;"><a href="/view_posting.php?id=<?php echo $row[id]; ?>">
-        <img style="border:none; max-width: 100px; max-height: 100px;" src="<?php echo $row[photo_url_thumbnail]; ?>" /></a></div>
+  <li class="listing" style="float:left; width:700px;height:95px;border-bottom:1px dotted #A8A8A8;padding-top:5px;display:block;">
+<div class="pop_image_small"> 
+<div class="apt_img" style="display: block; float:left;  min-width: 100px; height: 95px;margin-right:10px;"><a class="image_link" href="/view_posting.php?id=<?php echo $row[id]; ?>">
+        <img style="padding:5px;border:none;overflow:hidden; width: 100px" height="65" src="<?php echo $row[photo_url_thumbnail]; ?>" /></a></div>
+</div>
   <div class="apt_info" style="display:block;">
     <div class="apt_title" style="float:left;display:block;"><a href="/view_posting.php?id=<?php echo $row[id]; ?>"><?php echo $row[title];?></a> </div>
     <div class="apt_address" style="float:left;display:block;width:500px;"><?php echo $row[address]?></div>
@@ -115,16 +130,16 @@ foreach($result_arr as $row):?>
    <div class="price_modifier">                    Per month
     </div>
 
+               </div>
 <div class="face_pil">
 <?php
         foreach ($users as $fb_id) {
                 if ($row["d_$fb_id"]) {
-                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic/>';
+                        echo '<img src="https://graph.facebook.com/'.$fb_id.'/picture" class=profile_pic style="margin-right: 3px;"/>';
                 }
         }
 ?>
 </div>
-               </div>
 
   </li>
 <?php endforeach;?>
